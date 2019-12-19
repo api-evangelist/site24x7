@@ -1,0 +1,106 @@
+{
+    "id": "d3cd2cc82cd1daf3079c3b25c092a594",
+    "name": "Business Hours API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "1499aec52044d1a571c735742ebce10c",
+            "name": "Create Business Hour",
+            "url": "www.site24x7.com.\/business_hours",
+            "description": "Create a new Business Hour.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "POST",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "display_name\n        \n        \n            required\n            Display name for the Business Hour.\n        \n    \n    \n        \n        description\n        \n        \n            optional\n            Description for the Business Hour\n        \n    \n   ",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "d3cd2cc82cd1daf3079c3b25c092a594",
+            "rawModeData": ""
+        },
+        {
+            "id": "b881a8dd5d42d9567a3f6323010b25af",
+            "name": "List Business Hours",
+            "url": "www.site24x7.com.\/business_hours",
+            "description": "List of all Business Hours.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "background_color\n        \n        \n            string\n            Back ground color for your reports.\n        \n                \n    \n        \n        foreground_color\n        \n        \n            string\n            Foreground ground color for your r",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "d3cd2cc82cd1daf3079c3b25c092a594",
+            "rawModeData": ""
+        },
+        {
+            "id": "1659bcf406251bc5f7b3f17fdaaa8171",
+            "name": "Update Business Hour",
+            "url": "www.site24x7.com.\/business_hours\/{business_hours_id}",
+            "description": "Update an existing Business Hour.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "PUT",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "display_name\n        \n        \n            required\n            Display name for the Business Hour.\n        \n    \n    \n        \n        description\n        \n        \n            optional\n            Description for the Business Hour\n        \n    \n   ",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "d3cd2cc82cd1daf3079c3b25c092a594",
+            "rawModeData": ""
+        }
+    ]
+}
