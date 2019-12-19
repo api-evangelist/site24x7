@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "SLA Setting API",
+        "description": "The SLA Setting API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/sla_settings\/{sla_id}": {
+            "GET": {
+                "summary": "Get SLA Report",
+                "description": "Retrieve the configuration of a SLA Report.",
+                "operationId": "GetSlaReport",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "DELETE": {
+                "summary": "Delete SLA Report",
+                "description": "Delete the existing SLA Report.",
+                "operationId": "DeleteSlaReport",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
