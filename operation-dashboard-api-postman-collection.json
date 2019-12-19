@@ -1,0 +1,98 @@
+{
+    "id": "18aa908bf04a9fefeb76db57b836693c",
+    "name": "Operation Dashboard API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "a779f3c70ecf40e2509f60d783b6f556",
+            "name": "Create Operations Dashboard",
+            "url": "www.site24x7.com.\/operations_dashboards",
+            "description": "Create a new Operations Dashboard",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "POST",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "display_name\n        \n        \n            required\n            Display name for the Operations Dashboard.\n        \n    \n    \n        \n        layout_type\n        \n        \n            required\n            Layout to be used for the Operations Dashboa",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "18aa908bf04a9fefeb76db57b836693c",
+            "rawModeData": ""
+        },
+        {
+            "id": "e75c9fd82996fde57754a0f83e0d117a",
+            "name": "List Operations Dashboards",
+            "url": "www.site24x7.com.\/operations_dashboards",
+            "description": "List of all Operations Dashboards.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "18aa908bf04a9fefeb76db57b836693c",
+            "rawModeData": ""
+        },
+        {
+            "id": "cd35742d5def5b3f11a14bf7e54dcaf6",
+            "name": "Update Operations Dashboard",
+            "url": "www.site24x7.com.\/operations_dashboards\/{dashboard_id}",
+            "description": "Update the configuration of an existing Operations Dashboard.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "PUT",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "display_name\n        \n        \n            required\n            Display name for the Operations Dashboard.\n        \n    \n    \n        \n        layout_type\n        \n        \n            required\n            Layout to be used for the Operations Dashboa",
+                    "description": "",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "18aa908bf04a9fefeb76db57b836693c",
+            "rawModeData": ""
+        }
+    ]
+}
