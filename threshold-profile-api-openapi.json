@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Threshold Profile API",
+        "description": "The Threshold Profile API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/threshold_profiles\/{profile_id}": {
+            "GET": {
+                "summary": "Retrieve Threshold Profile",
+                "description": "Retrieve the configuration of a Threshold profile.",
+                "operationId": "RetrieveThresholdProfile",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "DELETE": {
+                "summary": "Delete Threshold Profile",
+                "description": "Delete an existing Threshold profile.",
+                "operationId": "DeleteThresholdProfile",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
