@@ -1,0 +1,59 @@
+{
+    "id": "6e0215b87e519888159d3c1927cd0f4f",
+    "name": "Email Template API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "fb8553fa78e0d89e97c1e6c0cc8745a8",
+            "name": "Retrieve Email Template",
+            "url": "www.site24x7.com.\/email_templates\/{template_id}",
+            "description": "Retrieve configuration of a Email Template.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6e0215b87e519888159d3c1927cd0f4f",
+            "rawModeData": ""
+        },
+        {
+            "id": "248404977e6a3311ef4c5e4a193056ff",
+            "name": "Delete Email Template",
+            "url": "www.site24x7.com.\/email_templates\/{template_id}",
+            "description": "Delete an existing Email Template.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "DELETE",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "6e0215b87e519888159d3c1927cd0f4f",
+            "rawModeData": ""
+        }
+    ]
+}
