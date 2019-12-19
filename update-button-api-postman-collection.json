@@ -1,0 +1,59 @@
+{
+    "id": "86c77b0c1dde045186fc40742e863338",
+    "name": "Update Button API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "388ff6fc2dea25fc4c5965b128a933f3",
+            "name": "Get Uptime Button",
+            "url": "www.site24x7.com.\/uptime_buttons\/{monitor_id}",
+            "description": "Retrieve the configuration of the Uptime Button.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "86c77b0c1dde045186fc40742e863338",
+            "rawModeData": ""
+        },
+        {
+            "id": "a08bfd8f1c41e556a41cb3da21a4af65",
+            "name": "Delete Uptime Button",
+            "url": "www.site24x7.com.\/uptime_buttons\/{monitor_id}",
+            "description": "Delete the uptime button for a monitor.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "DELETE",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "86c77b0c1dde045186fc40742e863338",
+            "rawModeData": ""
+        }
+    ]
+}
