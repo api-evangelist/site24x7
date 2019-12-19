@@ -1,0 +1,47 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Current Status API",
+        "description": "The Current Status API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/current_status\/{monitor_id}": {
+            "GET": {
+                "summary": "Current Status of Monitor",
+                "description": "Request Example",
+                "operationId": "CurrentStatusOfMonitor",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_id",
+                        "in": "path",
+                        "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api."
+                    }
+                ]
+            }
+        },
+        "\/current_status\/type\/{monitor_type}": {
+            "GET": {
+                "summary": "Current Status by Monitor Type",
+                "description": "Request Example",
+                "operationId": "CurrentStatusByMonitorType",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_type",
+                        "in": "path",
+                        "description": "MandatoryType of the monitor.  Monitor Types."
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
