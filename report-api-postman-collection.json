@@ -1,0 +1,562 @@
+{
+    "id": "526214625b23da9f6cf3a356e1d12773",
+    "name": "Report API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "721d24586ae2aded9020f05851bf586e",
+            "name": "Get Custom Report Settings",
+            "url": "www.site24x7.com.\/customize_report",
+            "description": "Retrieve Custom Report Settings.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "910cd4268a55b3070f1bb23b2cefb73a",
+            "name": "Busy Hours Report",
+            "url": "www.site24x7.com.\/reports\/busy_hours\/{monitor_id}?period={report_period_constants}&segment_type={segment_types}",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_id",
+                    "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "9278a12590943481a0e66d22dd4627e7",
+            "name": "Get Outage Details",
+            "url": "www.site24x7.com.\/reports\/outage?period={report_period_constants}",
+            "description": "Obtain the actual down period and the total down duration of your monitors for a specified duration of time. ",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "period",
+                    "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "4c995c87474f36d92b3e5b276bd2dcf9",
+            "name": "Get Outage Details of Monitor Groups",
+            "url": "www.site24x7.com.\/reports\/outage\/group\/{monitor_group_id}?period={report_period_constants}",
+            "description": "Obtain the actual down period and the total down duration of your chosen monitor group during a selected duration of time. ",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_group_id",
+                    "description": "MandatoryMonitor group ID",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "ec909ef8cc23b86090ee6bd2ebf4c230",
+            "name": "Delete Outage",
+            "url": "www.site24x7.com.\/reports\/outage\/{monitor_id}\/{outage_id}",
+            "description": "Delete the faulty downtime alerts to reflect the actual available state of the monitor.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "DELETE",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_id",
+                    "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "435c906ca144a9d477323074fb22123d",
+            "name": "Get Alarms of Monitor",
+            "url": "www.site24x7.com.\/reports\/alarm\/{monitor_id}?period={report_period_constants}",
+            "description": "Obtain the actual down, trouble and maintenance status of your configured monitors. Alert types",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_id",
+                    "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "6a2831145ec9f48140538a5e71a549ec",
+            "name": "Get comments for a monitor",
+            "url": "www.site24x7.com.\/reports\/comments\/{monitor_id}?period={report_period_constants}",
+            "description": "Get all the comments for a monitor for the given duration.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_id",
+                    "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "69f507e1d4cf3ab5e977bbf61388fae9",
+            "name": "Update outage comments.",
+            "url": "www.site24x7.com.\/reports\/comments\/{monitor_id}\/{outage_id}",
+            "description": "Update the comment for a given monitor.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "PUT",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_id",
+                    "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "be630669ec05dd575e4aedc4079a205d",
+            "name": "Delete comment",
+            "url": "www.site24x7.com.\/reports\/comments\/{monitor_id}\/{outage_id}?comment_time={comment_id}",
+            "description": "Delete an outage comment.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "DELETE",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_id",
+                    "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "6084770890695dfc1aadd5c4ee103c2b",
+            "name": "Availability Summary by monitor group",
+            "url": "www.site24x7.com.\/reports\/availability_summary\/group\/{group_id}?period=",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "040b434b97a4426e3643471360820483",
+            "name": "Availability Summary for all monitors",
+            "url": "www.site24x7.com.\/reports\/availability_summary?period=",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "period",
+                    "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "e48315267601ae0d782a673c3a017ace",
+            "name": "Summary by monitor group",
+            "url": "www.site24x7.com.\/reports\/summary\/group\/{group_id}?period=",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "4055b7b347e12bb8c6414ed3001916e6",
+            "name": "Summary for all monitors",
+            "url": "www.site24x7.com.\/reports\/summary?period=",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "availability_percentage",
+                    "description": "Gives the total availability percentage of the monitor for the month.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "714448abe3c468c2d67b48228c031290",
+            "name": "Health Trend Report by Monitor group",
+            "url": "www.site24x7.com.\/reports\/trend\/group\/{group_id}",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "325d832706c10f7daa2046fcb2862b8b",
+            "name": "Health trend Report for all monitors",
+            "url": "www.site24x7.com.\/reports\/trend",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "period",
+                    "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "db8e9cf402569d7f31dae2c75d25a90a",
+            "name": "Top N Report by monitor and attribute type",
+            "url": "www.site24x7.com.\/reports\/top_n\/{monitor_type}\/{attribute_name}?limit={N}&period={report_period_constants}",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "period",
+                    "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "9a840fa12447821745513e1a4ff3116e",
+            "name": "Performance Report by Monitor group",
+            "url": "www.site24x7.com.\/reports\/performance\/group\/{group_id}?period=3",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "name",
+                    "description": "It contains the name of all the monitors in the group.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "c1e9f98beecce6b21540c9446d493e6c",
+            "name": "Performance Report of all monitors",
+            "url": "www.site24x7.com.\/reports\/performance?period=3",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "period",
+                    "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        },
+        {
+            "id": "e9e4e8e2217607e0bc85dab5d5e354de",
+            "name": "Response SLA",
+            "url": "www.site24x7.com.\/reports\/sla_reports\/response?period=3",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "rawModeData": ""
+        }
+    ]
+}
