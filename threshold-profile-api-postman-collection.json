@@ -1,0 +1,59 @@
+{
+    "id": "4cb7fc139c8d5307aec012a0e76b5fd7",
+    "name": "Threshold Profile API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "6495a9ba466d480af13827df63310e01",
+            "name": "Retrieve Threshold Profile",
+            "url": "www.site24x7.com.\/threshold_profiles\/{profile_id}",
+            "description": "Retrieve the configuration of a Threshold profile.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4cb7fc139c8d5307aec012a0e76b5fd7",
+            "rawModeData": ""
+        },
+        {
+            "id": "5a4962d5fa10ac556907afdc5c19d191",
+            "name": "Delete Threshold Profile",
+            "url": "www.site24x7.com.\/threshold_profiles\/{profile_id}",
+            "description": "Delete an existing Threshold profile.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "DELETE",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "4cb7fc139c8d5307aec012a0e76b5fd7",
+            "rawModeData": ""
+        }
+    ]
+}
