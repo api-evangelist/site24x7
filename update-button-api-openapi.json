@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Update Button API",
+        "description": "The Update Button API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/uptime_buttons\/{monitor_id}": {
+            "GET": {
+                "summary": "Get Uptime Button",
+                "description": "Retrieve the configuration of the Uptime Button.",
+                "operationId": "GetUptimeButton",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "DELETE": {
+                "summary": "Delete Uptime Button",
+                "description": "Delete the uptime button for a monitor.",
+                "operationId": "DeleteUptimeButton",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
