@@ -1,0 +1,272 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Report API",
+        "description": "The Report API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/customize_report": {
+            "GET": {
+                "summary": "Get Custom Report Settings",
+                "description": "Retrieve Custom Report Settings.",
+                "operationId": "GetCustomReportSettings",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/reports\/busy_hours\/{monitor_id}?period={report_period_constants}&segment_type={segment_types}": {
+            "GET": {
+                "summary": "Busy Hours Report",
+                "description": "Request Example",
+                "operationId": "BusyHoursReport",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_id",
+                        "in": "path",
+                        "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api."
+                    }
+                ]
+            }
+        },
+        "\/reports\/outage?period={report_period_constants}": {
+            "GET": {
+                "summary": "Get Outage Details",
+                "description": "Obtain the actual down period and the total down duration of your monitors for a specified duration of time. ",
+                "operationId": "GetOutageDetails",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "path",
+                        "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants"
+                    }
+                ]
+            }
+        },
+        "\/reports\/outage\/group\/{monitor_group_id}?period={report_period_constants}": {
+            "GET": {
+                "summary": "Get Outage Details of Monitor Groups",
+                "description": "Obtain the actual down period and the total down duration of your chosen monitor group during a selected duration of time. ",
+                "operationId": "GetOutageDetailsOfMonitorGroups",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_group_id",
+                        "in": "path",
+                        "description": "MandatoryMonitor group ID"
+                    }
+                ]
+            }
+        },
+        "\/reports\/outage\/{monitor_id}\/{outage_id}": {
+            "DELETE": {
+                "summary": "Delete Outage",
+                "description": "Delete the faulty downtime alerts to reflect the actual available state of the monitor.",
+                "operationId": "DeleteOutage",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_id",
+                        "in": "path",
+                        "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api."
+                    }
+                ]
+            }
+        },
+        "\/reports\/alarm\/{monitor_id}?period={report_period_constants}": {
+            "GET": {
+                "summary": "Get Alarms of Monitor",
+                "description": "Obtain the actual down, trouble and maintenance status of your configured monitors. Alert types",
+                "operationId": "GetAlarmsOfMonitor",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_id",
+                        "in": "path",
+                        "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api."
+                    }
+                ]
+            }
+        },
+        "\/reports\/comments\/{monitor_id}?period={report_period_constants}": {
+            "GET": {
+                "summary": "Get comments for a monitor",
+                "description": "Get all the comments for a monitor for the given duration.",
+                "operationId": "GetCommentsForAMonitor",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_id",
+                        "in": "path",
+                        "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api."
+                    }
+                ]
+            }
+        },
+        "\/reports\/comments\/{monitor_id}\/{outage_id}": {
+            "PUT": {
+                "summary": "Update outage comments.",
+                "description": "Update the comment for a given monitor.",
+                "operationId": "UpdateOutageComments",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_id",
+                        "in": "path",
+                        "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api."
+                    }
+                ]
+            }
+        },
+        "\/reports\/comments\/{monitor_id}\/{outage_id}?comment_time={comment_id}": {
+            "DELETE": {
+                "summary": "Delete comment",
+                "description": "Delete an outage comment.",
+                "operationId": "DeleteComment",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "monitor_id",
+                        "in": "path",
+                        "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api."
+                    }
+                ]
+            }
+        },
+        "\/reports\/availability_summary\/group\/{group_id}?period=": {
+            "GET": {
+                "summary": "Availability Summary by monitor group",
+                "description": "Request Example",
+                "operationId": "AvailabilitySummaryByMonitorGroup",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/reports\/availability_summary?period=": {
+            "GET": {
+                "summary": "Availability Summary for all monitors",
+                "description": "Request Example",
+                "operationId": "AvailabilitySummaryForAllMonitors",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "path",
+                        "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants"
+                    }
+                ]
+            }
+        },
+        "\/reports\/summary\/group\/{group_id}?period=": {
+            "GET": {
+                "summary": "Summary by monitor group",
+                "description": "Request Example",
+                "operationId": "SummaryByMonitorGroup",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/reports\/summary?period=": {
+            "GET": {
+                "summary": "Summary for all monitors",
+                "description": "Request Example",
+                "operationId": "SummaryForAllMonitors",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "availability_percentage",
+                        "in": "path",
+                        "description": "Gives the total availability percentage of the monitor for the month."
+                    }
+                ]
+            }
+        },
+        "\/reports\/trend\/group\/{group_id}": {
+            "GET": {
+                "summary": "Health Trend Report by Monitor group",
+                "description": "Request Example",
+                "operationId": "HealthTrendReportByMonitorGroup",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/reports\/trend": {
+            "GET": {
+                "summary": "Health trend Report for all monitors",
+                "description": "Request Example",
+                "operationId": "HealthTrendReportForAllMonitors",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "path",
+                        "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants"
+                    }
+                ]
+            }
+        },
+        "\/reports\/top_n\/{monitor_type}\/{attribute_name}?limit={N}&period={report_period_constants}": {
+            "GET": {
+                "summary": "Top N Report by monitor and attribute type",
+                "description": "Request Example",
+                "operationId": "TopNReportByMonitorAndAttributeType",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "path",
+                        "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants"
+                    }
+                ]
+            }
+        },
+        "\/reports\/performance\/group\/{group_id}?period=3": {
+            "GET": {
+                "summary": "Performance Report by Monitor group",
+                "description": "Request Example",
+                "operationId": "PerformanceReportByMonitorGroup",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "name",
+                        "in": "path",
+                        "description": "It contains the name of all the monitors in the group."
+                    }
+                ]
+            }
+        },
+        "\/reports\/performance?period=3": {
+            "GET": {
+                "summary": "Performance Report of all monitors",
+                "description": "Request Example",
+                "operationId": "PerformanceReportOfAllMonitors",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "period",
+                        "in": "path",
+                        "description": "Mandatory Outage details report is generated within this predefined interval. Report Period Constants"
+                    }
+                ]
+            }
+        },
+        "\/reports\/sla_reports\/response?period=3": {
+            "GET": {
+                "summary": "Response SLA",
+                "description": "Request Example",
+                "operationId": "ResponseSla",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
