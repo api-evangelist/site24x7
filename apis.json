@@ -1,0 +1,361 @@
+{
+    "name": "Site24x7",
+    "description": "Site24x7 offers both free & paid website monitoring services. Monitor websites remotely and receive instant email\/sms alerts if your website becomes unavailable. View uptime & performance graphs of your website monitors.",
+    "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+    "tags": [
+        "have api",
+        "monitoring",
+        "networks",
+        "relative data",
+        "service api"
+    ],
+    "created": "2019-12-19",
+    "modified": "2019-12-19",
+    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/site24x7\/master\/apis.json",
+    "specificationVersion": "0.14",
+    "apis": [
+        {
+            "name": "Monitor API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/monitor-api.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/monitor-api-openapi.json"
+                },
+                {
+                    "type": "x-postman-collecction",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/monitor-api-postman-collection.json"
+                }
+            ]
+        },
+        {
+            "name": "Report API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/report-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/report-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Current Status API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/current-status-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/current-status-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Operation Dashboard API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/operation-dashboard-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/operation-dashboard-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Notification Profile API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/notification-profile-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/notification-profile-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Maintenance API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/maintenance-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/maintenance-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Update Button API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/update-button-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/update-button-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Business Hours API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/business-hours-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/business-hours-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Scheduled Report API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/scheduled-report-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/scheduled-report-api.json"
+                }
+            ]
+        },
+        {
+            "name": "User Group API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/user-group-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/user-group-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Email Template API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/email-template-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/email-template-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Location Profile API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/location-profile-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/location-profile-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Threshold Profile API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/threshold-profile-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/threshold-profile-api.json"
+                }
+            ]
+        },
+        {
+            "name": "SLA Setting API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/sla-setting-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/sla-setting-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Monitor Group API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/monitor-group-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/monitor-group-api.json"
+                }
+            ]
+        },
+        {
+            "name": "Status Dashboard API",
+            "description": null,
+            "image": "http:\/\/kinlane-productions.s3.amazonaws.com\/screen-capture-api\/481-site24x7.jpg",
+            "humanURL": "https:\/\/www.site24x7.com\/",
+            "baseURL": "",
+            "tags": [],
+            "properties": [
+                {
+                    "type": "x-openapi",
+                    "url": "https:\/\/raw.githubusercontent.com\/api-evangelist\/1forge\/master\/status-dashboard-api-openapi.json"
+                },
+                {
+                    "type": "x-openapi",
+                    "url": "http:\/\/kinlane-productions.s3.amazonaws.com\/api-evangelist-site\/company\/openapis\/status-dashboard-api.json"
+                }
+            ]
+        }
+    ],
+    "include": [],
+    "x-common": [
+        {
+            "type": "Website",
+            "url": "https:\/\/www.site24x7.com\/"
+        },
+        {
+            "type": "Blog",
+            "url": "http:\/\/blogs.site24x7.com\/"
+        },
+        {
+            "type": "Blog RSS",
+            "url": "http:\/\/blogs.site24x7.com\/feed"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "https:\/\/crunchbase.com\/organization\/site24x7"
+        },
+        {
+            "type": "Crunchbase",
+            "url": "http:\/\/www.crunchbase.com\/company\/site24x7"
+        },
+        {
+            "type": "Developers",
+            "url": "https:\/\/www.site24x7.com\/help\/api\/"
+        },
+        {
+            "type": "Email",
+            "url": "support@site24x7.com"
+        },
+        {
+            "type": "Email",
+            "url": "sales@site24x7.com"
+        },
+        {
+            "type": "Github",
+            "url": "https:\/\/github.com\/site24x7"
+        },
+        {
+            "type": "Partner Program",
+            "url": "https:\/\/www.site24x7.com\/partners.html"
+        },
+        {
+            "type": "Pricing",
+            "url": "https:\/\/www.site24x7.com\/site24x7-pricing.html"
+        },
+        {
+            "type": "Twitter",
+            "url": "https:\/\/twitter.com\/site24x7"
+        }
+    ]
+}
