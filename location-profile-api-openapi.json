@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Location Profile API",
+        "description": "The Location Profile API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/location_profiles\/{profile_id}": {
+            "GET": {
+                "summary": "Retrieve Location Profile",
+                "description": "Retrieve configuration of a location profile.",
+                "operationId": "RetrieveLocationProfile",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "DELETE": {
+                "summary": "Delete Location Profile",
+                "description": "Delete an existing location profile.",
+                "operationId": "DeleteLocationProfile",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
