@@ -1,0 +1,75 @@
+{
+    "id": "78111030204bf4d263f7f53cf0d12669",
+    "name": "Current Status API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "db6f6d6b0cb8dd134a3869e6cec50b0a",
+            "name": "Current Status of Monitor",
+            "url": "www.site24x7.com.\/current_status\/{monitor_id}",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_id",
+                    "description": "MandatoryUnique ID of the monitor. You can find monitor_id using the monitor list api.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "78111030204bf4d263f7f53cf0d12669",
+            "rawModeData": ""
+        },
+        {
+            "id": "da8dda9f5d47e5b3daefd790def05724",
+            "name": "Current Status by Monitor Type",
+            "url": "www.site24x7.com.\/current_status\/type\/{monitor_type}",
+            "description": "Request Example",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [
+                {
+                    "key": "monitor_type",
+                    "description": "MandatoryType of the monitor.  Monitor Types.",
+                    "value": "",
+                    "equals": true,
+                    "enabled": true
+                }
+            ],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "78111030204bf4d263f7f53cf0d12669",
+            "rawModeData": ""
+        }
+    ]
+}
