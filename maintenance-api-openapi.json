@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Maintenance API",
+        "description": "The Maintenance API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/maintenance\/{maintenance_id}": {
+            "GET": {
+                "summary": "Retrieve Maintenance",
+                "description": "Retrieve configuration of a Scheduled Maintenance.",
+                "operationId": "RetrieveMaintenance",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "DELETE": {
+                "summary": "Delete Maintenance",
+                "description": "Delete an existing Scheduled Maintenance.",
+                "operationId": "DeleteMaintenance",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
