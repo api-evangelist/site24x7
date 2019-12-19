@@ -1,0 +1,16 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "v1",
+        "title": "Monitor API",
+        "description": "The Monitor API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "httpswww.site24x7.com.\/v1"
+    ],
+    "paths": [],
+    "components": {
+        "schemas": []
+    }
+}
