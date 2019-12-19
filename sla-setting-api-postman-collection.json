@@ -1,0 +1,59 @@
+{
+    "id": "1e7a2d7f3d2f873e418ac824f6a1ae43",
+    "name": "SLA Setting API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "b0fee694f913dd10f38ce14d78a85ebd",
+            "name": "Get SLA Report",
+            "url": "www.site24x7.com.\/sla_settings\/{sla_id}",
+            "description": "Retrieve the configuration of a SLA Report.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1e7a2d7f3d2f873e418ac824f6a1ae43",
+            "rawModeData": ""
+        },
+        {
+            "id": "07816e81058da585b32f13c09b6c0a05",
+            "name": "Delete SLA Report",
+            "url": "www.site24x7.com.\/sla_settings\/{sla_id}",
+            "description": "Delete the existing SLA Report.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "DELETE",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "1e7a2d7f3d2f873e418ac824f6a1ae43",
+            "rawModeData": ""
+        }
+    ]
+}
