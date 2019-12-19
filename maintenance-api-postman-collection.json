@@ -1,0 +1,59 @@
+{
+    "id": "175c3563d918b96698f7144589e0860a",
+    "name": "Maintenance API",
+    "description": null,
+    "auth": null,
+    "events": null,
+    "variables": [],
+    "order": [],
+    "folders_order": [],
+    "folders": [],
+    "requests": [
+        {
+            "id": "20077cdd91bc040a45e9e08b5e35387c",
+            "name": "Retrieve Maintenance",
+            "url": "www.site24x7.com.\/maintenance\/{maintenance_id}",
+            "description": "Retrieve configuration of a Scheduled Maintenance.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "GET",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "175c3563d918b96698f7144589e0860a",
+            "rawModeData": ""
+        },
+        {
+            "id": "1bcd093cab11fcb26d9511b726872943",
+            "name": "Delete Maintenance",
+            "url": "www.site24x7.com.\/maintenance\/{maintenance_id}",
+            "description": "Delete an existing Scheduled Maintenance.",
+            "data": [],
+            "dataMode": "raw",
+            "headerData": null,
+            "method": "DELETE",
+            "pathVariableData": [],
+            "queryParams": [],
+            "auth": null,
+            "events": null,
+            "folder": null,
+            "protocolProfileBehavior": {
+                "disableBodyPruning": true
+            },
+            "responses": [],
+            "currentHelper": null,
+            "helperAttributes": null,
+            "collectionId": "175c3563d918b96698f7144589e0860a",
+            "rawModeData": ""
+        }
+    ]
+}
