@@ -1,0 +1,54 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Operation Dashboard API",
+        "description": "The Operation Dashboard API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/operations_dashboards": {
+            "POST": {
+                "summary": "Create Operations Dashboard",
+                "description": "Create a new Operations Dashboard",
+                "operationId": "CreateOperationsDashboard",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "display_name\n        \n        \n            required\n            Display name for the Operations Dashboard.\n        \n    \n    \n        \n        layout_type\n        \n        \n            required\n            Layout to be used for the Operations Dashboa",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            },
+            "GET": {
+                "summary": "List Operations Dashboards",
+                "description": "List of all Operations Dashboards.",
+                "operationId": "ListOperationsDashboards",
+                "deprecated": 0,
+                "parameters": []
+            }
+        },
+        "\/operations_dashboards\/{dashboard_id}": {
+            "PUT": {
+                "summary": "Update Operations Dashboard",
+                "description": "Update the configuration of an existing Operations Dashboard.",
+                "operationId": "UpdateOperationsDashboard",
+                "deprecated": 0,
+                "parameters": [
+                    {
+                        "name": "display_name\n        \n        \n            required\n            Display name for the Operations Dashboard.\n        \n    \n    \n        \n        layout_type\n        \n        \n            required\n            Layout to be used for the Operations Dashboa",
+                        "in": "path",
+                        "description": ""
+                    }
+                ]
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
