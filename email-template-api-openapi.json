@@ -1,0 +1,33 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "version": "",
+        "title": "Email Template API",
+        "description": "The Email Template API.",
+        "termsOfService": ""
+    },
+    "servers": [
+        "www.site24x7.com."
+    ],
+    "paths": {
+        "\/email_templates\/{template_id}": {
+            "GET": {
+                "summary": "Retrieve Email Template",
+                "description": "Retrieve configuration of a Email Template.",
+                "operationId": "RetrieveEmailTemplate",
+                "deprecated": 0,
+                "parameters": []
+            },
+            "DELETE": {
+                "summary": "Delete Email Template",
+                "description": "Delete an existing Email Template.",
+                "operationId": "DeleteEmailTemplate",
+                "deprecated": 0,
+                "parameters": []
+            }
+        }
+    },
+    "components": {
+        "schemas": []
+    }
+}
