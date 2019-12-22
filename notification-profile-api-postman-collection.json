@@ -1,5 +1,5 @@
 {
-    "id": "9c8bdef4350700c9d723d35f5223a5bd",
+    "id": "b05d511110d55c4e53739459f6dd80a3",
     "name": "Notification Profile API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "ee9cb084b809b42b8f6795bcc70856df",
+            "id": "e54eab9a629cbd05ad8f55c16675a36b",
             "name": "Create Notification Profile",
             "url": "www.site24x7.com.\/notification_profiles",
             "description": "Create a new notification profile.",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "9c8bdef4350700c9d723d35f5223a5bd",
+            "collectionId": "b05d511110d55c4e53739459f6dd80a3",
             "rawModeData": ""
         },
         {
-            "id": "3278e50141aab67b9540475e83dfdd60",
+            "id": "ca09801a9d8221576da9d9da96c90b85",
             "name": "List Notification Profiles",
             "url": "www.site24x7.com.\/notification_profiles",
             "description": "List of all notification profiles.",
@@ -68,11 +68,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "9c8bdef4350700c9d723d35f5223a5bd",
+            "collectionId": "b05d511110d55c4e53739459f6dd80a3",
             "rawModeData": ""
         },
         {
-            "id": "4d92b6a5618e97247845f1954a9b8d17",
+            "id": "d7f1c3c11092a374b4bd314889f29bc4",
             "name": "Update Notification Profile",
             "url": "www.site24x7.com.\/notification_profiles\/{profile_id}",
             "description": "Update an existing notification profile",
@@ -99,7 +99,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "9c8bdef4350700c9d723d35f5223a5bd",
+            "collectionId": "b05d511110d55c4e53739459f6dd80a3",
             "rawModeData": ""
         }
     ]
