@@ -1,5 +1,5 @@
 {
-    "id": "1e7a2d7f3d2f873e418ac824f6a1ae43",
+    "id": "ca45fb53a007f54b51c60a3d0bcb46e8",
     "name": "SLA Setting API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "b0fee694f913dd10f38ce14d78a85ebd",
+            "id": "66506abbc130d16f4be955145f4e0626",
             "name": "Get SLA Report",
             "url": "www.site24x7.com.\/sla_settings\/{sla_id}",
             "description": "Retrieve the configuration of a SLA Report.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1e7a2d7f3d2f873e418ac824f6a1ae43",
+            "collectionId": "ca45fb53a007f54b51c60a3d0bcb46e8",
             "rawModeData": ""
         },
         {
-            "id": "07816e81058da585b32f13c09b6c0a05",
+            "id": "9078ea77aa127ad9715630c46915c10c",
             "name": "Delete SLA Report",
             "url": "www.site24x7.com.\/sla_settings\/{sla_id}",
             "description": "Delete the existing SLA Report.",
@@ -52,7 +52,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "1e7a2d7f3d2f873e418ac824f6a1ae43",
+            "collectionId": "ca45fb53a007f54b51c60a3d0bcb46e8",
             "rawModeData": ""
         }
     ]
