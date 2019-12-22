@@ -1,5 +1,5 @@
 {
-    "id": "6e0215b87e519888159d3c1927cd0f4f",
+    "id": "0e8f896eaa3d6494099d5151b40a61e5",
     "name": "Email Template API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "fb8553fa78e0d89e97c1e6c0cc8745a8",
+            "id": "a3fc664bc08a628d9306edb8ff01b3ce",
             "name": "Retrieve Email Template",
             "url": "www.site24x7.com.\/email_templates\/{template_id}",
             "description": "Retrieve configuration of a Email Template.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6e0215b87e519888159d3c1927cd0f4f",
+            "collectionId": "0e8f896eaa3d6494099d5151b40a61e5",
             "rawModeData": ""
         },
         {
-            "id": "248404977e6a3311ef4c5e4a193056ff",
+            "id": "fd8d8d889704ccaeee33aa8f255d5779",
             "name": "Delete Email Template",
             "url": "www.site24x7.com.\/email_templates\/{template_id}",
             "description": "Delete an existing Email Template.",
@@ -52,7 +52,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "6e0215b87e519888159d3c1927cd0f4f",
+            "collectionId": "0e8f896eaa3d6494099d5151b40a61e5",
             "rawModeData": ""
         }
     ]
