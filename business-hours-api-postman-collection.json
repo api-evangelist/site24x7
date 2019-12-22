@@ -1,5 +1,5 @@
 {
-    "id": "d3cd2cc82cd1daf3079c3b25c092a594",
+    "id": "cb4fe6960c8e6726aaee3e123ef30a22",
     "name": "Business Hours API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "1499aec52044d1a571c735742ebce10c",
+            "id": "8776116fc03245881fc006e334277725",
             "name": "Create Business Hour",
             "url": "www.site24x7.com.\/business_hours",
             "description": "Create a new Business Hour.",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "d3cd2cc82cd1daf3079c3b25c092a594",
+            "collectionId": "cb4fe6960c8e6726aaee3e123ef30a22",
             "rawModeData": ""
         },
         {
-            "id": "b881a8dd5d42d9567a3f6323010b25af",
+            "id": "b00a59ede9aaf201fbd6c4308ee41c04",
             "name": "List Business Hours",
             "url": "www.site24x7.com.\/business_hours",
             "description": "List of all Business Hours.",
@@ -68,11 +68,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "d3cd2cc82cd1daf3079c3b25c092a594",
+            "collectionId": "cb4fe6960c8e6726aaee3e123ef30a22",
             "rawModeData": ""
         },
         {
-            "id": "1659bcf406251bc5f7b3f17fdaaa8171",
+            "id": "d6f015f24ae9f3bc85f63a6fdc6bff47",
             "name": "Update Business Hour",
             "url": "www.site24x7.com.\/business_hours\/{business_hours_id}",
             "description": "Update an existing Business Hour.",
@@ -99,7 +99,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "d3cd2cc82cd1daf3079c3b25c092a594",
+            "collectionId": "cb4fe6960c8e6726aaee3e123ef30a22",
             "rawModeData": ""
         }
     ]
