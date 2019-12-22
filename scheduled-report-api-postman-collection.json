@@ -1,5 +1,5 @@
 {
-    "id": "5b23cf5c415e1f265a4f9bc9460457f1",
+    "id": "9b2cd036f2efdedc77279cf873e87631",
     "name": "Scheduled Report API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "d9480523ea1c838310e02982576e82f9",
+            "id": "a18f96a118129782784845840eac54b9",
             "name": "Schedule a Report",
             "url": "www.site24x7.com.\/scheduled_reports",
             "description": "Schedule a report to be received on a specific day and time.",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "5b23cf5c415e1f265a4f9bc9460457f1",
+            "collectionId": "9b2cd036f2efdedc77279cf873e87631",
             "rawModeData": ""
         },
         {
-            "id": "d3e11dbda313d7d4606f9c983397059b",
+            "id": "05ec22bff521240ed848a96f8daf00d5",
             "name": "List Scheduled Reports",
             "url": "www.site24x7.com.\/scheduled_reports",
             "description": "List of all Scheduled Reports.",
@@ -68,11 +68,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "5b23cf5c415e1f265a4f9bc9460457f1",
+            "collectionId": "9b2cd036f2efdedc77279cf873e87631",
             "rawModeData": ""
         },
         {
-            "id": "922c82a76d1e5829c14df8ce850ee5e1",
+            "id": "02880c299ea3ddcab553fcf4398a8913",
             "name": "Update Scheduled Report",
             "url": "www.site24x7.com.\/scheduled_reports\/{report_id}",
             "description": "Update the configuration of an existing Scheduled Report.",
@@ -99,7 +99,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "5b23cf5c415e1f265a4f9bc9460457f1",
+            "collectionId": "9b2cd036f2efdedc77279cf873e87631",
             "rawModeData": ""
         }
     ]
