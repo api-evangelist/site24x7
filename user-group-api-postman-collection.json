@@ -1,5 +1,5 @@
 {
-    "id": "4ec7dea9a9e99e489c3ee8c9a8cec89a",
+    "id": "f9d0825c87b5234dfe5a1399f4c03237",
     "name": "User Group API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "c12645dd41c9d915a70a471e3ab74204",
+            "id": "5c7773ad75512061f92f61ceafb6f477",
             "name": "Create a new user group",
             "url": "www.site24x7.com.\/user_groups",
             "description": "Create a new user group.",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4ec7dea9a9e99e489c3ee8c9a8cec89a",
+            "collectionId": "f9d0825c87b5234dfe5a1399f4c03237",
             "rawModeData": ""
         },
         {
-            "id": "9a4ff06e814878731a0d347b4d41a0b9",
+            "id": "4e47056650fdd6561c819ab14ae3833f",
             "name": "List of all User Groups",
             "url": "www.site24x7.com.\/user_groups",
             "description": "List of all User Groups.",
@@ -68,11 +68,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4ec7dea9a9e99e489c3ee8c9a8cec89a",
+            "collectionId": "f9d0825c87b5234dfe5a1399f4c03237",
             "rawModeData": ""
         },
         {
-            "id": "4679058e549f5bbe7800cd62a8d168e4",
+            "id": "900d15541b1fbab60e46e9ec905ad4d2",
             "name": "Update an user group details",
             "url": "www.site24x7.com.\/user_groups\/{user_group_id}",
             "description": "Update an existing User Group Information.",
@@ -99,7 +99,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "4ec7dea9a9e99e489c3ee8c9a8cec89a",
+            "collectionId": "f9d0825c87b5234dfe5a1399f4c03237",
             "rawModeData": ""
         }
     ]
