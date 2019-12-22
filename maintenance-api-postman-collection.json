@@ -1,5 +1,5 @@
 {
-    "id": "175c3563d918b96698f7144589e0860a",
+    "id": "e40d04a647dd4cec4c0f443d39acadfe",
     "name": "Maintenance API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "20077cdd91bc040a45e9e08b5e35387c",
+            "id": "0a1e013c16f8ad9ecc6239dfe8b42ffd",
             "name": "Retrieve Maintenance",
             "url": "www.site24x7.com.\/maintenance\/{maintenance_id}",
             "description": "Retrieve configuration of a Scheduled Maintenance.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "175c3563d918b96698f7144589e0860a",
+            "collectionId": "e40d04a647dd4cec4c0f443d39acadfe",
             "rawModeData": ""
         },
         {
-            "id": "1bcd093cab11fcb26d9511b726872943",
+            "id": "f5d88e5479e2b09277e2c3d7c02a3a86",
             "name": "Delete Maintenance",
             "url": "www.site24x7.com.\/maintenance\/{maintenance_id}",
             "description": "Delete an existing Scheduled Maintenance.",
@@ -52,7 +52,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "175c3563d918b96698f7144589e0860a",
+            "collectionId": "e40d04a647dd4cec4c0f443d39acadfe",
             "rawModeData": ""
         }
     ]
