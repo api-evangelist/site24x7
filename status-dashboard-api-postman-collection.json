@@ -1,5 +1,5 @@
 {
-    "id": "7bfe1ae1e363cf28e6cbd1974305243d",
+    "id": "774baf0e9d0383456557f63663441943",
     "name": "Status Dashboard API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "6c27cac3d0c99900bafb512b16a0e716",
+            "id": "b817ff3722fad93d950700d6d2b98285",
             "name": "Create Status Dashboard",
             "url": "www.site24x7.com.\/status_dashboards",
             "description": "Create a new Status Dashboard",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "7bfe1ae1e363cf28e6cbd1974305243d",
+            "collectionId": "774baf0e9d0383456557f63663441943",
             "rawModeData": ""
         },
         {
-            "id": "6700bf94350ed11c585fce94da922378",
+            "id": "832a2ef5294da538a6b12a80a0103573",
             "name": "List Status Dashboards",
             "url": "www.site24x7.com.\/status_dashboards",
             "description": "List of all Status Dashboards.",
@@ -68,11 +68,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "7bfe1ae1e363cf28e6cbd1974305243d",
+            "collectionId": "774baf0e9d0383456557f63663441943",
             "rawModeData": ""
         },
         {
-            "id": "569da855d5012e0efe43d7be6eca3e40",
+            "id": "0511a565424ecf879ec1075516322636",
             "name": "Update Status Dashboard",
             "url": "www.site24x7.com.\/status_dashboards\/{report_id}",
             "description": "Update the configuration of an existing Status Dashboard.",
@@ -99,7 +99,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "7bfe1ae1e363cf28e6cbd1974305243d",
+            "collectionId": "774baf0e9d0383456557f63663441943",
             "rawModeData": ""
         }
     ]
