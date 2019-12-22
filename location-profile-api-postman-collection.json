@@ -1,5 +1,5 @@
 {
-    "id": "5022a92e353a655b4e97c1478be06849",
+    "id": "aa6a360b43a238a824355f0292d77d62",
     "name": "Location Profile API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "96bd052a7d4e908e58cfd2ca03cc7aa0",
+            "id": "996d132c8852753920d59b285f8590c3",
             "name": "Retrieve Location Profile",
             "url": "www.site24x7.com.\/location_profiles\/{profile_id}",
             "description": "Retrieve configuration of a location profile.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "5022a92e353a655b4e97c1478be06849",
+            "collectionId": "aa6a360b43a238a824355f0292d77d62",
             "rawModeData": ""
         },
         {
-            "id": "0e917a70270414f973d8bddc4a693738",
+            "id": "a026fd337e0531859868bb68a6502e38",
             "name": "Delete Location Profile",
             "url": "www.site24x7.com.\/location_profiles\/{profile_id}",
             "description": "Delete an existing location profile.",
@@ -52,7 +52,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "5022a92e353a655b4e97c1478be06849",
+            "collectionId": "aa6a360b43a238a824355f0292d77d62",
             "rawModeData": ""
         }
     ]
