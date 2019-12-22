@@ -1,5 +1,5 @@
 {
-    "id": "526214625b23da9f6cf3a356e1d12773",
+    "id": "e9926084a8a936a610e9be89b375a2ee",
     "name": "Report API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "721d24586ae2aded9020f05851bf586e",
+            "id": "207a680c1cd886ef66ed250a901a6b11",
             "name": "Get Custom Report Settings",
             "url": "www.site24x7.com.\/customize_report",
             "description": "Retrieve Custom Report Settings.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "910cd4268a55b3070f1bb23b2cefb73a",
+            "id": "88b1367903d72e4d8bd4f67990041b7d",
             "name": "Busy Hours Report",
             "url": "www.site24x7.com.\/reports\/busy_hours\/{monitor_id}?period={report_period_constants}&segment_type={segment_types}",
             "description": "Request Example",
@@ -60,11 +60,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "9278a12590943481a0e66d22dd4627e7",
+            "id": "f8475f3c6602e6cbe06affb546c4cf66",
             "name": "Get Outage Details",
             "url": "www.site24x7.com.\/reports\/outage?period={report_period_constants}",
             "description": "Obtain the actual down period and the total down duration of your monitors for a specified duration of time. ",
@@ -91,11 +91,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "4c995c87474f36d92b3e5b276bd2dcf9",
+            "id": "26a5da98016ce61f6bbdb5024b9b4b48",
             "name": "Get Outage Details of Monitor Groups",
             "url": "www.site24x7.com.\/reports\/outage\/group\/{monitor_group_id}?period={report_period_constants}",
             "description": "Obtain the actual down period and the total down duration of your chosen monitor group during a selected duration of time. ",
@@ -122,11 +122,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "ec909ef8cc23b86090ee6bd2ebf4c230",
+            "id": "92c89ff38a706e6c75f14c103906cc45",
             "name": "Delete Outage",
             "url": "www.site24x7.com.\/reports\/outage\/{monitor_id}\/{outage_id}",
             "description": "Delete the faulty downtime alerts to reflect the actual available state of the monitor.",
@@ -153,11 +153,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "435c906ca144a9d477323074fb22123d",
+            "id": "a0fdccce7e8683181cb3430cbc589700",
             "name": "Get Alarms of Monitor",
             "url": "www.site24x7.com.\/reports\/alarm\/{monitor_id}?period={report_period_constants}",
             "description": "Obtain the actual down, trouble and maintenance status of your configured monitors. Alert types",
@@ -184,11 +184,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "6a2831145ec9f48140538a5e71a549ec",
+            "id": "7a1ef00e8f335056ee088b81c9906e87",
             "name": "Get comments for a monitor",
             "url": "www.site24x7.com.\/reports\/comments\/{monitor_id}?period={report_period_constants}",
             "description": "Get all the comments for a monitor for the given duration.",
@@ -215,11 +215,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "69f507e1d4cf3ab5e977bbf61388fae9",
+            "id": "e114dd4a88c8fd4d53b47683cf7ad1c9",
             "name": "Update outage comments.",
             "url": "www.site24x7.com.\/reports\/comments\/{monitor_id}\/{outage_id}",
             "description": "Update the comment for a given monitor.",
@@ -246,11 +246,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "be630669ec05dd575e4aedc4079a205d",
+            "id": "e2e7c1a073e8bad54fee669e5f86e10b",
             "name": "Delete comment",
             "url": "www.site24x7.com.\/reports\/comments\/{monitor_id}\/{outage_id}?comment_time={comment_id}",
             "description": "Delete an outage comment.",
@@ -277,11 +277,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "6084770890695dfc1aadd5c4ee103c2b",
+            "id": "3b2547868fc3c91d68c7cca466811b1a",
             "name": "Availability Summary by monitor group",
             "url": "www.site24x7.com.\/reports\/availability_summary\/group\/{group_id}?period=",
             "description": "Request Example",
@@ -300,11 +300,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "040b434b97a4426e3643471360820483",
+            "id": "9f33ecd9c7214eb19930b2a87b94b67b",
             "name": "Availability Summary for all monitors",
             "url": "www.site24x7.com.\/reports\/availability_summary?period=",
             "description": "Request Example",
@@ -331,11 +331,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "e48315267601ae0d782a673c3a017ace",
+            "id": "652ce65b513e76bbf21d1d99ee7868b1",
             "name": "Summary by monitor group",
             "url": "www.site24x7.com.\/reports\/summary\/group\/{group_id}?period=",
             "description": "Request Example",
@@ -354,11 +354,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "4055b7b347e12bb8c6414ed3001916e6",
+            "id": "544d73b03a015aa469b8cf786262853f",
             "name": "Summary for all monitors",
             "url": "www.site24x7.com.\/reports\/summary?period=",
             "description": "Request Example",
@@ -385,11 +385,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "714448abe3c468c2d67b48228c031290",
+            "id": "17ca55f97de30de5ea1bf67e54163111",
             "name": "Health Trend Report by Monitor group",
             "url": "www.site24x7.com.\/reports\/trend\/group\/{group_id}",
             "description": "Request Example",
@@ -408,11 +408,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "325d832706c10f7daa2046fcb2862b8b",
+            "id": "31057b4d8535364228e16bed7092b54b",
             "name": "Health trend Report for all monitors",
             "url": "www.site24x7.com.\/reports\/trend",
             "description": "Request Example",
@@ -439,11 +439,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "db8e9cf402569d7f31dae2c75d25a90a",
+            "id": "2c76a1257ce4adfd946ad0442f0c077d",
             "name": "Top N Report by monitor and attribute type",
             "url": "www.site24x7.com.\/reports\/top_n\/{monitor_type}\/{attribute_name}?limit={N}&period={report_period_constants}",
             "description": "Request Example",
@@ -470,11 +470,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "9a840fa12447821745513e1a4ff3116e",
+            "id": "4606e91c7d6203aa906f6b375073ef36",
             "name": "Performance Report by Monitor group",
             "url": "www.site24x7.com.\/reports\/performance\/group\/{group_id}?period=3",
             "description": "Request Example",
@@ -501,11 +501,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "c1e9f98beecce6b21540c9446d493e6c",
+            "id": "880fd1be333ef11b5a9da38f64701261",
             "name": "Performance Report of all monitors",
             "url": "www.site24x7.com.\/reports\/performance?period=3",
             "description": "Request Example",
@@ -532,11 +532,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         },
         {
-            "id": "e9e4e8e2217607e0bc85dab5d5e354de",
+            "id": "ae236e14fe1960c343b193320bd95fac",
             "name": "Response SLA",
             "url": "www.site24x7.com.\/reports\/sla_reports\/response?period=3",
             "description": "Request Example",
@@ -555,7 +555,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "526214625b23da9f6cf3a356e1d12773",
+            "collectionId": "e9926084a8a936a610e9be89b375a2ee",
             "rawModeData": ""
         }
     ]
