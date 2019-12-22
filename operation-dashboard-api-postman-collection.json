@@ -1,5 +1,5 @@
 {
-    "id": "18aa908bf04a9fefeb76db57b836693c",
+    "id": "80e468b336cf4f59419d15bd270aaeac",
     "name": "Operation Dashboard API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "a779f3c70ecf40e2509f60d783b6f556",
+            "id": "a5ec1a0db9066706859041e556f4230d",
             "name": "Create Operations Dashboard",
             "url": "www.site24x7.com.\/operations_dashboards",
             "description": "Create a new Operations Dashboard",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "18aa908bf04a9fefeb76db57b836693c",
+            "collectionId": "80e468b336cf4f59419d15bd270aaeac",
             "rawModeData": ""
         },
         {
-            "id": "e75c9fd82996fde57754a0f83e0d117a",
+            "id": "b48832bb08bbcb401c1a179ebe30647a",
             "name": "List Operations Dashboards",
             "url": "www.site24x7.com.\/operations_dashboards",
             "description": "List of all Operations Dashboards.",
@@ -60,11 +60,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "18aa908bf04a9fefeb76db57b836693c",
+            "collectionId": "80e468b336cf4f59419d15bd270aaeac",
             "rawModeData": ""
         },
         {
-            "id": "cd35742d5def5b3f11a14bf7e54dcaf6",
+            "id": "5048bce956f450746425757d46b444df",
             "name": "Update Operations Dashboard",
             "url": "www.site24x7.com.\/operations_dashboards\/{dashboard_id}",
             "description": "Update the configuration of an existing Operations Dashboard.",
@@ -91,7 +91,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "18aa908bf04a9fefeb76db57b836693c",
+            "collectionId": "80e468b336cf4f59419d15bd270aaeac",
             "rawModeData": ""
         }
     ]
