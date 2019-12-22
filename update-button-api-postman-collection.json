@@ -1,5 +1,5 @@
 {
-    "id": "86c77b0c1dde045186fc40742e863338",
+    "id": "c36797c2eac0f088ab73667ee8816859",
     "name": "Update Button API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "388ff6fc2dea25fc4c5965b128a933f3",
+            "id": "647a958b2c6e9d975f6a4fccb9ec59da",
             "name": "Get Uptime Button",
             "url": "www.site24x7.com.\/uptime_buttons\/{monitor_id}",
             "description": "Retrieve the configuration of the Uptime Button.",
@@ -29,11 +29,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "86c77b0c1dde045186fc40742e863338",
+            "collectionId": "c36797c2eac0f088ab73667ee8816859",
             "rawModeData": ""
         },
         {
-            "id": "a08bfd8f1c41e556a41cb3da21a4af65",
+            "id": "025bbe6e47705c67f7024f6149c565ba",
             "name": "Delete Uptime Button",
             "url": "www.site24x7.com.\/uptime_buttons\/{monitor_id}",
             "description": "Delete the uptime button for a monitor.",
@@ -52,7 +52,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "86c77b0c1dde045186fc40742e863338",
+            "collectionId": "c36797c2eac0f088ab73667ee8816859",
             "rawModeData": ""
         }
     ]
