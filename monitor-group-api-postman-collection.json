@@ -1,5 +1,5 @@
 {
-    "id": "78a3fadf569627f194e0224d22bb579b",
+    "id": "af4ef445167691892abe6ef437f449fe",
     "name": "Monitor Group API",
     "description": null,
     "auth": null,
@@ -10,7 +10,7 @@
     "folders": [],
     "requests": [
         {
-            "id": "129fdd4687f9abe822b4060a52bdc890",
+            "id": "59db3d3bf4802d67dfecd4ce500794b5",
             "name": "Create a Monitor Group",
             "url": "www.site24x7.com.\/monitor_groups",
             "description": "Create a new Monitor Group.",
@@ -37,11 +37,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "78a3fadf569627f194e0224d22bb579b",
+            "collectionId": "af4ef445167691892abe6ef437f449fe",
             "rawModeData": ""
         },
         {
-            "id": "fa0116ea7f2f5ca1cff0ada35e940970",
+            "id": "787c514c15f02c6bb228bdaad43d16f7",
             "name": "List of all Monitor Groups",
             "url": "www.site24x7.com.\/monitor_groups",
             "description": "List of all Monitor Groups.",
@@ -68,11 +68,11 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "78a3fadf569627f194e0224d22bb579b",
+            "collectionId": "af4ef445167691892abe6ef437f449fe",
             "rawModeData": ""
         },
         {
-            "id": "91da591500a383171378c36b976274b4",
+            "id": "3bf0e10ffb380341e49b0953bee6de92",
             "name": "Update a Monitor Group",
             "url": "www.site24x7.com.\/monitor_groups\/{monitor_group_id}",
             "description": "Update an existing Monitor Group.",
@@ -99,7 +99,7 @@
             "responses": [],
             "currentHelper": null,
             "helperAttributes": null,
-            "collectionId": "78a3fadf569627f194e0224d22bb579b",
+            "collectionId": "af4ef445167691892abe6ef437f449fe",
             "rawModeData": ""
         }
     ]
