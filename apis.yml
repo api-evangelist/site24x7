@@ -1,0 +1,90 @@
+aid: site24x7
+name: Site24x7
+description: >-
+  Site24x7 is a full-stack cloud monitoring platform with a REST API for managing
+  monitors, on-call schedules, alerts, SLAs, and accessing availability and
+  performance metrics. The platform covers website uptime, server infrastructure,
+  cloud services (AWS, Azure, GCP), application performance (APM), real user
+  monitoring (RUM), network devices, databases, and synthetic transactions. The
+  API uses OAuth 2.0 via the Zoho Developer Console and supports multiple regional
+  data centers across the US, EU, India, Australia, Japan, Canada, UK, UAE, and
+  Saudi Arabia.
+type: Index
+image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+url: https://raw.githubusercontent.com/api-evangelist/site24x7/refs/heads/main/apis.yml
+created: "2026-06-13"
+modified: "2026-06-13"
+specificationVersion: "0.19"
+tags:
+  - Monitoring
+  - Observability
+  - Uptime
+  - Infrastructure
+  - Cloud
+  - APM
+  - SLA
+  - Alerts
+  - Synthetic Monitoring
+  - Real User Monitoring
+  - Network Monitoring
+  - Server Monitoring
+  - Website Monitoring
+  - On-Call
+  - Status Pages
+apis:
+  - aid: site24x7:site24x7-api
+    name: Site24x7 REST API
+    description: >-
+      The Site24x7 REST API (v2.0) enables programmatic access to all monitoring
+      operations including creating and managing monitors for websites, servers,
+      cloud resources, APIs, and databases; configuring alert thresholds,
+      notification profiles, and on-call schedules; scheduling maintenance windows;
+      retrieving availability, performance, and SLA reports; managing IT automation
+      actions; and administering users, groups, and third-party integrations.
+    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    humanURL: https://www.site24x7.com/help/api/
+    baseURL: https://api.site24x7.com/api
+    tags:
+      - Monitoring
+      - Uptime
+      - Infrastructure
+      - Cloud
+      - APM
+      - SLA
+      - Alerts
+    properties:
+      - type: Documentation
+        url: https://www.site24x7.com/help/api/
+      - type: OpenAPI
+        url: https://www.site24x7.com/help/api/
+    contact:
+      - FN: Site24x7 Support
+        url: https://www.site24x7.com/contact.html
+
+common:
+  - type: Website
+    url: https://www.site24x7.com/
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+  - type: GitHubOrg
+    url: https://github.com/site24x7
+  - type: LinkedIn
+    url: https://www.linkedin.com/company/site24x7
+  - type: Blog
+    url: https://www.site24x7.com/blog/
+  - type: Pricing
+    url: https://www.site24x7.com/site24x7-pricing.html
+  - type: StatusPage
+    url: https://status.site24x7.com/
+  - type: X
+    url: https://x.com/Site24x7
+  - type: Plans
+    url: plans/site24x7-plans-pricing.yml
+  - type: RateLimits
+    url: rate-limits/site24x7-rate-limits.yml
+  - type: FinOps
+    url: finops/site24x7-finops.yml
+
+maintainers:
+  - FN: Kin Lane
+    email: kin@apievangelist.com

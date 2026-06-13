@@ -1,0 +1,190 @@
+name: Site24x7 Plans and Pricing
+description: >-
+  Site24x7 offers tiered subscription plans across website monitoring,
+  infrastructure monitoring, and all-in-one observability. All plans include a
+  30-day free trial with no credit card required, plus a free-forever tier
+  covering up to 50 resources. Annual billing provides discounts versus monthly
+  rates.
+version: "0.1"
+url: https://www.site24x7.com/site24x7-pricing.html
+
+plans:
+
+  # ── Website Monitoring ──────────────────────────────────────────────────────
+  - name: Web Uptime
+    description: >-
+      Entry-level website monitoring plan focused on uptime checks, global
+      polling locations, and basic status pages.
+    url: https://www.site24x7.com/site24x7-pricing.html
+    price: 9.00
+    unit: month
+    currency: USD
+    billingCycle: annual
+    features:
+      - 25 website monitors
+      - Transaction monitors
+      - 1-minute polling interval
+      - 32 global check locations
+      - RUM page views included
+      - 3 status pages
+      - Email support
+
+  - name: Web Perf
+    description: >-
+      Performance-focused plan with more monitors, transaction capacity, and
+      expanded RUM page views.
+    url: https://www.site24x7.com/site24x7-pricing.html
+    price: 36.00
+    unit: month
+    currency: USD
+    billingCycle: annual
+    features:
+      - 40 website monitors
+      - 8 transaction monitors
+      - 100,000 RUM page views
+      - 10 status pages
+      - Classic support
+
+  - name: Enterprise Plus Web
+    description: >-
+      Large-scale enterprise website monitoring with thousands of monitors and
+      millions of RUM page views.
+    url: https://www.site24x7.com/site24x7-pricing.html
+    price: 899.00
+    unit: month
+    currency: USD
+    billingCycle: annual
+    features:
+      - 2,500 website monitors
+      - 100 transaction monitors
+      - 5,000,000 RUM page views
+      - Advanced features
+      - Classic support
+
+  # ── Infrastructure Monitoring ────────────────────────────────────────────────
+  - name: Infrastructure Lite
+    description: >-
+      Entry-level infrastructure monitoring covering a small number of servers
+      and websites.
+    url: https://www.site24x7.com/site24x7-pricing.html
+    price: 9.00
+    unit: month
+    currency: USD
+    billingCycle: annual
+    features:
+      - 2 servers
+      - 5 websites
+      - 25 child resources
+      - Email support
+
+  - name: Infrastructure Professional
+    description: >-
+      Mid-tier infrastructure plan adding application monitoring, log
+      ingestion, and network device support.
+    url: https://www.site24x7.com/site24x7-pricing.html
+    price: 42.00
+    unit: month
+    currency: USD
+    billingCycle: annual
+    features:
+      - 5 servers
+      - 1 application (APM)
+      - 20 websites
+      - 4 GB log ingestion
+      - 10 network components
+      - Classic support
+
+  - name: Infrastructure Enterprise
+    description: >-
+      Full enterprise infrastructure observability with anomaly detection, event
+      correlation, and infrastructure event tracking.
+    url: https://www.site24x7.com/site24x7-pricing.html
+    price: 625.00
+    unit: month
+    currency: USD
+    billingCycle: annual
+    features:
+      - All Professional features
+      - Anomaly detection
+      - Event correlation
+      - Infrastructure events
+      - Classic support
+
+  # ── MSP ─────────────────────────────────────────────────────────────────────
+  - name: MSP Pro
+    description: >-
+      Managed Service Provider plan enabling monitoring of multiple customer
+      accounts from a single console.
+    url: https://www.site24x7.com/site24x7-pricing.html
+    price: 54.00
+    unit: month
+    currency: USD
+    billingCycle: annual
+    features:
+      - Manage 9 customer accounts
+      - 3 application (APM) instances
+      - 5 servers
+      - 15 websites
+      - 5 GB log ingestion
+      - 100,000 RUM page views
+
+  # ── Free ────────────────────────────────────────────────────────────────────
+  - name: Free Forever
+    description: >-
+      Permanent free tier for small teams monitoring up to 50 resources with
+      no credit card required.
+    url: https://www.site24x7.com/site24x7-pricing.html
+    price: 0.00
+    unit: month
+    currency: USD
+    billingCycle: none
+    features:
+      - Up to 50 resources
+      - No credit card required
+      - 30-day full-feature trial
+
+addOns:
+  - name: Uptime Monitors – 50 pack
+    price: 18.00
+    unit: month
+    currency: USD
+  - name: Uptime Monitors – 500 pack
+    price: 140.00
+    unit: month
+    currency: USD
+  - name: Synthetic Combo – 50 uptime & 10 transactions
+    price: 50.00
+    unit: month
+    currency: USD
+  - name: RUM Page Views – 500K
+    price: 25.00
+    unit: month
+    currency: USD
+  - name: RUM Page Views – 5M
+    price: 150.00
+    unit: month
+    currency: USD
+  - name: Log Management
+    price: 0.30
+    unit: GB per month (7-day retention)
+    currency: USD
+
+usageBased:
+  - resource: Cloud Resource Monitoring
+    startingAt: "$1/resource/month"
+  - resource: Server Monitoring
+    startingAt: "$2.50/VM/month"
+  - resource: APM Instance
+    startingAt: "$8/instance/month"
+  - resource: Kubernetes Container
+    startingAt: "$0.25/container/month"
+  - resource: Network Device
+    startingAt: "$3/device/month"
+  - resource: Website Monitor
+    startingAt: "$0.36/website/month"
+  - resource: Real User Monitoring
+    startingAt: "$5/100K page views/month"
+  - resource: Synthetic Transactions
+    startingAt: "$10/10,000 runs or $8/transaction/month"
+  - resource: Cloud Cost Management
+    startingAt: "1% of cloud bill/month"

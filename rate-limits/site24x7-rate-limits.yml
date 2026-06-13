@@ -1,0 +1,78 @@
+name: Site24x7 API Rate Limits
+description: >-
+  Site24x7 REST API (v2.0) rate limiting policies covering OAuth 2.0 token
+  generation, per-resource API call caps, and tracing throughput. Rate limits
+  apply per client ID and per account. Exceeding limits returns HTTP 429 Too
+  Many Requests.
+version: "0.1"
+url: https://www.site24x7.com/help/api/
+
+limits:
+
+  - name: OAuth Access Token Generation
+    description: >-
+      Maximum number of access tokens that can be generated per client ID
+      within a rolling 10-minute window.
+    scope: per-client-id
+    limit: 10
+    window: 10 minutes
+    notes: >-
+      Access tokens expire after 3,600 seconds (1 hour). Use the refresh token
+      to obtain a new access token without re-authentication.
+
+  - name: API Calls per Resource
+    description: >-
+      Maximum number of API calls allowed per individual monitor resource
+      regardless of monitor type (basic, advanced, or host).
+    scope: per-resource
+    limit: 10
+    window: unspecified
+    notes: >-
+      Applies uniformly across website, server, cloud, and host monitor
+      resources via the REST API.
+
+  - name: APM Traces per Application
+    description: >-
+      Maximum number of application performance traces ingested per minute
+      for an APM Insight application instance.
+    scope: per-application
+    limit: 30
+    window: 1 minute
+    notes: >-
+      Applies to APM Insight trace data only. Does not affect general REST
+      API call rate limits.
+
+authentication:
+  type: OAuth 2.0
+  tokenEndpoint: https://accounts.zoho.com/oauth/v2/token
+  refreshEndpoint: https://accounts.zoho.com/oauth/v2/token
+  tokenExpiry: 3600 seconds
+  scopes:
+    - Site24x7.Reports.Read
+    - Site24x7.Admin.Read
+    - Site24x7.Admin.Write
+    - Site24x7.Operations.Read
+    - Site24x7.Operations.Write
+  notes: >-
+    Client ID and Client Secret are obtained from the Zoho Developer Console.
+    Authorization header format: "Authorization: Zoho-oauthtoken {access_token}"
+
+regionalEndpoints:
+  - region: United States
+    baseUrl: https://www.site24x7.com/api
+  - region: Europe
+    baseUrl: https://www.site24x7.eu/api
+  - region: India
+    baseUrl: https://www.site24x7.in/api
+  - region: Australia
+    baseUrl: https://www.site24x7.net.au/api
+  - region: Japan
+    baseUrl: https://jp.site24x7.com/api
+  - region: Canada
+    baseUrl: https://www.site24x7.ca/api
+  - region: United Kingdom
+    baseUrl: https://www.site24x7.co.uk/api
+  - region: UAE
+    baseUrl: https://www.site24x7.ae/api
+  - region: Saudi Arabia
+    baseUrl: https://www.site24x7.sa/api

@@ -1,0 +1,163 @@
+name: Site24x7 FinOps Framework
+description: >-
+  FinOps Framework 1.0 FOCUS-aligned cost and usage guidance for Site24x7
+  monitoring expenditure. Covers subscription plan allocation, usage-based
+  resource charging, cloud cost management capabilities, and optimization
+  recommendations for teams using Site24x7 across development, staging, and
+  production environments.
+version: "1.0"
+url: https://www.site24x7.com/site24x7-pricing.html
+
+publisher:
+  name: FinOps Foundation
+  url: https://www.finops.org/
+
+billingModels:
+
+  - name: Subscription (Annual)
+    description: >-
+      Fixed monthly cost billed annually. Provides 10–15% discount over
+      month-to-month pricing. Covers a defined set of monitors, servers,
+      applications, and RUM page views included in the chosen plan tier.
+    costType: Fixed
+    cadence: Annual
+    examples:
+      - plan: Web Uptime
+        annualRate: 9.00
+        currency: USD
+        unit: month
+      - plan: Infrastructure Professional
+        annualRate: 42.00
+        currency: USD
+        unit: month
+
+  - name: Subscription (Monthly)
+    description: >-
+      Flexible month-to-month subscription without long-term commitment.
+      Slightly higher per-month cost than annual billing.
+    costType: Fixed
+    cadence: Monthly
+    examples:
+      - plan: Web Uptime
+        monthlyRate: 10.00
+        currency: USD
+      - plan: Infrastructure Professional
+        monthlyRate: 49.00
+        currency: USD
+
+  - name: Usage-Based (Pay-per-Resource)
+    description: >-
+      On-demand resource charges applied when consumption exceeds plan
+      inclusions or when using standalone resource-level monitoring without
+      a base plan.
+    costType: Variable
+    cadence: Monthly
+    meters:
+      - resource: Cloud Resource
+        rate: 1.00
+        unit: resource/month
+        currency: USD
+      - resource: Server / VM
+        rate: 2.50
+        unit: VM/month
+        currency: USD
+      - resource: APM Instance
+        rate: 8.00
+        unit: instance/month
+        currency: USD
+      - resource: Kubernetes Container
+        rate: 0.25
+        unit: container/month
+        currency: USD
+      - resource: Network Device
+        rate: 3.00
+        unit: device/month
+        currency: USD
+      - resource: Website Monitor
+        rate: 0.36
+        unit: website/month
+        currency: USD
+      - resource: RUM Page Views
+        rate: 5.00
+        unit: 100K page views/month
+        currency: USD
+      - resource: Synthetic Transaction
+        rate: 10.00
+        unit: 10,000 runs
+        currency: USD
+      - resource: Log Ingestion
+        rate: 0.30
+        unit: GB (7-day retention)/month
+        currency: USD
+      - resource: Cloud Cost Management
+        rate: "1% of cloud bill"
+        unit: month
+        currency: USD
+
+costAllocation:
+  dimensions:
+    - name: Plan Tier
+      description: Allocate base subscription cost to the plan name (Web Uptime, Infrastructure Professional, etc.)
+    - name: Resource Type
+      description: Tag costs by monitor category — Website, Server, Cloud, APM, Network, RUM, Synthetic
+    - name: Environment
+      description: Tag monitors with environment labels (production, staging, development) to segment spend
+    - name: Business Unit / MSP Customer
+      description: >-
+        MSP plan enables per-customer cost allocation across up to 9 managed
+        accounts from a single console
+    - name: Region / Data Center
+      description: Differentiate costs by the regional Site24x7 endpoint (US, EU, India, etc.)
+  tagging:
+    recommendation: >-
+      Use Site24x7 monitor tags and monitor groups to map monitors to
+      cost centers, teams, and environments. Export availability and
+      performance reports via API for integration into FinOps dashboards.
+
+optimization:
+  recommendations:
+    - name: Right-size monitor count
+      description: >-
+        Audit active monitors monthly; deactivate or delete unused monitors
+        to stay within plan inclusions and avoid overage charges.
+    - name: Choose annual billing
+      description: >-
+        Annual subscriptions save 10–15% versus month-to-month. Commit to
+        annual plans for production workloads with stable monitoring needs.
+    - name: Use free tier for dev/test
+      description: >-
+        Leverage the Free Forever plan (up to 50 resources) for
+        development and staging environments to eliminate monitoring cost
+        for non-production workloads.
+    - name: Consolidate with All-in-One plans
+      description: >-
+        Infrastructure Professional and Enterprise plans bundle server,
+        APM, website, and log monitoring into a single SKU — cheaper than
+        purchasing each resource type separately at usage-based rates.
+    - name: Leverage cloud cost management
+      description: >-
+        Site24x7's built-in Cloud Cost Management (1% of cloud bill) can
+        identify idle and underutilized cloud resources, potentially
+        offsetting its own cost through cloud savings identified.
+    - name: Monitor add-on vs plan upgrade
+      description: >-
+        Compare per-pack add-on pricing (e.g., $18/50 uptime monitors)
+        against upgrading to the next plan tier before purchasing
+        individual add-ons, as a plan upgrade may be more cost-effective
+        when multiple add-ons are needed simultaneously.
+
+focus:
+  version: "1.0"
+  columns:
+    - ChargePeriodStart
+    - ChargePeriodEnd
+    - BilledCost
+    - EffectiveCost
+    - ServiceName
+    - ServiceCategory
+    - ResourceType
+    - RegionName
+    - Tags
+  serviceCategory: Management and Governance
+  serviceName: Site24x7
+  providerName: Zoho / ManageEngine
