@@ -1,0 +1,69 @@
+{
+  "$schema": "https://json-schema.org/draft/07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/site24x7/main/json-schema/user.json",
+  "title": "User",
+  "description": "A Site24x7 user account with assigned roles and notification preferences.",
+  "type": "object",
+  "properties": {
+    "user_id": {
+      "type": "string",
+      "description": "Unique user identifier"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "User's display name",
+      "minLength": 1
+    },
+    "email_address": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "email"
+      },
+      "minItems": 1,
+      "description": "Email addresses for notifications"
+    },
+    "mobile_sms": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Mobile phone numbers for SMS alerts"
+    },
+    "voice_call": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Phone numbers for voice call alerts"
+    },
+    "role": {
+      "type": "integer",
+      "description": "User's access role",
+      "enum": [0, 1, 2, 3],
+      "enumDescriptions": {
+        "0": "Super Admin",
+        "1": "Admin",
+        "2": "Operator",
+        "3": "Read Only"
+      }
+    },
+    "notify_via": {
+      "type": "array",
+      "items": {
+        "type": "integer",
+        "enum": [1, 2, 3, 4]
+      },
+      "description": "Notification channels: 1=Email, 2=SMS, 3=Voice, 4=IM"
+    },
+    "time_zone": {
+      "type": "string",
+      "description": "User's timezone (e.g., America/New_York)"
+    },
+    "is_account_manager": {
+      "type": "boolean",
+      "description": "Whether the user has account management privileges"
+    }
+  },
+  "required": ["display_name", "email_address", "role"]
+}

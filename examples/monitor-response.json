@@ -1,0 +1,20 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "monitor_id": "123456789012345",
+    "display_name": "My Production Website",
+    "type": "URL",
+    "website": "https://www.example.com",
+    "check_frequency": 5,
+    "timeout": 10,
+    "location_profile_id": "123456789012346",
+    "notification_profile_id": "123456789012347",
+    "threshold_profile_id": "123456789012348",
+    "monitor_groups": ["123456789012349"],
+    "tag_ids": ["123456789012350"],
+    "status": 1,
+    "created_time": "2026-06-13T00:00:00Z",
+    "last_polled_time": "2026-06-13T10:30:00Z"
+  }
+}

@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/site24x7/main/json-schema/outage.json",
+  "title": "Outage",
+  "description": "An outage record representing a period when a monitor was in a non-operational state.",
+  "type": "object",
+  "properties": {
+    "outage_id": {
+      "type": "string",
+      "description": "Unique outage identifier"
+    },
+    "monitor_id": {
+      "type": "string",
+      "description": "Identifier of the monitor that experienced the outage"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Display name of the affected monitor"
+    },
+    "type": {
+      "type": "string",
+      "description": "Monitor type"
+    },
+    "down_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the outage started"
+    },
+    "up_time": {
+      "type": ["string", "null"],
+      "format": "date-time",
+      "description": "Timestamp when the outage ended (null if ongoing)"
+    },
+    "duration": {
+      "type": "integer",
+      "description": "Outage duration in seconds",
+      "minimum": 0
+    },
+    "reason": {
+      "type": "string",
+      "description": "Root cause or reason for the outage"
+    },
+    "is_maintenance": {
+      "type": "boolean",
+      "description": "Whether this outage has been marked as a maintenance period"
+    },
+    "comments": {
+      "type": "array",
+      "items": {
+        "$ref": "#/definitions/Comment"
+      },
+      "description": "Comments associated with this outage"
+    }
+  },
+  "required": ["monitor_id", "down_time"],
+  "definitions": {
+    "Comment": {
+      "type": "object",
+      "properties": {
+        "comment_id": {
+          "type": "string"
+        },
+        "comment": {
+          "type": "string"
+        },
+        "created_by": {
+          "type": "string"
+        },
+        "created_time": {
+          "type": "string",
+          "format": "date-time"
+        }
+      },
+      "required": ["comment"]
+    }
+  }
+}

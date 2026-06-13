@@ -1,0 +1,12 @@
+{
+  "code": 0,
+  "message": "success",
+  "data": {
+    "up": 142,
+    "down": 3,
+    "trouble": 5,
+    "critical": 1,
+    "suspended": 8,
+    "maintenance": 2
+  }
+}

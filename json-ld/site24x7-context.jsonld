@@ -1,0 +1,163 @@
+{
+  "@context": {
+    "@version": 1.1,
+    "schema": "https://schema.org/",
+    "site24x7": "https://www.site24x7.com/api/vocab/",
+    "xsd": "http://www.w3.org/2001/XMLSchema#",
+
+    "Monitor": "site24x7:Monitor",
+    "MonitorGroup": "site24x7:MonitorGroup",
+    "Outage": "site24x7:Outage",
+    "Alarm": "site24x7:Alarm",
+    "User": "site24x7:User",
+    "NotificationProfile": "site24x7:NotificationProfile",
+    "ThresholdProfile": "site24x7:ThresholdProfile",
+    "MaintenanceWindow": "site24x7:MaintenanceWindow",
+    "Tag": "site24x7:Tag",
+    "Report": "site24x7:Report",
+
+    "monitor_id": {
+      "@id": "site24x7:monitorId",
+      "@type": "xsd:string"
+    },
+    "display_name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "description": {
+      "@id": "schema:description",
+      "@type": "xsd:string"
+    },
+    "type": {
+      "@id": "site24x7:monitorType",
+      "@type": "xsd:string"
+    },
+    "website": {
+      "@id": "schema:url",
+      "@type": "@id"
+    },
+    "check_frequency": {
+      "@id": "site24x7:checkFrequency",
+      "@type": "xsd:integer"
+    },
+    "timeout": {
+      "@id": "site24x7:timeout",
+      "@type": "xsd:integer"
+    },
+    "status": {
+      "@id": "site24x7:status",
+      "@type": "xsd:integer"
+    },
+    "availability": {
+      "@id": "site24x7:availability",
+      "@type": "xsd:decimal"
+    },
+    "created_time": {
+      "@id": "schema:dateCreated",
+      "@type": "xsd:dateTime"
+    },
+    "last_polled_time": {
+      "@id": "site24x7:lastPolledTime",
+      "@type": "xsd:dateTime"
+    },
+    "down_time": {
+      "@id": "site24x7:downTime",
+      "@type": "xsd:dateTime"
+    },
+    "up_time": {
+      "@id": "site24x7:upTime",
+      "@type": "xsd:dateTime"
+    },
+    "duration": {
+      "@id": "site24x7:duration",
+      "@type": "xsd:integer"
+    },
+    "reason": {
+      "@id": "site24x7:reason",
+      "@type": "xsd:string"
+    },
+    "email_address": {
+      "@id": "schema:email",
+      "@type": "xsd:string"
+    },
+    "role": {
+      "@id": "site24x7:role",
+      "@type": "xsd:integer"
+    },
+    "tag_name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "tag_color": {
+      "@id": "site24x7:color",
+      "@type": "xsd:string"
+    },
+    "profile_name": {
+      "@id": "schema:name",
+      "@type": "xsd:string"
+    },
+    "trouble_threshold": {
+      "@id": "site24x7:troubleThreshold",
+      "@type": "xsd:integer"
+    },
+    "critical_threshold": {
+      "@id": "site24x7:criticalThreshold",
+      "@type": "xsd:integer"
+    },
+    "start_date": {
+      "@id": "schema:startDate",
+      "@type": "xsd:date"
+    },
+    "end_date": {
+      "@id": "schema:endDate",
+      "@type": "xsd:date"
+    },
+    "start_time": {
+      "@id": "schema:startTime",
+      "@type": "xsd:string"
+    },
+    "end_time": {
+      "@id": "schema:endTime",
+      "@type": "xsd:string"
+    },
+    "monitors": {
+      "@id": "site24x7:monitors",
+      "@container": "@set"
+    },
+    "monitor_groups": {
+      "@id": "site24x7:monitorGroups",
+      "@container": "@set"
+    },
+    "tag_ids": {
+      "@id": "site24x7:tags",
+      "@container": "@set"
+    },
+    "notify_via": {
+      "@id": "site24x7:notifyVia",
+      "@container": "@set"
+    },
+    "code": {
+      "@id": "site24x7:responseCode",
+      "@type": "xsd:integer"
+    },
+    "message": {
+      "@id": "site24x7:responseMessage",
+      "@type": "xsd:string"
+    },
+    "data": {
+      "@id": "site24x7:data"
+    },
+
+    "StatusCodes": {
+      "@id": "site24x7:StatusCodes",
+      "@context": {
+        "DOWN": { "@id": "site24x7:statusDown", "@value": 0 },
+        "UP": { "@id": "site24x7:statusUp", "@value": 1 },
+        "TROUBLE": { "@id": "site24x7:statusTrouble", "@value": 2 },
+        "CRITICAL": { "@id": "site24x7:statusCritical", "@value": 3 },
+        "SUSPENDED": { "@id": "site24x7:statusSuspended", "@value": 5 },
+        "MAINTENANCE": { "@id": "site24x7:statusMaintenance", "@value": 7 }
+      }
+    }
+  }
+}

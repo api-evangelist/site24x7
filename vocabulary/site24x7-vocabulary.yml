@@ -1,0 +1,126 @@
+vocabulary:
+  - term: monitor
+    definition: >-
+      A configured check that periodically tests the availability and performance
+      of a target resource such as a website, server, API endpoint, or cloud service.
+    related: [monitor_group, threshold_profile, notification_profile, check_frequency, polling]
+
+  - term: monitor_group
+    definition: >-
+      A logical collection of monitors grouped together for organizational,
+      reporting, or alerting purposes. Health thresholds can be configured at the
+      group level.
+    related: [monitor, health_threshold_count]
+
+  - term: check_frequency
+    definition: >-
+      The interval in minutes at which Site24x7 polls a monitor to verify its
+      availability and performance. Valid values include 1, 2, 3, 5, 10, 15, 20,
+      30, 60, 120, 240, 360, 720, and 1440 minutes.
+    related: [monitor, polling]
+
+  - term: polling
+    definition: >-
+      The act of sending a synthetic check request from one or more monitoring
+      locations to test whether a target resource is available and performing
+      within defined thresholds.
+    related: [check_frequency, location_profile, uptime_steroid]
+
+  - term: uptime_steroid
+    definition: >-
+      A Site24x7 feature that temporarily increases the polling frequency for a
+      monitor, enabling more granular detection of intermittent issues.
+    related: [polling, check_frequency]
+
+  - term: outage
+    definition: >-
+      A period during which a monitored resource was unavailable or failed to
+      respond within acceptable parameters. Outages are automatically created when
+      a monitor changes to DOWN status.
+    related: [alarm, status, maintenance_window]
+
+  - term: alarm
+    definition: >-
+      An alert event generated when a monitor's status changes or a performance
+      threshold is breached. Alarms trigger notifications via the associated
+      notification profile.
+    related: [notification_profile, threshold_profile, outage]
+
+  - term: maintenance_window
+    definition: >-
+      A scheduled time period during which alerts are suppressed for selected
+      monitors. Supports one-time, daily, weekly, and monthly recurrence patterns.
+    related: [outage, monitor]
+
+  - term: threshold_profile
+    definition: >-
+      A configuration object defining the response time and error thresholds that
+      trigger TROUBLE, CRITICAL, and DOWN status changes for associated monitors.
+    related: [monitor, alarm, notification_profile]
+
+  - term: notification_profile
+    definition: >-
+      A configuration object controlling when and how alerts are delivered,
+      including delay settings, escalation rules, and repeat intervals.
+    related: [monitor, alarm, user, threshold_profile]
+
+  - term: location_profile
+    definition: >-
+      A configuration object specifying which global monitoring locations
+      (data centers) perform checks for associated monitors.
+    related: [monitor, polling]
+
+  - term: status
+    definition: >-
+      The current operational state of a monitor. Possible values are:
+      0 (Down), 1 (Up), 2 (Trouble), 3 (Critical), 5 (Suspended), 7 (Maintenance).
+    related: [monitor, outage, alarm]
+
+  - term: availability
+    definition: >-
+      The percentage of time a monitor was in the UP state during a reporting
+      period, calculated as (uptime / total_period) * 100.
+    related: [reports, outage, sla]
+
+  - term: sla
+    definition: >-
+      Service Level Agreement. Site24x7 SLA reports compare actual availability
+      and response time against configured SLA targets.
+    related: [reports, availability]
+
+  - term: tag
+    definition: >-
+      A user-defined label applied to monitors for categorization, filtering,
+      and reporting. Tags can have custom colors for visual organization.
+    related: [monitor, reports]
+
+  - term: zaaid
+    definition: >-
+      Zone Account ID. A cookie value required for MSP (Managed Service Provider)
+      and Business Unit API operations to specify which sub-account to operate on.
+    related: [msp, business_unit]
+
+  - term: zoho_oauth_token
+    definition: >-
+      The OAuth 2.0 bearer token obtained from the Zoho Developer Console used to
+      authenticate all Site24x7 API requests via the Authorization header.
+    related: [authentication]
+
+  - term: data_center
+    definition: >-
+      A regional endpoint for the Site24x7 API. Customers must use the API base
+      URL matching their account region (US, EU, India, Australia, Japan, Canada,
+      UK, UAE, Saudi Arabia).
+    related: [base_url, server]
+
+  - term: apm
+    definition: >-
+      Application Performance Monitoring. Site24x7 APM Insight instruments
+      application code to trace transactions and monitor application-layer metrics.
+    related: [rum, monitor]
+
+  - term: rum
+    definition: >-
+      Real User Monitoring. Captures actual end-user experience metrics by injecting
+      JavaScript into web pages to measure load times and interactions from real browsers.
+    related: [apm, monitor]

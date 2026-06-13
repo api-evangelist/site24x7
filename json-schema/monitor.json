@@ -1,0 +1,90 @@
+{
+  "$schema": "https://json-schema.org/draft/07/schema#",
+  "$id": "https://raw.githubusercontent.com/api-evangelist/site24x7/main/json-schema/monitor.json",
+  "title": "Monitor",
+  "description": "A Site24x7 monitor that checks the health and performance of a target resource.",
+  "type": "object",
+  "properties": {
+    "monitor_id": {
+      "type": "string",
+      "description": "Unique identifier for the monitor"
+    },
+    "display_name": {
+      "type": "string",
+      "description": "Human-readable name of the monitor",
+      "minLength": 1,
+      "maxLength": 100
+    },
+    "type": {
+      "type": "string",
+      "description": "Monitor type identifier",
+      "examples": ["URL", "SERVER", "REST_API", "SSL_CERT", "PING", "PORT", "DNS", "FTP", "SMTP", "POP", "IMAP", "MYSQL", "MSSQL", "PGSQL", "MONGODB", "AWS", "AZURE", "GCP"]
+    },
+    "website": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL being monitored (for website/API monitors)"
+    },
+    "check_frequency": {
+      "type": "integer",
+      "description": "Polling interval in minutes",
+      "enum": [1, 2, 3, 4, 5, 10, 15, 20, 30, 60, 120, 240, 360, 720, 1440]
+    },
+    "timeout": {
+      "type": "integer",
+      "description": "Request timeout in seconds",
+      "minimum": 1,
+      "maximum": 90
+    },
+    "location_profile_id": {
+      "type": "string",
+      "description": "ID of the location profile determining check locations"
+    },
+    "notification_profile_id": {
+      "type": "string",
+      "description": "ID of the notification profile for alerts"
+    },
+    "threshold_profile_id": {
+      "type": "string",
+      "description": "ID of the threshold profile for alerting criteria"
+    },
+    "monitor_groups": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of monitor group IDs this monitor belongs to"
+    },
+    "tag_ids": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "List of tag IDs associated with this monitor"
+    },
+    "status": {
+      "type": "integer",
+      "description": "Current monitor status",
+      "enum": [0, 1, 2, 3, 5, 7],
+      "enumDescriptions": {
+        "0": "Down",
+        "1": "Up",
+        "2": "Trouble",
+        "3": "Critical",
+        "5": "Suspended",
+        "7": "Maintenance"
+      }
+    },
+    "created_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp when the monitor was created"
+    },
+    "last_polled_time": {
+      "type": "string",
+      "format": "date-time",
+      "description": "Timestamp of the last polling check"
+    }
+  },
+  "required": ["display_name", "type"]
+}
