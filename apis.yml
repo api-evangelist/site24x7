@@ -10,7 +10,7 @@ description: >-
   data centers across the US, EU, India, Australia, Japan, Canada, UK, UAE, and
   Saudi Arabia.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 url: https://raw.githubusercontent.com/api-evangelist/site24x7/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -41,7 +41,7 @@ apis:
       notification profiles, and on-call schedules; scheduling maintenance windows;
       retrieving availability, performance, and SLA reports; managing IT automation
       actions; and administering users, groups, and third-party integrations.
-    image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
     humanURL: https://www.site24x7.com/help/api/
     baseURL: https://api.site24x7.com/api
     tags:
