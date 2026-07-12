@@ -62,6 +62,14 @@ apis:
         url: https://www.site24x7.com/contact.html
 
 common:
+  - type: TrustCenter
+    url: security/site24x7-trust-center.yml
+  - type: VulnerabilityDisclosure
+    url: security/site24x7-vulnerability-disclosure.yml
+  - type: DomainSecurity
+    url: security/site24x7-domain-security.yml
+  - type: Authentication
+    url: authentication/site24x7-authentication.yml
   - type: Website
     url: https://www.site24x7.com/
   - type: Documentation

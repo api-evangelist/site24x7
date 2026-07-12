@@ -1,0 +1,15 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/site24x7-api-openapi.yml
+summary:
+  types:
+  - http
+schemes:
+- name: ZohoOAuth
+  type: http
+  scheme: bearer
+  bearerFormat: Zoho-oauthtoken
+  description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization:
+    Zoho-oauthtoken {access_token}`.'
+  sources:
+  - openapi/site24x7-api-openapi.yml
