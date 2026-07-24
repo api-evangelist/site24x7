@@ -1,0 +1,376 @@
+openapi: 3.0.3
+info:
+  title: Site24x7 REST Alarms Reports API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  version: '2.0'
+  contact:
+    name: Site24x7 Support
+    url: https://www.site24x7.com/contact.html
+  termsOfService: https://www.site24x7.com/terms.html
+  license:
+    name: Site24x7 Terms of Service
+    url: https://www.site24x7.com/terms.html
+servers:
+- url: https://www.site24x7.com/api
+  description: US data center
+- url: https://www.site24x7.eu/api
+  description: EU data center
+- url: https://www.site24x7.in/api
+  description: India data center
+- url: https://www.site24x7.net.au/api
+  description: Australia data center
+- url: https://app.site24x7.jp/api
+  description: Japan data center
+- url: https://www.site24x7.ca/api
+  description: Canada data center
+- url: https://app.site24x7.uk/api
+  description: UK data center
+- url: https://app.site24x7.ae/api
+  description: UAE data center
+- url: https://www.site24x7.sa/api
+  description: Saudi Arabia data center
+security:
+- ZohoOAuth: []
+tags:
+- name: Reports
+  description: Availability, performance, SLA, and custom reports
+paths:
+  /reports/summary:
+    get:
+      operationId: getSummaryReport
+      tags:
+      - Reports
+      summary: Get summary report by monitor
+      description: Retrieve a summary report for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/MonitorIdQuery'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Summary report returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reports/summary/group:
+    get:
+      operationId: getSummaryReportByGroup
+      tags:
+      - Reports
+      summary: Get summary report by monitor group
+      description: Retrieve a summary report aggregated by monitor group.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/GroupIdQuery'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Summary report by group returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reports/summary/all:
+    get:
+      operationId: getSummaryReportAll
+      tags:
+      - Reports
+      summary: Get summary report for all monitors
+      description: Retrieve a summary report covering all monitors.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Summary report for all monitors returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reports/availability:
+    get:
+      operationId: getAvailabilityReport
+      tags:
+      - Reports
+      summary: Get availability report
+      description: Retrieve an availability report for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/MonitorIdQuery'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Availability report returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reports/availability/all:
+    get:
+      operationId: getAvailabilityReportAll
+      tags:
+      - Reports
+      summary: Get availability report for all monitors
+      description: Retrieve availability data covering all monitors.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Availability report for all monitors returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reports/performance:
+    get:
+      operationId: getPerformanceReport
+      tags:
+      - Reports
+      summary: Get performance report
+      description: Retrieve a performance report for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/MonitorIdQuery'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Performance report returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reports/sla:
+    get:
+      operationId: getSlaReport
+      tags:
+      - Reports
+      summary: Get SLA report
+      description: Retrieve SLA compliance reports.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/MonitorIdQuery'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: SLA report returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reports/custom:
+    post:
+      operationId: createCustomReport
+      tags:
+      - Reports
+      summary: Create a custom report
+      description: Generate a custom report with specified parameters.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              type: object
+              properties:
+                monitor_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of monitor IDs to include
+                start_date:
+                  type: string
+                  format: date-time
+                  description: Report start date/time
+                end_date:
+                  type: string
+                  format: date-time
+                  description: Report end date/time
+                report_type:
+                  type: string
+                  description: Type of custom report to generate
+      responses:
+        '200':
+          description: Custom report created successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /reports/health_trend:
+    get:
+      operationId: getHealthTrendReport
+      tags:
+      - Reports
+      summary: Get health trend report
+      description: Retrieve health trend data for a monitor.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/MonitorIdQuery'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Health trend report returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ReportResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    ReportData:
+      type: object
+      properties:
+        monitor_id:
+          type: string
+          description: Monitor identifier
+        display_name:
+          type: string
+          description: Monitor display name
+        availability:
+          type: number
+          format: float
+          description: Availability percentage
+          example: 99.95
+        downtime:
+          type: number
+          format: float
+          description: Total downtime in minutes
+        response_time:
+          type: number
+          format: float
+          description: Average response time in milliseconds
+        start_date:
+          type: string
+          format: date-time
+          description: Report period start
+        end_date:
+          type: string
+          format: date-time
+          description: Report period end
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    ReportResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            oneOf:
+            - $ref: '#/components/schemas/ReportData'
+            - type: array
+              items:
+                $ref: '#/components/schemas/ReportData'
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    EndDate:
+      name: end_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: End of the time range (ISO 8601)
+    StartDate:
+      name: start_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: Start of the time range (ISO 8601)
+    GroupIdQuery:
+      name: group_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter by monitor group ID
+    MonitorIdQuery:
+      name: monitor_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter by monitor ID
+  securitySchemes:
+    ZohoOAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Zoho-oauthtoken
+      description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization: Zoho-oauthtoken {access_token}`.'
+externalDocs:
+  description: Site24x7 API Documentation
+  url: https://www.site24x7.com/help/api/

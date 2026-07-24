@@ -1,0 +1,226 @@
+openapi: 3.0.3
+info:
+  title: Site24x7 REST Alarms API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  version: '2.0'
+  contact:
+    name: Site24x7 Support
+    url: https://www.site24x7.com/contact.html
+  termsOfService: https://www.site24x7.com/terms.html
+  license:
+    name: Site24x7 Terms of Service
+    url: https://www.site24x7.com/terms.html
+servers:
+- url: https://www.site24x7.com/api
+  description: US data center
+- url: https://www.site24x7.eu/api
+  description: EU data center
+- url: https://www.site24x7.in/api
+  description: India data center
+- url: https://www.site24x7.net.au/api
+  description: Australia data center
+- url: https://app.site24x7.jp/api
+  description: Japan data center
+- url: https://www.site24x7.ca/api
+  description: Canada data center
+- url: https://app.site24x7.uk/api
+  description: UK data center
+- url: https://app.site24x7.ae/api
+  description: UAE data center
+- url: https://www.site24x7.sa/api
+  description: Saudi Arabia data center
+security:
+- ZohoOAuth: []
+tags:
+- name: Alarms
+  description: Alert and alarm management
+paths:
+  /alarms:
+    get:
+      operationId: listAlarms
+      tags:
+      - Alarms
+      summary: List all alarms
+      description: Retrieve alarms across all monitors.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Alarms returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/AlarmListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /alarms/monitor/{monitor_id}:
+    get:
+      operationId: getMonitorAlarms
+      tags:
+      - Alarms
+      summary: Get alarms for a monitor
+      description: Retrieve alarms for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Monitor alarms returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/AlarmListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /alarms/monitor_group/{group_id}:
+    get:
+      operationId: getMonitorGroupAlarms
+      tags:
+      - Alarms
+      summary: Get alarms for a monitor group
+      description: Retrieve alarms organized by monitor group.
+      parameters:
+      - $ref: '#/components/parameters/GroupId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Monitor group alarms returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/AlarmListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    EndDate:
+      name: end_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: End of the time range (ISO 8601)
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
+    StartDate:
+      name: start_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: Start of the time range (ISO 8601)
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    Alarm:
+      type: object
+      properties:
+        alarm_id:
+          type: string
+          description: Unique alarm identifier
+        monitor_id:
+          type: string
+          description: Associated monitor identifier
+        display_name:
+          type: string
+          description: Monitor display name
+        alarm_time:
+          type: string
+          format: date-time
+          description: Time the alarm was triggered
+        alarm_type:
+          type: string
+          description: Type of alarm (e.g., DOWN, TROUBLE, CRITICAL)
+        status:
+          type: integer
+          description: Alarm status
+        reason:
+          type: string
+          description: Reason for the alarm
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    AlarmListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Alarm'
+  securitySchemes:
+    ZohoOAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Zoho-oauthtoken
+      description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization: Zoho-oauthtoken {access_token}`.'
+externalDocs:
+  description: Site24x7 API Documentation
+  url: https://www.site24x7.com/help/api/

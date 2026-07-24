@@ -1,0 +1,298 @@
+openapi: 3.0.3
+info:
+  title: Site24x7 REST Alarms Current Status API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  version: '2.0'
+  contact:
+    name: Site24x7 Support
+    url: https://www.site24x7.com/contact.html
+  termsOfService: https://www.site24x7.com/terms.html
+  license:
+    name: Site24x7 Terms of Service
+    url: https://www.site24x7.com/terms.html
+servers:
+- url: https://www.site24x7.com/api
+  description: US data center
+- url: https://www.site24x7.eu/api
+  description: EU data center
+- url: https://www.site24x7.in/api
+  description: India data center
+- url: https://www.site24x7.net.au/api
+  description: Australia data center
+- url: https://app.site24x7.jp/api
+  description: Japan data center
+- url: https://www.site24x7.ca/api
+  description: Canada data center
+- url: https://app.site24x7.uk/api
+  description: UK data center
+- url: https://app.site24x7.ae/api
+  description: UAE data center
+- url: https://www.site24x7.sa/api
+  description: Saudi Arabia data center
+security:
+- ZohoOAuth: []
+tags:
+- name: Current Status
+  description: Real-time status and health information
+paths:
+  /monitor_groups/{group_id}/status:
+    get:
+      operationId: getMonitorGroupStatus
+      tags:
+      - Current Status
+      summary: Get monitor group status
+      description: Retrieve the aggregated real-time status of all monitors in a group.
+      parameters:
+      - $ref: '#/components/parameters/GroupId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Group status returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitor_groups/{group_id}/status/count:
+    get:
+      operationId: getMonitorGroupStatusCount
+      tags:
+      - Current Status
+      summary: Get monitor status count in a group
+      description: Count monitors by status (Up, Down, Trouble, Critical) within a specific group.
+      parameters:
+      - $ref: '#/components/parameters/GroupId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Status counts returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/StatusCountResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitors/{monitor_id}/status:
+    get:
+      operationId: getMonitorStatus
+      tags:
+      - Current Status
+      summary: Get current monitor status
+      description: Retrieve the real-time status of a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor status returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /status/monitor_type/{type}:
+    get:
+      operationId: getStatusByMonitorType
+      tags:
+      - Current Status
+      summary: Get status by monitor type
+      description: Retrieve status information filtered by a specific monitor type.
+      parameters:
+      - name: type
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Monitor type identifier (e.g., URL, SERVER, SSL_CERT)
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Status by monitor type returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/StatusResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /status/count:
+    get:
+      operationId: getStatusCount
+      tags:
+      - Current Status
+      summary: Get monitor status counts
+      description: Get counts of monitors grouped by status (Up, Down, Trouble, Critical, Suspended, Maintenance).
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Status counts returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/StatusCountResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /status/monitor_type/count:
+    get:
+      operationId: getStatusCountByMonitorType
+      tags:
+      - Current Status
+      summary: Get status counts by monitor type
+      description: Retrieve status counts grouped by monitor type.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Status counts by type returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/StatusCountResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  parameters:
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    StatusInfo:
+      type: object
+      properties:
+        monitor_id:
+          type: string
+          description: Monitor identifier
+        display_name:
+          type: string
+          description: Monitor display name
+        type:
+          type: string
+          description: Monitor type
+        status:
+          type: integer
+          description: Current status code (0=Down, 1=Up, 2=Trouble, 3=Critical, 5=Suspended, 7=Maintenance)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 5
+          - 7
+        last_polled_time:
+          type: string
+          format: date-time
+          description: Time of the last polling check
+        unit:
+          type: string
+          description: Performance metric unit
+        response_time:
+          type: number
+          description: Latest response time in milliseconds
+    StatusResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/StatusInfo'
+    StatusCountResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: object
+            properties:
+              up:
+                type: integer
+                description: Number of monitors currently up
+              down:
+                type: integer
+                description: Number of monitors currently down
+              trouble:
+                type: integer
+                description: Number of monitors in trouble state
+              critical:
+                type: integer
+                description: Number of monitors in critical state
+              suspended:
+                type: integer
+                description: Number of suspended monitors
+              maintenance:
+                type: integer
+                description: Number of monitors in maintenance
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+  securitySchemes:
+    ZohoOAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Zoho-oauthtoken
+      description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization: Zoho-oauthtoken {access_token}`.'
+externalDocs:
+  description: Site24x7 API Documentation
+  url: https://www.site24x7.com/help/api/

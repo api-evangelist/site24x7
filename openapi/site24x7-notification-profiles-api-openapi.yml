@@ -1,0 +1,291 @@
+openapi: 3.0.3
+info:
+  title: Site24x7 REST Alarms Notification Profiles API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  version: '2.0'
+  contact:
+    name: Site24x7 Support
+    url: https://www.site24x7.com/contact.html
+  termsOfService: https://www.site24x7.com/terms.html
+  license:
+    name: Site24x7 Terms of Service
+    url: https://www.site24x7.com/terms.html
+servers:
+- url: https://www.site24x7.com/api
+  description: US data center
+- url: https://www.site24x7.eu/api
+  description: EU data center
+- url: https://www.site24x7.in/api
+  description: India data center
+- url: https://www.site24x7.net.au/api
+  description: Australia data center
+- url: https://app.site24x7.jp/api
+  description: Japan data center
+- url: https://www.site24x7.ca/api
+  description: Canada data center
+- url: https://app.site24x7.uk/api
+  description: UK data center
+- url: https://app.site24x7.ae/api
+  description: UAE data center
+- url: https://www.site24x7.sa/api
+  description: Saudi Arabia data center
+security:
+- ZohoOAuth: []
+tags:
+- name: Notification Profiles
+  description: Alert notification configuration
+paths:
+  /notification_profiles:
+    get:
+      operationId: listNotificationProfiles
+      tags:
+      - Notification Profiles
+      summary: List notification profiles
+      description: Retrieve all notification profiles configured in the account.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Notification profiles returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/NotificationProfileListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createNotificationProfile
+      tags:
+      - Notification Profiles
+      summary: Create a notification profile
+      description: Create a new notification profile to configure alert delivery.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/NotificationProfileCreate'
+      responses:
+        '200':
+          description: Notification profile created successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/NotificationProfileResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /notification_profiles/{profile_id}:
+    get:
+      operationId: getNotificationProfile
+      tags:
+      - Notification Profiles
+      summary: Get a notification profile
+      description: Retrieve details of a specific notification profile.
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Notification profile returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/NotificationProfileResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateNotificationProfile
+      tags:
+      - Notification Profiles
+      summary: Update a notification profile
+      description: Modify an existing notification profile.
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/NotificationProfileCreate'
+      responses:
+        '200':
+          description: Notification profile updated successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/NotificationProfileResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteNotificationProfile
+      tags:
+      - Notification Profiles
+      summary: Delete a notification profile
+      description: Remove a notification profile from the account.
+      parameters:
+      - $ref: '#/components/parameters/ProfileId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Notification profile deleted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    ProfileId:
+      name: profile_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique profile identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    NotificationProfileResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/NotificationProfile'
+    NotificationProfileListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/NotificationProfile'
+    NotificationProfile:
+      type: object
+      properties:
+        profile_id:
+          type: string
+          description: Unique profile identifier
+        profile_name:
+          type: string
+          description: Name of the notification profile
+        notify_after_down_count:
+          type: integer
+          description: Number of consecutive failures before alerting
+        notify_after_consecutive_count:
+          type: integer
+          description: Number of consecutive checks before sending notifications
+        escalation_wait_time:
+          type: integer
+          description: Time in minutes before escalating alerts
+        escalation_prefix:
+          type: string
+          description: Prefix added to escalated notifications
+        escalation_user_group_id:
+          type: string
+          description: User group to notify during escalation
+        is_default:
+          type: boolean
+          description: Whether this is the default notification profile
+    NotificationProfileCreate:
+      type: object
+      required:
+      - profile_name
+      properties:
+        profile_name:
+          type: string
+          description: Name for the notification profile
+          example: Critical Alerts Profile
+        notify_after_down_count:
+          type: integer
+          description: Failures before alerting
+          default: 1
+        notify_after_consecutive_count:
+          type: integer
+          description: Consecutive checks before notification
+          default: 1
+        escalation_wait_time:
+          type: integer
+          description: Minutes before escalating
+          default: 0
+        escalation_prefix:
+          type: string
+          description: Prefix for escalated alerts
+        escalation_user_group_id:
+          type: string
+          description: User group for escalation
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+  securitySchemes:
+    ZohoOAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Zoho-oauthtoken
+      description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization: Zoho-oauthtoken {access_token}`.'
+externalDocs:
+  description: Site24x7 API Documentation
+  url: https://www.site24x7.com/help/api/

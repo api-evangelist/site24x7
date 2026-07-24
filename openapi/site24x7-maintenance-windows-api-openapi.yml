@@ -1,0 +1,336 @@
+openapi: 3.0.3
+info:
+  title: Site24x7 REST Alarms Maintenance Windows API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  version: '2.0'
+  contact:
+    name: Site24x7 Support
+    url: https://www.site24x7.com/contact.html
+  termsOfService: https://www.site24x7.com/terms.html
+  license:
+    name: Site24x7 Terms of Service
+    url: https://www.site24x7.com/terms.html
+servers:
+- url: https://www.site24x7.com/api
+  description: US data center
+- url: https://www.site24x7.eu/api
+  description: EU data center
+- url: https://www.site24x7.in/api
+  description: India data center
+- url: https://www.site24x7.net.au/api
+  description: Australia data center
+- url: https://app.site24x7.jp/api
+  description: Japan data center
+- url: https://www.site24x7.ca/api
+  description: Canada data center
+- url: https://app.site24x7.uk/api
+  description: UK data center
+- url: https://app.site24x7.ae/api
+  description: UAE data center
+- url: https://www.site24x7.sa/api
+  description: Saudi Arabia data center
+security:
+- ZohoOAuth: []
+tags:
+- name: Maintenance Windows
+  description: Scheduled maintenance management
+paths:
+  /maintenance_windows:
+    get:
+      operationId: listMaintenanceWindows
+      tags:
+      - Maintenance Windows
+      summary: List maintenance windows
+      description: Retrieve all scheduled maintenance windows.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Maintenance windows returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MaintenanceWindowListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createMaintenanceWindow
+      tags:
+      - Maintenance Windows
+      summary: Create a maintenance window
+      description: Schedule a new maintenance window during which alerts are suppressed.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/MaintenanceWindowCreate'
+      responses:
+        '200':
+          description: Maintenance window created successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MaintenanceWindowResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /maintenance_windows/{maintenance_id}:
+    get:
+      operationId: getMaintenanceWindow
+      tags:
+      - Maintenance Windows
+      summary: Get a maintenance window
+      description: Retrieve details of a specific maintenance window.
+      parameters:
+      - name: maintenance_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique maintenance window identifier
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Maintenance window returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MaintenanceWindowResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateMaintenanceWindow
+      tags:
+      - Maintenance Windows
+      summary: Update a maintenance window
+      description: Modify an existing maintenance window.
+      parameters:
+      - name: maintenance_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique maintenance window identifier
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/MaintenanceWindowCreate'
+      responses:
+        '200':
+          description: Maintenance window updated successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MaintenanceWindowResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteMaintenanceWindow
+      tags:
+      - Maintenance Windows
+      summary: Delete a maintenance window
+      description: Remove a scheduled maintenance window.
+      parameters:
+      - name: maintenance_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique maintenance window identifier
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Maintenance window deleted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    MaintenanceWindow:
+      type: object
+      properties:
+        maintenance_id:
+          type: string
+          description: Unique maintenance window identifier
+        display_name:
+          type: string
+          description: Name of the maintenance window
+        description:
+          type: string
+          description: Description of the maintenance activity
+        maintenance_type:
+          type: integer
+          description: Schedule type (1=Once, 2=Daily, 3=Weekly, 4=Monthly)
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        start_date:
+          type: string
+          description: Start date of the maintenance window
+        end_date:
+          type: string
+          description: End date of the maintenance window
+        start_time:
+          type: string
+          description: Start time in HH:MM format
+        end_time:
+          type: string
+          description: End time in HH:MM format
+        monitors:
+          type: array
+          items:
+            type: string
+          description: Monitor IDs in the maintenance window
+        perform_actions:
+          type: boolean
+          description: Whether automated actions should run during maintenance
+    MaintenanceWindowResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/MaintenanceWindow'
+    MaintenanceWindowCreate:
+      type: object
+      required:
+      - display_name
+      - maintenance_type
+      - start_date
+      - end_date
+      - start_time
+      - end_time
+      properties:
+        display_name:
+          type: string
+          description: Name for the maintenance window
+          example: Monthly Patching
+        description:
+          type: string
+          description: Maintenance description
+        maintenance_type:
+          type: integer
+          description: Schedule recurrence (1=Once, 2=Daily, 3=Weekly, 4=Monthly)
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+          example: 1
+        start_date:
+          type: string
+          description: Maintenance start date (YYYY-MM-DD)
+          example: '2026-07-01'
+        end_date:
+          type: string
+          description: Maintenance end date (YYYY-MM-DD)
+          example: '2026-07-01'
+        start_time:
+          type: string
+          description: Start time (HH:MM)
+          example: 02:00
+        end_time:
+          type: string
+          description: End time (HH:MM)
+          example: 04:00
+        monitors:
+          type: array
+          items:
+            type: string
+          description: Monitor IDs to include in maintenance
+        perform_actions:
+          type: boolean
+          description: Allow automated actions during maintenance
+          default: false
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    MaintenanceWindowListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/MaintenanceWindow'
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+  securitySchemes:
+    ZohoOAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Zoho-oauthtoken
+      description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization: Zoho-oauthtoken {access_token}`.'
+externalDocs:
+  description: Site24x7 API Documentation
+  url: https://www.site24x7.com/help/api/

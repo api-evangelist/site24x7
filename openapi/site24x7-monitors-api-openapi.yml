@@ -1,0 +1,519 @@
+openapi: 3.0.3
+info:
+  title: Site24x7 REST Alarms Monitors API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  version: '2.0'
+  contact:
+    name: Site24x7 Support
+    url: https://www.site24x7.com/contact.html
+  termsOfService: https://www.site24x7.com/terms.html
+  license:
+    name: Site24x7 Terms of Service
+    url: https://www.site24x7.com/terms.html
+servers:
+- url: https://www.site24x7.com/api
+  description: US data center
+- url: https://www.site24x7.eu/api
+  description: EU data center
+- url: https://www.site24x7.in/api
+  description: India data center
+- url: https://www.site24x7.net.au/api
+  description: Australia data center
+- url: https://app.site24x7.jp/api
+  description: Japan data center
+- url: https://www.site24x7.ca/api
+  description: Canada data center
+- url: https://app.site24x7.uk/api
+  description: UK data center
+- url: https://app.site24x7.ae/api
+  description: UAE data center
+- url: https://www.site24x7.sa/api
+  description: Saudi Arabia data center
+security:
+- ZohoOAuth: []
+tags:
+- name: Monitors
+  description: Create, retrieve, update, and delete monitors of all types
+paths:
+  /monitors:
+    get:
+      operationId: listMonitors
+      tags:
+      - Monitors
+      summary: List all monitors
+      description: Retrieve a list of all monitors configured in the account.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: List of monitors returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createMonitor
+      tags:
+      - Monitors
+      summary: Create a monitor
+      description: Create a new monitor. The monitor type is determined by the `type` field in the request body.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/MonitorCreate'
+      responses:
+        '200':
+          description: Monitor created successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /monitors/{monitor_id}:
+    get:
+      operationId: getMonitor
+      tags:
+      - Monitors
+      summary: Get a monitor
+      description: Retrieve the configuration and details of a specific monitor by its ID.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor details returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateMonitor
+      tags:
+      - Monitors
+      summary: Update a monitor
+      description: Modify the configuration of an existing monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/MonitorCreate'
+      responses:
+        '200':
+          description: Monitor updated successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteMonitor
+      tags:
+      - Monitors
+      summary: Delete a monitor
+      description: Permanently remove a monitor from the account.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor deleted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitors/name/{display_name}:
+    get:
+      operationId: getMonitorByName
+      tags:
+      - Monitors
+      summary: Get a monitor by name
+      description: Retrieve monitor details using the monitor's display name.
+      parameters:
+      - name: display_name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Display name of the monitor
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteMonitorByName
+      tags:
+      - Monitors
+      summary: Delete a monitor by name
+      description: Remove a monitor using its display name.
+      parameters:
+      - name: display_name
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Display name of the monitor
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor deleted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitors/{monitor_id}/activate:
+    put:
+      operationId: activateMonitor
+      tags:
+      - Monitors
+      summary: Activate a monitor
+      description: Re-enable a previously suspended monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor activated successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitors/{monitor_id}/suspend:
+    put:
+      operationId: suspendMonitor
+      tags:
+      - Monitors
+      summary: Suspend a monitor
+      description: Pause monitoring operations for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor suspended successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitors/{monitor_id}/poll:
+    post:
+      operationId: pollMonitor
+      tags:
+      - Monitors
+      summary: Poll a monitor immediately
+      description: Initiate an immediate check for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Poll initiated successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitors/{monitor_id}/polling_status:
+    get:
+      operationId: getMonitorPollingStatus
+      tags:
+      - Monitors
+      summary: Get polling status
+      description: Retrieve the current polling status for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Polling status returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitors/{monitor_id}/mute:
+    put:
+      operationId: muteMonitor
+      tags:
+      - Monitors
+      summary: Mute a monitor
+      description: Silence alert notifications for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor muted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitors/{monitor_id}/unmute:
+    put:
+      operationId: unmuteMonitor
+      tags:
+      - Monitors
+      summary: Unmute a monitor
+      description: Resume alert notifications for a previously muted monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor unmuted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    Monitor:
+      type: object
+      properties:
+        monitor_id:
+          type: string
+          description: Unique identifier for the monitor
+        display_name:
+          type: string
+          description: Human-readable name of the monitor
+        type:
+          type: string
+          description: Monitor type (e.g., URL, SERVER, SSL_CERT, REST_API)
+          example: URL
+        website:
+          type: string
+          format: uri
+          description: URL being monitored (for website monitors)
+        check_frequency:
+          type: integer
+          description: Check interval in minutes
+          example: 5
+        location_profile_id:
+          type: string
+          description: ID of the location profile used for checks
+        notification_profile_id:
+          type: string
+          description: ID of the notification profile
+        threshold_profile_id:
+          type: string
+          description: ID of the threshold profile
+        monitor_groups:
+          type: array
+          items:
+            type: string
+          description: List of monitor group IDs this monitor belongs to
+        tag_ids:
+          type: array
+          items:
+            type: string
+          description: List of tag IDs associated with this monitor
+        status:
+          type: integer
+          description: Current status (0=Down, 1=Up, 2=Trouble, 3=Critical, 5=Suspended, 7=Maintenance)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 5
+          - 7
+        created_time:
+          type: string
+          format: date-time
+          description: Timestamp when the monitor was created
+        last_polled_time:
+          type: string
+          format: date-time
+          description: Timestamp of the last polling check
+    MonitorResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Monitor'
+    MonitorListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Monitor'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    MonitorCreate:
+      type: object
+      required:
+      - display_name
+      - type
+      properties:
+        display_name:
+          type: string
+          description: Human-readable name for the monitor
+          example: My Website Monitor
+        type:
+          type: string
+          description: Monitor type identifier
+          example: URL
+        website:
+          type: string
+          format: uri
+          description: URL to monitor (for website/API monitors)
+          example: https://example.com
+        check_frequency:
+          type: integer
+          description: Polling interval in minutes
+          default: 5
+          example: 5
+        location_profile_id:
+          type: string
+          description: ID of the location profile for check locations
+        notification_profile_id:
+          type: string
+          description: ID of the notification profile for alerts
+        threshold_profile_id:
+          type: string
+          description: ID of the threshold profile for alerting criteria
+        monitor_groups:
+          type: array
+          items:
+            type: string
+          description: Monitor group IDs to assign this monitor to
+        tag_ids:
+          type: array
+          items:
+            type: string
+          description: Tag IDs to associate with this monitor
+        timeout:
+          type: integer
+          description: Request timeout in seconds
+          default: 10
+  securitySchemes:
+    ZohoOAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Zoho-oauthtoken
+      description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization: Zoho-oauthtoken {access_token}`.'
+externalDocs:
+  description: Site24x7 API Documentation
+  url: https://www.site24x7.com/help/api/

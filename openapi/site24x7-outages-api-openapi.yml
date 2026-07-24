@@ -1,0 +1,536 @@
+openapi: 3.0.3
+info:
+  title: Site24x7 REST Alarms Outages API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  version: '2.0'
+  contact:
+    name: Site24x7 Support
+    url: https://www.site24x7.com/contact.html
+  termsOfService: https://www.site24x7.com/terms.html
+  license:
+    name: Site24x7 Terms of Service
+    url: https://www.site24x7.com/terms.html
+servers:
+- url: https://www.site24x7.com/api
+  description: US data center
+- url: https://www.site24x7.eu/api
+  description: EU data center
+- url: https://www.site24x7.in/api
+  description: India data center
+- url: https://www.site24x7.net.au/api
+  description: Australia data center
+- url: https://app.site24x7.jp/api
+  description: Japan data center
+- url: https://www.site24x7.ca/api
+  description: Canada data center
+- url: https://app.site24x7.uk/api
+  description: UK data center
+- url: https://app.site24x7.ae/api
+  description: UAE data center
+- url: https://www.site24x7.sa/api
+  description: Saudi Arabia data center
+security:
+- ZohoOAuth: []
+tags:
+- name: Outages
+  description: Outage records and incident management
+paths:
+  /outages:
+    get:
+      operationId: listOutages
+      tags:
+      - Outages
+      summary: List outages
+      description: Retrieve outage details across all monitors.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Outage list returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/OutageListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createOutage
+      tags:
+      - Outages
+      summary: Create an outage
+      description: Create an outage record for a monitor by ID or display name.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/OutageCreate'
+      responses:
+        '200':
+          description: Outage created successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/OutageResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /outages/{outage_id}:
+    delete:
+      operationId: deleteOutage
+      tags:
+      - Outages
+      summary: Delete an outage
+      description: Remove an outage record.
+      parameters:
+      - name: outage_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique outage identifier
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Outage deleted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /outages/monitor/{monitor_id}:
+    get:
+      operationId: getMonitorOutages
+      tags:
+      - Outages
+      summary: Get outages for a monitor
+      description: Retrieve outage history for a specific monitor.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Monitor outages returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/OutageListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /outages/monitor_group/{group_id}:
+    get:
+      operationId: getMonitorGroupOutages
+      tags:
+      - Outages
+      summary: Get outages for a monitor group
+      description: Retrieve outage details grouped by monitor group.
+      parameters:
+      - $ref: '#/components/parameters/GroupId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      - $ref: '#/components/parameters/StartDate'
+      - $ref: '#/components/parameters/EndDate'
+      responses:
+        '200':
+          description: Monitor group outages returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/OutageListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /outages/{outage_id}/mark_as_maintenance:
+    post:
+      operationId: markOutageAsMaintenance
+      tags:
+      - Outages
+      summary: Mark outage as maintenance
+      description: Convert an outage record to a maintenance window entry.
+      parameters:
+      - name: outage_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique outage identifier
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Outage marked as maintenance successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /outages/{outage_id}/mark_as_outage:
+    post:
+      operationId: markAsOutage
+      tags:
+      - Outages
+      summary: Mark maintenance as outage
+      description: Convert a maintenance window entry back to an outage.
+      parameters:
+      - name: outage_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique outage identifier
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Marked as outage successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /outages/{outage_id}/comments:
+    get:
+      operationId: listOutageComments
+      tags:
+      - Outages
+      summary: List outage comments
+      description: Retrieve all comments associated with a specific outage.
+      parameters:
+      - name: outage_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique outage identifier
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Outage comments returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/CommentListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    post:
+      operationId: addOutageComment
+      tags:
+      - Outages
+      summary: Add outage comment
+      description: Add a comment to a specific outage.
+      parameters:
+      - name: outage_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: Unique outage identifier
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/CommentCreate'
+      responses:
+        '200':
+          description: Comment added successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /outages/{outage_id}/comments/{comment_id}:
+    put:
+      operationId: updateOutageComment
+      tags:
+      - Outages
+      summary: Update an outage comment
+      description: Modify an existing comment on an outage.
+      parameters:
+      - name: outage_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: comment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/CommentCreate'
+      responses:
+        '200':
+          description: Comment updated successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/CommentResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteOutageComment
+      tags:
+      - Outages
+      summary: Delete an outage comment
+      description: Remove a comment from an outage.
+      parameters:
+      - name: outage_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - name: comment_id
+        in: path
+        required: true
+        schema:
+          type: string
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Comment deleted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  schemas:
+    Outage:
+      type: object
+      properties:
+        outage_id:
+          type: string
+          description: Unique outage identifier
+        monitor_id:
+          type: string
+          description: Associated monitor identifier
+        display_name:
+          type: string
+          description: Monitor display name
+        type:
+          type: string
+          description: Monitor type
+        down_time:
+          type: string
+          format: date-time
+          description: Time the outage started
+        up_time:
+          type: string
+          format: date-time
+          description: Time the outage ended (null if ongoing)
+        duration:
+          type: integer
+          description: Outage duration in seconds
+        reason:
+          type: string
+          description: Reason for the outage
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    OutageCreate:
+      type: object
+      required:
+      - monitor_id
+      properties:
+        monitor_id:
+          type: string
+          description: Monitor ID for which to create the outage
+        display_name:
+          type: string
+          description: Monitor display name (alternative to monitor_id)
+        down_time:
+          type: string
+          format: date-time
+          description: Outage start time
+        up_time:
+          type: string
+          format: date-time
+          description: Outage end time
+        reason:
+          type: string
+          description: Reason for the outage
+    CommentListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Comment'
+    OutageResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Outage'
+    CommentResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Comment'
+    Comment:
+      type: object
+      properties:
+        comment_id:
+          type: string
+          description: Unique comment identifier
+        outage_id:
+          type: string
+          description: Associated outage identifier
+        comment:
+          type: string
+          description: Comment text
+        created_by:
+          type: string
+          description: User who created the comment
+        created_time:
+          type: string
+          format: date-time
+          description: Comment creation timestamp
+    OutageListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Outage'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    CommentCreate:
+      type: object
+      required:
+      - comment
+      properties:
+        comment:
+          type: string
+          description: Comment text
+          example: Investigating the root cause of this outage
+  parameters:
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    EndDate:
+      name: end_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: End of the time range (ISO 8601)
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
+    StartDate:
+      name: start_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: Start of the time range (ISO 8601)
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  securitySchemes:
+    ZohoOAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Zoho-oauthtoken
+      description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization: Zoho-oauthtoken {access_token}`.'
+externalDocs:
+  description: Site24x7 API Documentation
+  url: https://www.site24x7.com/help/api/

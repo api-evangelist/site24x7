@@ -1,0 +1,337 @@
+openapi: 3.0.3
+info:
+  title: Site24x7 REST Alarms Monitor Groups API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  version: '2.0'
+  contact:
+    name: Site24x7 Support
+    url: https://www.site24x7.com/contact.html
+  termsOfService: https://www.site24x7.com/terms.html
+  license:
+    name: Site24x7 Terms of Service
+    url: https://www.site24x7.com/terms.html
+servers:
+- url: https://www.site24x7.com/api
+  description: US data center
+- url: https://www.site24x7.eu/api
+  description: EU data center
+- url: https://www.site24x7.in/api
+  description: India data center
+- url: https://www.site24x7.net.au/api
+  description: Australia data center
+- url: https://app.site24x7.jp/api
+  description: Japan data center
+- url: https://www.site24x7.ca/api
+  description: Canada data center
+- url: https://app.site24x7.uk/api
+  description: UK data center
+- url: https://app.site24x7.ae/api
+  description: UAE data center
+- url: https://www.site24x7.sa/api
+  description: Saudi Arabia data center
+security:
+- ZohoOAuth: []
+tags:
+- name: Monitor Groups
+  description: Organize monitors into logical groups
+paths:
+  /monitors/{monitor_id}/monitor_groups:
+    get:
+      operationId: getMonitorGroups
+      tags:
+      - Monitor Groups
+      summary: Get monitor groups for a monitor
+      description: Retrieve all monitor groups that a specific monitor belongs to.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor groups returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorGroupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateMonitorGroupAssignments
+      tags:
+      - Monitor Groups
+      summary: Update monitor group assignments
+      description: Update which monitor groups a specific monitor belongs to.
+      parameters:
+      - $ref: '#/components/parameters/MonitorId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              type: object
+              properties:
+                group_ids:
+                  type: array
+                  items:
+                    type: string
+                  description: List of monitor group IDs
+      responses:
+        '200':
+          description: Monitor group assignments updated successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /monitor_groups:
+    get:
+      operationId: listMonitorGroups
+      tags:
+      - Monitor Groups
+      summary: List all monitor groups
+      description: Retrieve all monitor groups configured in the account.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor groups returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorGroupListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+    post:
+      operationId: createMonitorGroup
+      tags:
+      - Monitor Groups
+      summary: Create a monitor group
+      description: Create a new monitor group to organize related monitors.
+      parameters:
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/MonitorGroupCreate'
+      responses:
+        '200':
+          description: Monitor group created successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorGroupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /monitor_groups/{group_id}:
+    get:
+      operationId: getMonitorGroup
+      tags:
+      - Monitor Groups
+      summary: Get a monitor group
+      description: Retrieve details of a specific monitor group.
+      parameters:
+      - $ref: '#/components/parameters/GroupId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor group returned successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorGroupResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      operationId: updateMonitorGroup
+      tags:
+      - Monitor Groups
+      summary: Update a monitor group
+      description: Modify the configuration of an existing monitor group.
+      parameters:
+      - $ref: '#/components/parameters/GroupId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      requestBody:
+        required: true
+        content:
+          application/json;version=2.0:
+            schema:
+              $ref: '#/components/schemas/MonitorGroupCreate'
+      responses:
+        '200':
+          description: Monitor group updated successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/MonitorGroupResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    delete:
+      operationId: deleteMonitorGroup
+      tags:
+      - Monitor Groups
+      summary: Delete a monitor group
+      description: Permanently remove a monitor group.
+      parameters:
+      - $ref: '#/components/parameters/GroupId'
+      - $ref: '#/components/parameters/ApiVersionHeader'
+      responses:
+        '200':
+          description: Monitor group deleted successfully
+          content:
+            application/json;version=2.0:
+              schema:
+                $ref: '#/components/schemas/ApiResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  parameters:
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    MonitorGroupCreate:
+      type: object
+      required:
+      - display_name
+      properties:
+        display_name:
+          type: string
+          description: Name for the monitor group
+          example: Production Servers
+        description:
+          type: string
+          description: Description of the monitor group
+        monitors:
+          type: array
+          items:
+            type: string
+          description: Monitor IDs to include in this group
+        health_threshold_count:
+          type: integer
+          description: Number of monitors that must be down to alert
+    MonitorGroupResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/MonitorGroup'
+    MonitorGroup:
+      type: object
+      properties:
+        group_id:
+          type: string
+          description: Unique identifier for the monitor group
+        display_name:
+          type: string
+          description: Human-readable name of the monitor group
+        description:
+          type: string
+          description: Description of the monitor group
+        monitors:
+          type: array
+          items:
+            type: string
+          description: List of monitor IDs in this group
+        health_threshold_count:
+          type: integer
+          description: Number of monitors that must be down to mark group as down
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    MonitorGroupListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/MonitorGroup'
+  securitySchemes:
+    ZohoOAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: Zoho-oauthtoken
+      description: 'OAuth 2.0 token obtained from the Zoho Developer Console. Pass as `Authorization: Zoho-oauthtoken {access_token}`.'
+externalDocs:
+  description: Site24x7 API Documentation
+  url: https://www.site24x7.com/help/api/
