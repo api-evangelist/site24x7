@@ -10,7 +10,20 @@ description: >-
   data centers across the US, EU, India, Australia, Japan, Canada, UK, UAE, and
   Saudi Arabia.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: open
+  trial: true
+  try_now: true
+  public: true
+  label: Freemium (free trial) · Open access
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/site24x7.png
 url: https://raw.githubusercontent.com/api-evangelist/site24x7/refs/heads/main/apis.yml
 created: "2026-06-13"
 modified: "2026-06-13"
@@ -32,35 +45,138 @@ tags:
   - On-Call
   - Status Pages
 apis:
-  - aid: site24x7:site24x7-api
-    name: Site24x7 REST API
-    description: >-
-      The Site24x7 REST API (v2.0) enables programmatic access to all monitoring
-      operations including creating and managing monitors for websites, servers,
-      cloud resources, APIs, and databases; configuring alert thresholds,
-      notification profiles, and on-call schedules; scheduling maintenance windows;
-      retrieving availability, performance, and SLA reports; managing IT automation
-      actions; and administering users, groups, and third-party integrations.
-    image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
-    humanURL: https://www.site24x7.com/help/api/
-    baseURL: https://api.site24x7.com/api
-    tags:
-      - Monitoring
-      - Uptime
-      - Infrastructure
-      - Cloud
-      - APM
-      - SLA
-      - Alerts
-    properties:
-      - type: Documentation
-        url: https://www.site24x7.com/help/api/
-      - type: OpenAPI
-        url: https://www.site24x7.com/help/api/
-    contact:
-      - FN: Site24x7 Support
-        url: https://www.site24x7.com/contact.html
-
+- aid: site24x7:site24x7-alarms-api
+  name: Site24x7 Alarms API
+  description: Alert and alarm management
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Alarms
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-alarms-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-current-status-api
+  name: Site24x7 Current Status API
+  description: Real-time status and health information
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Current Status
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-current-status-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-maintenance-windows-api
+  name: Site24x7 Maintenance Windows API
+  description: Scheduled maintenance management
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Maintenance Windows
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-maintenance-windows-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-monitor-groups-api
+  name: Site24x7 Monitor Groups API
+  description: Organize monitors into logical groups
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Monitor Groups
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-monitor-groups-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-monitors-api
+  name: Site24x7 Monitors API
+  description: Create, retrieve, update, and delete monitors of all types
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Monitors
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-monitors-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-notification-profiles-api
+  name: Site24x7 Notification Profiles API
+  description: Alert notification configuration
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Notification Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-notification-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-outages-api
+  name: Site24x7 Outages API
+  description: Outage records and incident management
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Outages
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-outages-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-reports-api
+  name: Site24x7 Reports API
+  description: Availability, performance, SLA, and custom reports
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-reports-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-tags-api
+  name: Site24x7 Tags API
+  description: Tag-based monitor organization
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Tags
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-tags-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-threshold-profiles-api
+  name: Site24x7 Threshold Profiles API
+  description: Performance threshold configuration
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Threshold Profiles
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-threshold-profiles-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
+- aid: site24x7:site24x7-users-api
+  name: Site24x7 Users API
+  description: User account administration
+  humanURL: https://www.site24x7.com/help/api/
+  baseURL: https://api.site24x7.com/api
+  tags:
+  - Users
+  properties:
+  - type: OpenAPI
+    url: openapi/site24x7-users-api-openapi.yml
+  - type: Documentation
+    url: https://www.site24x7.com/help/api/
 common:
   - type: AgenticAccess
     url: agentic-access/site24x7-agentic-access.yml
