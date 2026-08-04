@@ -1,0 +1,34 @@
+{
+  "provider": "site24x7",
+  "sources": [
+    "site24x7-alarms-api-openapi.yml",
+    "site24x7-current-status-api-openapi.yml",
+    "site24x7-maintenance-windows-api-openapi.yml",
+    "site24x7-monitor-groups-api-openapi.yml",
+    "site24x7-monitors-api-openapi.yml",
+    "site24x7-notification-profiles-api-openapi.yml",
+    "site24x7-outages-api-openapi.yml",
+    "site24x7-reports-api-openapi.yml",
+    "site24x7-tags-api-openapi.yml",
+    "site24x7-threshold-profiles-api-openapi.yml",
+    "site24x7-users-api-openapi.yml"
+  ],
+  "outputs": [
+    "site24x7-alarms-api-openapi.yml",
+    "site24x7-current-status-api-openapi.yml",
+    "site24x7-maintenance-windows-api-openapi.yml",
+    "site24x7-monitor-groups-api-openapi.yml",
+    "site24x7-monitors-api-openapi.yml",
+    "site24x7-notification-profiles-api-openapi.yml",
+    "site24x7-outages-api-openapi.yml",
+    "site24x7-reports-api-openapi.yml",
+    "site24x7-tags-api-openapi.yml",
+    "site24x7-threshold-profiles-api-openapi.yml",
+    "site24x7-users-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
