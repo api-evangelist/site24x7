@@ -1,0 +1,129 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Alarms",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all alarms",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/alarms",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve alarms across all monitors."
+        },
+        {
+          "info": {
+            "name": "Get alarms for a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/alarms/monitor/:monitor_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve alarms for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Get alarms for a monitor group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/alarms/monitor_group/:group_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor group identifier"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve alarms organized by monitor group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

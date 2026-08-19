@@ -1,0 +1,1150 @@
+{
+  "item": [
+    {
+      "id": "c177f49c-faa5-4e1b-8766-1145efa48374",
+      "name": "Users",
+      "description": {
+        "content": "User account administration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "8fed752e-b987-4473-9edf-aa5cb995d8ee",
+          "name": "List all users",
+          "request": {
+            "name": "List all users",
+            "description": {
+              "content": "Retrieve a list of all users in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8d1e7a73-6969-4e62-b592-c00337747309",
+              "name": "Users returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"user_id\": \"string\",\n      \"display_name\": \"string\",\n      \"email_address\": [\n        \"BH54kfU@SlhmAZrpMDTWzrpbgVYyFpxsMvGVomH.tyh\",\n        \"LGdmGjQx9z5Hc8M@MofOOAMdlsgTwpp.qx\"\n      ],\n      \"mobile_sms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"role\": 1,\n      \"notify_via\": [\n        2837,\n        4935\n      ]\n    },\n    {\n      \"user_id\": \"string\",\n      \"display_name\": \"string\",\n      \"email_address\": [\n        \"yiinR@eUSHFflhC.cyv\",\n        \"npM@AgcYDkhkOhDbxFpNugObDM.fuw\"\n      ],\n      \"mobile_sms\": [\n        \"string\",\n        \"string\"\n      ],\n      \"role\": 2,\n      \"notify_via\": [\n        353,\n        2760\n      ]\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "24f54b98-c2ca-4ec8-9926-cc657763753e",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "ea40ff95-6c08-400b-9097-c6f62679d463",
+          "name": "Create a user",
+          "request": {
+            "name": "Create a user",
+            "description": {
+              "content": "Create a new user account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;version=2.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"display_name\": \"<string>\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": \"<integer>\",\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6bbd6721-8656-400f-8376-f6d9eb05c221",
+              "name": "User created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"John Doe\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": 2,\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"user_id\": \"string\",\n    \"display_name\": \"string\",\n    \"email_address\": [\n      \"aqTguNi5U@zhYD.eo\",\n      \"AlLYGgfBYnQ69@osEyEyXaFgOPczdtCxEbNSlCGunA.tfy\"\n    ],\n    \"mobile_sms\": [\n      \"string\",\n      \"string\"\n    ],\n    \"role\": 1,\n    \"notify_via\": [\n      8097,\n      5966\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4c15b2f8-208d-4e7a-9e7c-e178a6ff326d",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"John Doe\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": 2,\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9f0d1e4f-df88-4833-b3ca-9b4363512875",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"John Doe\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": 2,\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "17b7e8b7-37a2-4c3d-9bb4-d361127d609e",
+          "name": "Get a user",
+          "request": {
+            "name": "Get a user",
+            "description": {
+              "content": "Retrieve details of a specific user.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) Unique user identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "4e04b065-c176-487e-8d61-971e59d9df63",
+              "name": "User returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"user_id\": \"string\",\n    \"display_name\": \"string\",\n    \"email_address\": [\n      \"aqTguNi5U@zhYD.eo\",\n      \"AlLYGgfBYnQ69@osEyEyXaFgOPczdtCxEbNSlCGunA.tfy\"\n    ],\n    \"mobile_sms\": [\n      \"string\",\n      \"string\"\n    ],\n    \"role\": 1,\n    \"notify_via\": [\n      8097,\n      5966\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f383161b-7db4-42f1-be55-dbc0185415c5",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a14785fe-414e-48b3-a4c5-26403420b71b",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4b804d9c-4e10-4e52-9872-f521831ae1ff",
+          "name": "Update a user",
+          "request": {
+            "name": "Update a user",
+            "description": {
+              "content": "Modify an existing user's details.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) Unique user identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;version=2.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"display_name\": \"<string>\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": \"<integer>\",\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "4f72993b-50b6-4de1-b02b-ca509f315a09",
+              "name": "User updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"John Doe\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": 2,\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"user_id\": \"string\",\n    \"display_name\": \"string\",\n    \"email_address\": [\n      \"aqTguNi5U@zhYD.eo\",\n      \"AlLYGgfBYnQ69@osEyEyXaFgOPczdtCxEbNSlCGunA.tfy\"\n    ],\n    \"mobile_sms\": [\n      \"string\",\n      \"string\"\n    ],\n    \"role\": 1,\n    \"notify_via\": [\n      8097,\n      5966\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a4ecea0c-2b7b-42d3-9661-ec21a43e0fdb",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"John Doe\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": 2,\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "3b60d08f-2952-4aee-ba3a-e6a18282adb5",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"John Doe\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": 2,\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4bf1dfb9-cb03-47e3-ab24-781f053c66dc",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"John Doe\",\n  \"email_address\": [\n    \"<email>\",\n    \"<email>\"\n  ],\n  \"role\": 2,\n  \"mobile_sms\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"notify_via\": [\n    \"<integer>\",\n    \"<integer>\"\n  ]\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "1e8e3e33-fe13-43e5-a991-a0779e1946f9",
+          "name": "Delete a user",
+          "request": {
+            "name": "Delete a user",
+            "description": {
+              "content": "Remove a user account from the system.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "users",
+                ":user_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "user_id",
+                  "description": "(Required) Unique user identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "d48d36b3-c34f-40fc-aaea-aa09e7177444",
+              "name": "User deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "39d8faaa-3c71-43d3-8c63-c3b10fe44fbf",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "830e7f33-9440-4d18-a8ac-9388505a37ff",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "users",
+                    ":user_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "user_id",
+                      "description": "(Required) Unique user identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 7544,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.site24x7.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "470ea617-059c-4584-b7e3-9ba50446e1ac",
+    "name": "Site24x7 REST Alarms Users API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.\n\nContact Support:\n Name: Site24x7 Support",
+      "type": "text/plain"
+    }
+  }
+}

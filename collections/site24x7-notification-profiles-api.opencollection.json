@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Notification Profiles API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Notification Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List notification profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/notification_profiles",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve all notification profiles configured in the account."
+        },
+        {
+          "info": {
+            "name": "Create a notification profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/notification_profiles",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new notification profile to configure alert delivery."
+        },
+        {
+          "info": {
+            "name": "Get a notification profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/notification_profiles/:profile_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique profile identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific notification profile."
+        },
+        {
+          "info": {
+            "name": "Update a notification profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/notification_profiles/:profile_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique profile identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing notification profile."
+        },
+        {
+          "info": {
+            "name": "Delete a notification profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/notification_profiles/:profile_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique profile identifier"
+              }
+            ]
+          },
+          "docs": "Remove a notification profile from the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

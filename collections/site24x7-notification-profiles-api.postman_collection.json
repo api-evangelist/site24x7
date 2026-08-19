@@ -1,0 +1,1150 @@
+{
+  "item": [
+    {
+      "id": "99813bbd-0acb-4964-9fe3-0b515f02405c",
+      "name": "Notification Profiles",
+      "description": {
+        "content": "Alert notification configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "1cc623e4-2873-48d0-8a8e-f91ab9c3d179",
+          "name": "List notification profiles",
+          "request": {
+            "name": "List notification profiles",
+            "description": {
+              "content": "Retrieve all notification profiles configured in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notification_profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "68ce95d4-2d5a-4b23-a0d6-e1978a776ef4",
+              "name": "Notification profiles returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"profile_id\": \"string\",\n      \"profile_name\": \"string\",\n      \"notify_after_down_count\": 3379,\n      \"notify_after_consecutive_count\": 4557,\n      \"escalation_wait_time\": 9291,\n      \"escalation_prefix\": \"string\",\n      \"escalation_user_group_id\": \"string\",\n      \"is_default\": true\n    },\n    {\n      \"profile_id\": \"string\",\n      \"profile_name\": \"string\",\n      \"notify_after_down_count\": 1961,\n      \"notify_after_consecutive_count\": 1552,\n      \"escalation_wait_time\": 934,\n      \"escalation_prefix\": \"string\",\n      \"escalation_user_group_id\": \"string\",\n      \"is_default\": true\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a5e3474f-bf00-4efa-9e53-32ca4fac6b03",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "962fa178-0a7d-4d6b-812a-3ba3c0c6bf9c",
+          "name": "Create a notification profile",
+          "request": {
+            "name": "Create a notification profile",
+            "description": {
+              "content": "Create a new notification profile to configure alert delivery.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notification_profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;version=2.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile_name\": \"<string>\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "bb9a6f3f-147f-4cf5-94bd-7d786b0afef9",
+              "name": "Notification profile created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Critical Alerts Profile\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"profile_id\": \"string\",\n    \"profile_name\": \"string\",\n    \"notify_after_down_count\": 4689,\n    \"notify_after_consecutive_count\": 8439,\n    \"escalation_wait_time\": 4699,\n    \"escalation_prefix\": \"string\",\n    \"escalation_user_group_id\": \"string\",\n    \"is_default\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e6d0e699-bbba-4586-ae67-522d242a8070",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Critical Alerts Profile\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d60c9bd1-b69d-4128-be83-29cdae2e4012",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Critical Alerts Profile\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "3a5dfb30-635d-4496-8713-3e89515a978d",
+          "name": "Get a notification profile",
+          "request": {
+            "name": "Get a notification profile",
+            "description": {
+              "content": "Retrieve details of a specific notification profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notification_profiles",
+                ":profile_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_id",
+                  "description": "(Required) Unique profile identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "686d8dc8-2713-4766-b970-b83e942b2fe8",
+              "name": "Notification profile returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"profile_id\": \"string\",\n    \"profile_name\": \"string\",\n    \"notify_after_down_count\": 4689,\n    \"notify_after_consecutive_count\": 8439,\n    \"escalation_wait_time\": 4699,\n    \"escalation_prefix\": \"string\",\n    \"escalation_user_group_id\": \"string\",\n    \"is_default\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "92a74f41-b695-437c-a3f9-76908607c096",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c63d53ff-1ac9-4766-bf6f-7b422b6aeef1",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f72d1aac-9a64-4a6c-a172-8a911ca23d4f",
+          "name": "Update a notification profile",
+          "request": {
+            "name": "Update a notification profile",
+            "description": {
+              "content": "Modify an existing notification profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notification_profiles",
+                ":profile_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_id",
+                  "description": "(Required) Unique profile identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;version=2.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile_name\": \"<string>\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7ce59bee-f252-4303-b334-6b80b71419c6",
+              "name": "Notification profile updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Critical Alerts Profile\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"profile_id\": \"string\",\n    \"profile_name\": \"string\",\n    \"notify_after_down_count\": 4689,\n    \"notify_after_consecutive_count\": 8439,\n    \"escalation_wait_time\": 4699,\n    \"escalation_prefix\": \"string\",\n    \"escalation_user_group_id\": \"string\",\n    \"is_default\": false\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "084c7686-f78e-48d7-b506-b3f31641ca87",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Critical Alerts Profile\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "184a3135-177f-48c0-bcbd-fa9427c91fd1",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Critical Alerts Profile\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "28c84da9-19a6-462e-b758-f79cd533b79d",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Critical Alerts Profile\",\n  \"notify_after_down_count\": 1,\n  \"notify_after_consecutive_count\": 1,\n  \"escalation_wait_time\": 0,\n  \"escalation_prefix\": \"<string>\",\n  \"escalation_user_group_id\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "f222c38a-78d5-4853-8b73-efddf0030f67",
+          "name": "Delete a notification profile",
+          "request": {
+            "name": "Delete a notification profile",
+            "description": {
+              "content": "Remove a notification profile from the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "notification_profiles",
+                ":profile_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_id",
+                  "description": "(Required) Unique profile identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "13faa610-e57f-4ae8-97be-f4d9fd191be9",
+              "name": "Notification profile deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "73e22944-1a90-4812-8058-daf03d44c6af",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c0d933d9-0035-4333-86d0-f5ba12f18cd6",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "notification_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 1890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.site24x7.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ebfd7023-2247-47fc-b37a-b422f0806e99",
+    "name": "Site24x7 REST Alarms Notification Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.\n\nContact Support:\n Name: Site24x7 Support",
+      "type": "text/plain"
+    }
+  }
+}

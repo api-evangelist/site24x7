@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Maintenance Windows API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Maintenance Windows",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List maintenance windows",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/maintenance_windows",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve all scheduled maintenance windows."
+        },
+        {
+          "info": {
+            "name": "Create a maintenance window",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/maintenance_windows",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Schedule a new maintenance window during which alerts are suppressed."
+        },
+        {
+          "info": {
+            "name": "Get a maintenance window",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/maintenance_windows/:maintenance_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "maintenance_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique maintenance window identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific maintenance window."
+        },
+        {
+          "info": {
+            "name": "Update a maintenance window",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/maintenance_windows/:maintenance_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "maintenance_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique maintenance window identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing maintenance window."
+        },
+        {
+          "info": {
+            "name": "Delete a maintenance window",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/maintenance_windows/:maintenance_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "maintenance_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique maintenance window identifier"
+              }
+            ]
+          },
+          "docs": "Remove a scheduled maintenance window."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

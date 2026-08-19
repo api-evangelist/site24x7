@@ -1,0 +1,329 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Reports API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Reports",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get summary report by monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/reports/summary",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by monitor ID"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve a summary report for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Get summary report by monitor group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/reports/summary/group",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by monitor group ID"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve a summary report aggregated by monitor group."
+        },
+        {
+          "info": {
+            "name": "Get summary report for all monitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/reports/summary/all",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve a summary report covering all monitors."
+        },
+        {
+          "info": {
+            "name": "Get availability report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/reports/availability",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by monitor ID"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve an availability report for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Get availability report for all monitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/reports/availability/all",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve availability data covering all monitors."
+        },
+        {
+          "info": {
+            "name": "Get performance report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/reports/performance",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by monitor ID"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve a performance report for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Get SLA report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/reports/sla",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by monitor ID"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve SLA compliance reports."
+        },
+        {
+          "info": {
+            "name": "Create a custom report",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/reports/custom",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Generate a custom report with specified parameters."
+        },
+        {
+          "info": {
+            "name": "Get health trend report",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/reports/health_trend",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by monitor ID"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve health trend data for a monitor."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

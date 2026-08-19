@@ -1,0 +1,195 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Monitor Groups API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Monitor Groups",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get monitor groups for a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/monitor_groups",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all monitor groups that a specific monitor belongs to."
+        },
+        {
+          "info": {
+            "name": "Update monitor group assignments",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/monitor_groups",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Update which monitor groups a specific monitor belongs to."
+        },
+        {
+          "info": {
+            "name": "List all monitor groups",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitor_groups",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve all monitor groups configured in the account."
+        },
+        {
+          "info": {
+            "name": "Create a monitor group",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/monitor_groups",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new monitor group to organize related monitors."
+        },
+        {
+          "info": {
+            "name": "Get a monitor group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitor_groups/:group_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor group identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific monitor group."
+        },
+        {
+          "info": {
+            "name": "Update a monitor group",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/monitor_groups/:group_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor group identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify the configuration of an existing monitor group."
+        },
+        {
+          "info": {
+            "name": "Delete a monitor group",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/monitor_groups/:group_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor group identifier"
+              }
+            ]
+          },
+          "docs": "Permanently remove a monitor group."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

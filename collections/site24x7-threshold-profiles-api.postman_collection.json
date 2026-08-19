@@ -1,0 +1,1150 @@
+{
+  "item": [
+    {
+      "id": "215a2819-1b5d-4408-b00f-5ac59af2cfd6",
+      "name": "Threshold Profiles",
+      "description": {
+        "content": "Performance threshold configuration",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b0678a8e-c8d2-405e-95a1-c800af4f3d84",
+          "name": "List threshold profiles",
+          "request": {
+            "name": "List threshold profiles",
+            "description": {
+              "content": "Retrieve all threshold profiles configured in the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threshold_profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2372a28e-c1f7-4548-80cc-fba6f1c4524b",
+              "name": "Threshold profiles returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"profile_id\": \"string\",\n      \"profile_name\": \"string\",\n      \"type\": \"string\",\n      \"is_default\": true,\n      \"trouble_threshold\": 288,\n      \"critical_threshold\": 6496,\n      \"down_threshold\": 2916\n    },\n    {\n      \"profile_id\": \"string\",\n      \"profile_name\": \"string\",\n      \"type\": \"string\",\n      \"is_default\": true,\n      \"trouble_threshold\": 1910,\n      \"critical_threshold\": 6520,\n      \"down_threshold\": 1080\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f72a7bff-81b3-490c-8855-bf6c2976a63e",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "003d2c74-a4bc-4f4e-8c4f-83481bf1912f",
+          "name": "Create a threshold profile",
+          "request": {
+            "name": "Create a threshold profile",
+            "description": {
+              "content": "Create a new threshold profile for alert triggering.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threshold_profiles"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;version=2.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile_name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"trouble_threshold\": \"<integer>\",\n  \"critical_threshold\": \"<integer>\",\n  \"down_threshold\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "a2f5c5c7-0dfb-41f6-863e-683e4369f6f2",
+              "name": "Threshold profile created successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Website Thresholds\",\n  \"type\": \"URL\",\n  \"trouble_threshold\": 3000,\n  \"critical_threshold\": 5000,\n  \"down_threshold\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"profile_id\": \"string\",\n    \"profile_name\": \"string\",\n    \"type\": \"string\",\n    \"is_default\": true,\n    \"trouble_threshold\": 2577,\n    \"critical_threshold\": 4504,\n    \"down_threshold\": 7267\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "fd39a74a-d8a1-4b7d-8e54-821cde3f9424",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Website Thresholds\",\n  \"type\": \"URL\",\n  \"trouble_threshold\": 3000,\n  \"critical_threshold\": 5000,\n  \"down_threshold\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d9b28ea0-1522-4390-84fe-9068ebdc082c",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Website Thresholds\",\n  \"type\": \"URL\",\n  \"trouble_threshold\": 3000,\n  \"critical_threshold\": 5000,\n  \"down_threshold\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2851c6cf-1cc3-477a-ae70-2877fa875e48",
+          "name": "Get a threshold profile",
+          "request": {
+            "name": "Get a threshold profile",
+            "description": {
+              "content": "Retrieve details of a specific threshold profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threshold_profiles",
+                ":profile_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_id",
+                  "description": "(Required) Unique profile identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "2c1c6617-6412-4d93-babe-b0f20b1afe95",
+              "name": "Threshold profile returned successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"profile_id\": \"string\",\n    \"profile_name\": \"string\",\n    \"type\": \"string\",\n    \"is_default\": true,\n    \"trouble_threshold\": 2577,\n    \"critical_threshold\": 4504,\n    \"down_threshold\": 7267\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "f83060d5-e706-423f-9b97-a114251fc725",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "52225870-bcfb-48bb-a612-6e53be66dc81",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "404eebf8-e4a9-4739-8d52-3a06912bfb09",
+          "name": "Update a threshold profile",
+          "request": {
+            "name": "Update a threshold profile",
+            "description": {
+              "content": "Modify an existing threshold profile.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threshold_profiles",
+                ":profile_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_id",
+                  "description": "(Required) Unique profile identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;version=2.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "PUT",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"profile_name\": \"<string>\",\n  \"type\": \"<string>\",\n  \"trouble_threshold\": \"<integer>\",\n  \"critical_threshold\": \"<integer>\",\n  \"down_threshold\": \"<integer>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "6174a84f-4e55-4698-9377-d1a9d75f794c",
+              "name": "Threshold profile updated successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Website Thresholds\",\n  \"type\": \"URL\",\n  \"trouble_threshold\": 3000,\n  \"critical_threshold\": 5000,\n  \"down_threshold\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"profile_id\": \"string\",\n    \"profile_name\": \"string\",\n    \"type\": \"string\",\n    \"is_default\": true,\n    \"trouble_threshold\": 2577,\n    \"critical_threshold\": 4504,\n    \"down_threshold\": 7267\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "67b0923f-defb-4718-b2ed-3a94c5582134",
+              "name": "Invalid request parameters or body",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Website Thresholds\",\n  \"type\": \"URL\",\n  \"trouble_threshold\": 3000,\n  \"critical_threshold\": 5000,\n  \"down_threshold\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "570ab8cd-0c16-43cd-85be-4e8ea294d069",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Website Thresholds\",\n  \"type\": \"URL\",\n  \"trouble_threshold\": 3000,\n  \"critical_threshold\": 5000,\n  \"down_threshold\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "25777687-7d0d-4f27-8ea2-332002033f50",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"profile_name\": \"Website Thresholds\",\n  \"type\": \"URL\",\n  \"trouble_threshold\": 3000,\n  \"critical_threshold\": 5000,\n  \"down_threshold\": 1\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "2b576d40-e82c-4512-a123-3ad73dc4b524",
+          "name": "Delete a threshold profile",
+          "request": {
+            "name": "Delete a threshold profile",
+            "description": {
+              "content": "Remove a threshold profile from the account.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "threshold_profiles",
+                ":profile_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "profile_id",
+                  "description": "(Required) Unique profile identifier"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "method": "DELETE",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "53115185-9a00-4688-a548-5c735a8375ef",
+              "name": "Threshold profile deleted successfully",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"success\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "d5a2d174-5eb1-494c-a5e0-3f1610de7071",
+              "name": "Authentication failed or token is missing",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "0c1e7373-b973-411d-9570-f9c7fb6f43dd",
+              "name": "The requested resource was not found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "threshold_profiles",
+                    ":profile_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "profile_id",
+                      "description": "(Required) Unique profile identifier"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "disabled": false,
+                    "description": "API version header. Defaults to version 2.0.",
+                    "key": "Accept",
+                    "value": "application/json; version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "method": "DELETE",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json;version=2.0"
+                }
+              ],
+              "body": "{\n  \"code\": 2164,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://www.site24x7.com/api",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "bearer",
+    "bearer": [
+      {
+        "key": "token",
+        "value": "{{bearerToken}}"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3f0eb2b9-0efe-45e8-8322-dc096a4bf0fe",
+    "name": "Site24x7 REST Alarms Threshold Profiles API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.\n\nContact Support:\n Name: Site24x7 Support",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,158 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Current Status API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Current Status",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get monitor group status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitor_groups/:group_id/status",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor group identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve the aggregated real-time status of all monitors in a group."
+        },
+        {
+          "info": {
+            "name": "Get monitor status count in a group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitor_groups/:group_id/status/count",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor group identifier"
+              }
+            ]
+          },
+          "docs": "Count monitors by status (Up, Down, Trouble, Critical) within a specific group."
+        },
+        {
+          "info": {
+            "name": "Get current monitor status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/status",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve the real-time status of a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Get status by monitor type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/status/monitor_type/:type",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "type",
+                "value": "",
+                "type": "path",
+                "description": "Monitor type identifier (e.g., URL, SERVER, SSL_CERT)"
+              }
+            ]
+          },
+          "docs": "Retrieve status information filtered by a specific monitor type."
+        },
+        {
+          "info": {
+            "name": "Get monitor status counts",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/status/count",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Get counts of monitors grouped by status (Up, Down, Trouble, Critical, Suspended, Maintenance)."
+        },
+        {
+          "info": {
+            "name": "Get status counts by monitor type",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/status/monitor_type/count",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve status counts grouped by monitor type."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

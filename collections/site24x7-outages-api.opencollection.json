@@ -1,0 +1,341 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Outages API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Outages",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List outages",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/outages",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve outage details across all monitors."
+        },
+        {
+          "info": {
+            "name": "Create an outage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/outages",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create an outage record for a monitor by ID or display name."
+        },
+        {
+          "info": {
+            "name": "Delete an outage",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/outages/:outage_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outage_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique outage identifier"
+              }
+            ]
+          },
+          "docs": "Remove an outage record."
+        },
+        {
+          "info": {
+            "name": "Get outages for a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/outages/monitor/:monitor_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve outage history for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Get outages for a monitor group",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/outages/monitor_group/:group_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "group_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor group identifier"
+              },
+              {
+                "name": "start_date",
+                "value": "",
+                "type": "query",
+                "description": "Start of the time range (ISO 8601)"
+              },
+              {
+                "name": "end_date",
+                "value": "",
+                "type": "query",
+                "description": "End of the time range (ISO 8601)"
+              }
+            ]
+          },
+          "docs": "Retrieve outage details grouped by monitor group."
+        },
+        {
+          "info": {
+            "name": "Mark outage as maintenance",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/outages/:outage_id/mark_as_maintenance",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outage_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique outage identifier"
+              }
+            ]
+          },
+          "docs": "Convert an outage record to a maintenance window entry."
+        },
+        {
+          "info": {
+            "name": "Mark maintenance as outage",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/outages/:outage_id/mark_as_outage",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outage_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique outage identifier"
+              }
+            ]
+          },
+          "docs": "Convert a maintenance window entry back to an outage."
+        },
+        {
+          "info": {
+            "name": "List outage comments",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/outages/:outage_id/comments",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outage_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique outage identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve all comments associated with a specific outage."
+        },
+        {
+          "info": {
+            "name": "Add outage comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/outages/:outage_id/comments",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outage_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique outage identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Add a comment to a specific outage."
+        },
+        {
+          "info": {
+            "name": "Update an outage comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/outages/:outage_id/comments/:comment_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing comment on an outage."
+        },
+        {
+          "info": {
+            "name": "Delete an outage comment",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/outages/:outage_id/comments/:comment_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "outage_id",
+                "value": "",
+                "type": "path"
+              },
+              {
+                "name": "comment_id",
+                "value": "",
+                "type": "path"
+              }
+            ]
+          },
+          "docs": "Remove a comment from an outage."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

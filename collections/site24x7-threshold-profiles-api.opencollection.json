@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Threshold Profiles API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Threshold Profiles",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List threshold profiles",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/threshold_profiles",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve all threshold profiles configured in the account."
+        },
+        {
+          "info": {
+            "name": "Create a threshold profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/threshold_profiles",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new threshold profile for alert triggering."
+        },
+        {
+          "info": {
+            "name": "Get a threshold profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/threshold_profiles/:profile_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique profile identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific threshold profile."
+        },
+        {
+          "info": {
+            "name": "Update a threshold profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/threshold_profiles/:profile_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique profile identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing threshold profile."
+        },
+        {
+          "info": {
+            "name": "Delete a threshold profile",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/threshold_profiles/:profile_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "profile_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique profile identifier"
+              }
+            ]
+          },
+          "docs": "Remove a threshold profile from the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

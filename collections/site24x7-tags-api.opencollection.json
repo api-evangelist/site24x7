@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Tags API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Tags",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all tags",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/tags",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve all tags configured in the account."
+        },
+        {
+          "info": {
+            "name": "Create a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/tags",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new tag for organizing monitors."
+        },
+        {
+          "info": {
+            "name": "Get a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/tags/:tag_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique tag identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve details of a specific tag."
+        },
+        {
+          "info": {
+            "name": "Update a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/tags/:tag_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique tag identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify an existing tag."
+        },
+        {
+          "info": {
+            "name": "Delete a tag",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/tags/:tag_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "tag_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique tag identifier"
+              }
+            ]
+          },
+          "docs": "Remove a tag from the account."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

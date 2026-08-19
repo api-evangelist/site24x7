@@ -1,0 +1,341 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Site24x7 REST Alarms Monitors API",
+    "version": "2.0"
+  },
+  "request": {
+    "auth": {
+      "type": "bearer",
+      "token": "{{bearerToken}}"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Monitors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all monitors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitors",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ]
+          },
+          "docs": "Retrieve a list of all monitors configured in the account."
+        },
+        {
+          "info": {
+            "name": "Create a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/monitors",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create a new monitor. The monitor type is determined by the `type` field in the request body."
+        },
+        {
+          "info": {
+            "name": "Get a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve the configuration and details of a specific monitor by its ID."
+        },
+        {
+          "info": {
+            "name": "Update a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Modify the configuration of an existing monitor."
+        },
+        {
+          "info": {
+            "name": "Delete a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Permanently remove a monitor from the account."
+        },
+        {
+          "info": {
+            "name": "Get a monitor by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitors/name/:display_name",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "display_name",
+                "value": "",
+                "type": "path",
+                "description": "Display name of the monitor"
+              }
+            ]
+          },
+          "docs": "Retrieve monitor details using the monitor's display name."
+        },
+        {
+          "info": {
+            "name": "Delete a monitor by name",
+            "type": "http"
+          },
+          "http": {
+            "method": "DELETE",
+            "url": "https://www.site24x7.com/api/monitors/name/:display_name",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "display_name",
+                "value": "",
+                "type": "path",
+                "description": "Display name of the monitor"
+              }
+            ]
+          },
+          "docs": "Remove a monitor using its display name."
+        },
+        {
+          "info": {
+            "name": "Activate a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/activate",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Re-enable a previously suspended monitor."
+        },
+        {
+          "info": {
+            "name": "Suspend a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/suspend",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Pause monitoring operations for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Poll a monitor immediately",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/poll",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Initiate an immediate check for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Get polling status",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/polling_status",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Retrieve the current polling status for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Mute a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/mute",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Silence alert notifications for a specific monitor."
+        },
+        {
+          "info": {
+            "name": "Unmute a monitor",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://www.site24x7.com/api/monitors/:monitor_id/unmute",
+            "headers": [
+              {
+                "name": "Accept",
+                "value": ""
+              }
+            ],
+            "params": [
+              {
+                "name": "monitor_id",
+                "value": "",
+                "type": "path",
+                "description": "Unique monitor identifier"
+              }
+            ]
+          },
+          "docs": "Resume alert notifications for a previously muted monitor."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
