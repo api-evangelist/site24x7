@@ -171,6 +171,8 @@ apis:
   humanURL: https://www.site24x7.com/help/api/
   baseURL: https://api.site24x7.com/api
   tags:
+  - User
+  tags_raw:
   - Users
   properties:
   - type: OpenAPI
