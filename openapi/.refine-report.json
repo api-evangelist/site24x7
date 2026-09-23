@@ -1,17 +1,7 @@
 {
   "provider": "site24x7",
   "sources": [
-    "site24x7-alarms-api-openapi.yml",
-    "site24x7-current-status-api-openapi.yml",
-    "site24x7-maintenance-windows-api-openapi.yml",
-    "site24x7-monitor-groups-api-openapi.yml",
-    "site24x7-monitors-api-openapi.yml",
-    "site24x7-notification-profiles-api-openapi.yml",
-    "site24x7-outages-api-openapi.yml",
-    "site24x7-reports-api-openapi.yml",
-    "site24x7-tags-api-openapi.yml",
-    "site24x7-threshold-profiles-api-openapi.yml",
-    "site24x7-users-api-openapi.yml"
+    "_original/site24x7-api-openapi.yml"
   ],
   "outputs": [
     "site24x7-alarms-api-openapi.yml",
@@ -29,6 +19,22 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "site24x7-api-openapi.yml: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "site24x7-alarms-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-current-status-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-maintenance-windows-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-monitor-groups-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-monitors-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-notification-profiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-outages-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-tags-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-threshold-profiles-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "site24x7-users-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

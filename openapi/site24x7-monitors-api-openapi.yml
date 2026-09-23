@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Site24x7 REST Alarms Monitors API
-  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  title: Site24x7 REST Monitors API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.
   version: '2.0'
   contact:
     name: Site24x7 Support
@@ -325,56 +325,35 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    MonitorId:
-      name: monitor_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor identifier
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
-  responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ApiResponse:
+    MonitorResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Monitor'
+    MonitorListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Monitor'
+    ErrorResponse:
       type: object
       properties:
         code:
           type: integer
-          description: Response code (0 = success)
-          example: 0
+          description: Error code
         message:
           type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
     Monitor:
       type: object
       properties:
@@ -433,34 +412,6 @@ components:
           type: string
           format: date-time
           description: Timestamp of the last polling check
-    MonitorResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/Monitor'
-    MonitorListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Monitor'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
     MonitorCreate:
       type: object
       required:
@@ -508,6 +459,55 @@ components:
           type: integer
           description: Request timeout in seconds
           default: 10
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+  responses:
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
   securitySchemes:
     ZohoOAuth:
       type: http

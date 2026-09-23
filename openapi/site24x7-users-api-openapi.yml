@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Site24x7 REST Alarms Users API
-  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  title: Site24x7 REST Users API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.
   version: '2.0'
   contact:
     name: Site24x7 Support
@@ -164,12 +164,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters or body
       content:
@@ -182,28 +176,13 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
-          type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
-    UserResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/User'
     UserListResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -213,51 +192,13 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/User'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
-    User:
-      type: object
-      properties:
-        user_id:
-          type: string
-          description: Unique user identifier
-        display_name:
-          type: string
-          description: User's display name
-        email_address:
-          type: array
-          items:
-            type: string
-            format: email
-          description: List of email addresses for the user
-        mobile_sms:
-          type: array
-          items:
-            type: string
-          description: List of mobile numbers for SMS alerts
-        role:
-          type: integer
-          description: User role (0=Super Admin, 1=Admin, 2=Operator, 3=Read Only)
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-        notify_via:
-          type: array
-          items:
-            type: integer
-          description: Notification channels (1=Email, 2=SMS, 3=Voice, 4=IM)
+    UserResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/User'
     UserCreate:
       type: object
       required:
@@ -294,6 +235,65 @@ components:
           items:
             type: integer
           description: Notification method codes
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique user identifier
+        display_name:
+          type: string
+          description: User's display name
+        email_address:
+          type: array
+          items:
+            type: string
+            format: email
+          description: List of email addresses for the user
+        mobile_sms:
+          type: array
+          items:
+            type: string
+          description: List of mobile numbers for SMS alerts
+        role:
+          type: integer
+          description: User role (0=Super Admin, 1=Admin, 2=Operator, 3=Read Only)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+        notify_via:
+          type: array
+          items:
+            type: integer
+          description: Notification channels (1=Email, 2=SMS, 3=Voice, 4=IM)
   parameters:
     ApiVersionHeader:
       name: Accept

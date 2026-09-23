@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Site24x7 REST Alarms API
-  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.
   version: '2.0'
   contact:
     name: Site24x7 Support
@@ -103,21 +103,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    MonitorId:
-      name: monitor_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor identifier
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
     EndDate:
       name: end_date
       in: query
@@ -126,13 +111,13 @@ components:
         type: string
         format: date-time
       description: End of the time range (ISO 8601)
-    GroupId:
-      name: group_id
+    MonitorId:
+      name: monitor_id
       in: path
       required: true
       schema:
         type: string
-      description: Unique monitor group identifier
+      description: Unique monitor identifier
     StartDate:
       name: start_date
       in: query
@@ -141,34 +126,47 @@ components:
         type: string
         format: date-time
       description: Start of the time range (ISO 8601)
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
   responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested resource was not found
       content:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ApiResponse:
+    ErrorResponse:
       type: object
       properties:
         code:
           type: integer
-          description: Response code (0 = success)
-          example: 0
+          description: Error code
         message:
           type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
     Alarm:
       type: object
       properties:
@@ -194,18 +192,20 @@ components:
         reason:
           type: string
           description: Reason for the alarm
-    ErrorResponse:
+    ApiResponse:
       type: object
       properties:
         code:
           type: integer
-          description: Error code
+          description: Response code (0 = success)
+          example: 0
         message:
           type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
     AlarmListResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'

@@ -1,7 +1,7 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Site24x7 REST Alarms Monitor Groups API
-  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.
+  title: Site24x7 REST Monitor Groups API
+  description: The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.
   version: '2.0'
   contact:
     name: Site24x7 Support
@@ -201,63 +201,36 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    MonitorId:
-      name: monitor_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor identifier
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
-    GroupId:
-      name: group_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor group identifier
-  responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ApiResponse:
+    MonitorGroupListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/MonitorGroup'
+    MonitorGroup:
       type: object
       properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
+        group_id:
           type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
+          description: Unique identifier for the monitor group
+        display_name:
+          type: string
+          description: Human-readable name of the monitor group
+        description:
+          type: string
+          description: Description of the monitor group
+        monitors:
+          type: array
+          items:
+            type: string
+          description: List of monitor IDs in this group
+        health_threshold_count:
+          type: integer
+          description: Number of monitors that must be down to mark group as down
     MonitorGroupCreate:
       type: object
       required:
@@ -285,26 +258,6 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/MonitorGroup'
-    MonitorGroup:
-      type: object
-      properties:
-        group_id:
-          type: string
-          description: Unique identifier for the monitor group
-        display_name:
-          type: string
-          description: Human-readable name of the monitor group
-        description:
-          type: string
-          description: Description of the monitor group
-        monitors:
-          type: array
-          items:
-            type: string
-          description: List of monitor IDs in this group
-        health_threshold_count:
-          type: integer
-          description: Number of monitors that must be down to mark group as down
     ErrorResponse:
       type: object
       properties:
@@ -317,15 +270,62 @@ components:
         error_info:
           type: string
           description: Additional error details
-    MonitorGroupListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/MonitorGroup'
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+  responses:
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
   securitySchemes:
     ZohoOAuth:
       type: http
