@@ -329,26 +329,47 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token is missing
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    OutageListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Outage'
+    CommentListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Comment'
+    OutageCreate:
+      type: object
+      required:
+      - monitor_id
+      properties:
+        monitor_id:
+          type: string
+          description: Monitor ID for which to create the outage
+        display_name:
+          type: string
+          description: Monitor display name (alternative to monitor_id)
+        down_time:
+          type: string
+          format: date-time
+          description: Outage start time
+        up_time:
+          type: string
+          format: date-time
+          description: Outage end time
+        reason:
+          type: string
+          description: Reason for the outage
     Outage:
       type: object
       properties:
@@ -378,40 +399,6 @@ components:
         reason:
           type: string
           description: Reason for the outage
-    CommentCreate:
-      type: object
-      required:
-      - comment
-      properties:
-        comment:
-          type: string
-          description: Comment text
-          example: Investigating the root cause of this outage
-    CommentResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/Comment'
-    OutageListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Outage'
-    CommentListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Comment'
     OutageResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -438,18 +425,6 @@ components:
           type: string
           format: date-time
           description: Comment creation timestamp
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
     ApiResponse:
       type: object
       properties:
@@ -464,52 +439,35 @@ components:
       required:
       - code
       - message
-    OutageCreate:
+    CommentResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Comment'
+    CommentCreate:
       type: object
       required:
-      - monitor_id
+      - comment
       properties:
-        monitor_id:
+        comment:
           type: string
-          description: Monitor ID for which to create the outage
-        display_name:
+          description: Comment text
+          example: Investigating the root cause of this outage
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
           type: string
-          description: Monitor display name (alternative to monitor_id)
-        down_time:
+          description: Error description
+        error_info:
           type: string
-          format: date-time
-          description: Outage start time
-        up_time:
-          type: string
-          format: date-time
-          description: Outage end time
-        reason:
-          type: string
-          description: Reason for the outage
+          description: Additional error details
   parameters:
-    EndDate:
-      name: end_date
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-      description: End of the time range (ISO 8601)
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
-    MonitorId:
-      name: monitor_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor identifier
     StartDate:
       name: start_date
       in: query
@@ -525,6 +483,48 @@ components:
       schema:
         type: string
       description: Unique monitor group identifier
+    EndDate:
+      name: end_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: End of the time range (ISO 8601)
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+  responses:
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     ZohoOAuth:
       type: http

@@ -246,19 +246,34 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
     Unauthorized:
       description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   parameters:
+    StartDate:
+      name: start_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: Start of the time range (ISO 8601)
+    MonitorIdQuery:
+      name: monitor_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter by monitor ID
     EndDate:
       name: end_date
       in: query
@@ -267,13 +282,6 @@ components:
         type: string
         format: date-time
       description: End of the time range (ISO 8601)
-    MonitorIdQuery:
-      name: monitor_id
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Filter by monitor ID
     GroupIdQuery:
       name: group_id
       in: query
@@ -289,14 +297,6 @@ components:
         type: string
         default: application/json; version=2.0
       description: API version header. Defaults to version 2.0.
-    StartDate:
-      name: start_date
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-      description: Start of the time range (ISO 8601)
   schemas:
     ReportData:
       type: object
@@ -328,18 +328,6 @@ components:
           type: string
           format: date-time
           description: Report period end
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
     ApiResponse:
       type: object
       properties:
@@ -365,6 +353,18 @@ components:
             - type: array
               items:
                 $ref: '#/components/schemas/ReportData'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
   securitySchemes:
     ZohoOAuth:
       type: http

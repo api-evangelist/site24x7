@@ -102,7 +102,76 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  schemas:
+    AlarmListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Alarm'
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
+    Alarm:
+      type: object
+      properties:
+        alarm_id:
+          type: string
+          description: Unique alarm identifier
+        monitor_id:
+          type: string
+          description: Associated monitor identifier
+        display_name:
+          type: string
+          description: Monitor display name
+        alarm_time:
+          type: string
+          format: date-time
+          description: Time the alarm was triggered
+        alarm_type:
+          type: string
+          description: Type of alarm (e.g., DOWN, TROUBLE, CRITICAL)
+        status:
+          type: integer
+          description: Alarm status
+        reason:
+          type: string
+          description: Reason for the alarm
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
   parameters:
+    StartDate:
+      name: start_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: Start of the time range (ISO 8601)
     EndDate:
       name: end_date
       in: query
@@ -118,14 +187,6 @@ components:
       schema:
         type: string
       description: Unique monitor identifier
-    StartDate:
-      name: start_date
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-      description: Start of the time range (ISO 8601)
     ApiVersionHeader:
       name: Accept
       in: header
@@ -154,67 +215,6 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
-    Alarm:
-      type: object
-      properties:
-        alarm_id:
-          type: string
-          description: Unique alarm identifier
-        monitor_id:
-          type: string
-          description: Associated monitor identifier
-        display_name:
-          type: string
-          description: Monitor display name
-        alarm_time:
-          type: string
-          format: date-time
-          description: Time the alarm was triggered
-        alarm_type:
-          type: string
-          description: Type of alarm (e.g., DOWN, TROUBLE, CRITICAL)
-        status:
-          type: integer
-          description: Alarm status
-        reason:
-          type: string
-          description: Reason for the alarm
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
-          type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
-    AlarmListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Alarm'
   securitySchemes:
     ZohoOAuth:
       type: http

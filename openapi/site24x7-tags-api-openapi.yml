@@ -163,48 +163,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token is missing
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    Tag:
-      type: object
-      properties:
-        tag_id:
-          type: string
-          description: Unique tag identifier
-        tag_name:
-          type: string
-          description: Tag name
-        tag_color:
-          type: string
-          description: Tag color in hex format
-          example: '#FF0000'
-    TagListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Tag'
     TagCreate:
       type: object
       required:
@@ -218,18 +177,28 @@ components:
           type: string
           description: Color for the tag (hex)
           example: '#4CAF50'
-    ErrorResponse:
+    TagListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Tag'
+    Tag:
       type: object
       properties:
-        code:
-          type: integer
-          description: Error code
-        message:
+        tag_id:
           type: string
-          description: Error description
-        error_info:
+          description: Unique tag identifier
+        tag_name:
           type: string
-          description: Additional error details
+          description: Tag name
+        tag_color:
+          type: string
+          description: Tag color in hex format
+          example: '#FF0000'
     ApiResponse:
       type: object
       properties:
@@ -251,6 +220,18 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/Tag'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
   parameters:
     ApiVersionHeader:
       name: Accept
@@ -260,6 +241,25 @@ components:
         type: string
         default: application/json; version=2.0
       description: API version header. Defaults to version 2.0.
+  responses:
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     ZohoOAuth:
       type: http

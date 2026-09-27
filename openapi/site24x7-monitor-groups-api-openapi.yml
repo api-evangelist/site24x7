@@ -202,6 +202,13 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    MonitorGroupResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/MonitorGroup'
     MonitorGroupListResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -211,26 +218,6 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/MonitorGroup'
-    MonitorGroup:
-      type: object
-      properties:
-        group_id:
-          type: string
-          description: Unique identifier for the monitor group
-        display_name:
-          type: string
-          description: Human-readable name of the monitor group
-        description:
-          type: string
-          description: Description of the monitor group
-        monitors:
-          type: array
-          items:
-            type: string
-          description: List of monitor IDs in this group
-        health_threshold_count:
-          type: integer
-          description: Number of monitors that must be down to mark group as down
     MonitorGroupCreate:
       type: object
       required:
@@ -251,25 +238,26 @@ components:
         health_threshold_count:
           type: integer
           description: Number of monitors that must be down to alert
-    MonitorGroupResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/MonitorGroup'
-    ErrorResponse:
+    MonitorGroup:
       type: object
       properties:
-        code:
+        group_id:
+          type: string
+          description: Unique identifier for the monitor group
+        display_name:
+          type: string
+          description: Human-readable name of the monitor group
+        description:
+          type: string
+          description: Description of the monitor group
+        monitors:
+          type: array
+          items:
+            type: string
+          description: List of monitor IDs in this group
+        health_threshold_count:
           type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
+          description: Number of monitors that must be down to mark group as down
     ApiResponse:
       type: object
       properties:
@@ -284,26 +272,26 @@ components:
       required:
       - code
       - message
-  responses:
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token is missing
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
   parameters:
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
     ApiVersionHeader:
       name: Accept
       in: header
@@ -319,13 +307,25 @@ components:
       schema:
         type: string
       description: Unique monitor identifier
-    GroupId:
-      name: group_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor group identifier
+  responses:
+    NotFound:
+      description: The requested resource was not found
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     ZohoOAuth:
       type: http
