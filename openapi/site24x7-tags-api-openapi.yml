@@ -163,42 +163,16 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
   schemas:
-    TagCreate:
-      type: object
-      required:
-      - tag_name
-      properties:
-        tag_name:
-          type: string
-          description: Name for the tag
-          example: production
-        tag_color:
-          type: string
-          description: Color for the tag (hex)
-          example: '#4CAF50'
-    TagListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Tag'
-    Tag:
-      type: object
-      properties:
-        tag_id:
-          type: string
-          description: Unique tag identifier
-        tag_name:
-          type: string
-          description: Tag name
-        tag_color:
-          type: string
-          description: Tag color in hex format
-          example: '#FF0000'
     ApiResponse:
       type: object
       properties:
@@ -213,6 +187,15 @@ components:
       required:
       - code
       - message
+    TagListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Tag'
     TagResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -220,6 +203,19 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/Tag'
+    TagCreate:
+      type: object
+      required:
+      - tag_name
+      properties:
+        tag_name:
+          type: string
+          description: Name for the tag
+          example: production
+        tag_color:
+          type: string
+          description: Color for the tag (hex)
+          example: '#4CAF50'
     ErrorResponse:
       type: object
       properties:
@@ -232,16 +228,26 @@ components:
         error_info:
           type: string
           description: Additional error details
-  parameters:
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
+    Tag:
+      type: object
+      properties:
+        tag_id:
+          type: string
+          description: Unique tag identifier
+        tag_name:
+          type: string
+          description: Tag name
+        tag_color:
+          type: string
+          description: Tag color in hex format
+          example: '#FF0000'
   responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested resource was not found
       content:
@@ -250,12 +256,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:

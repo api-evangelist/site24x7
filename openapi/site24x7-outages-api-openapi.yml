@@ -330,46 +330,29 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    OutageListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Outage'
-    CommentListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Comment'
-    OutageCreate:
+    CommentCreate:
       type: object
       required:
-      - monitor_id
+      - comment
       properties:
-        monitor_id:
+        comment:
           type: string
-          description: Monitor ID for which to create the outage
-        display_name:
+          description: Comment text
+          example: Investigating the root cause of this outage
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
           type: string
-          description: Monitor display name (alternative to monitor_id)
-        down_time:
-          type: string
-          format: date-time
-          description: Outage start time
-        up_time:
-          type: string
-          format: date-time
-          description: Outage end time
-        reason:
-          type: string
-          description: Reason for the outage
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
     Outage:
       type: object
       properties:
@@ -399,13 +382,6 @@ components:
         reason:
           type: string
           description: Reason for the outage
-    OutageResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/Outage'
     Comment:
       type: object
       properties:
@@ -425,20 +401,22 @@ components:
           type: string
           format: date-time
           description: Comment creation timestamp
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
-          type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
+    CommentListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Comment'
+    OutageResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Outage'
     CommentResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -446,15 +424,37 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/Comment'
-    CommentCreate:
+    OutageCreate:
       type: object
       required:
-      - comment
+      - monitor_id
       properties:
-        comment:
+        monitor_id:
           type: string
-          description: Comment text
-          example: Investigating the root cause of this outage
+          description: Monitor ID for which to create the outage
+        display_name:
+          type: string
+          description: Monitor display name (alternative to monitor_id)
+        down_time:
+          type: string
+          format: date-time
+          description: Outage start time
+        up_time:
+          type: string
+          format: date-time
+          description: Outage end time
+        reason:
+          type: string
+          description: Reason for the outage
+    OutageListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Outage'
     ErrorResponse:
       type: object
       properties:
@@ -468,14 +468,14 @@ components:
           type: string
           description: Additional error details
   parameters:
-    StartDate:
-      name: start_date
-      in: query
+    ApiVersionHeader:
+      name: Accept
+      in: header
       required: false
       schema:
         type: string
-        format: date-time
-      description: Start of the time range (ISO 8601)
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
     GroupId:
       name: group_id
       in: path
@@ -498,14 +498,14 @@ components:
       schema:
         type: string
       description: Unique monitor identifier
-    ApiVersionHeader:
-      name: Accept
-      in: header
+    StartDate:
+      name: start_date
+      in: query
       required: false
       schema:
         type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
+        format: date-time
+      description: Start of the time range (ISO 8601)
   responses:
     NotFound:
       description: The requested resource was not found
@@ -513,14 +513,14 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
+    Unauthorized:
+      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token is missing
+    BadRequest:
+      description: Invalid request parameters or body
       content:
         application/json;version=2.0:
           schema:

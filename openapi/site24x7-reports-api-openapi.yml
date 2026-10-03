@@ -245,50 +245,7 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   parameters:
-    StartDate:
-      name: start_date
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-      description: Start of the time range (ISO 8601)
-    MonitorIdQuery:
-      name: monitor_id
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Filter by monitor ID
-    EndDate:
-      name: end_date
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-      description: End of the time range (ISO 8601)
-    GroupIdQuery:
-      name: group_id
-      in: query
-      required: false
-      schema:
-        type: string
-      description: Filter by monitor group ID
     ApiVersionHeader:
       name: Accept
       in: header
@@ -297,7 +254,51 @@ components:
         type: string
         default: application/json; version=2.0
       description: API version header. Defaults to version 2.0.
+    EndDate:
+      name: end_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: End of the time range (ISO 8601)
+    MonitorIdQuery:
+      name: monitor_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter by monitor ID
+    GroupIdQuery:
+      name: group_id
+      in: query
+      required: false
+      schema:
+        type: string
+      description: Filter by monitor group ID
+    StartDate:
+      name: start_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: Start of the time range (ISO 8601)
   schemas:
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
     ReportData:
       type: object
       properties:
@@ -328,31 +329,6 @@ components:
           type: string
           format: date-time
           description: Report period end
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
-          type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
-    ReportResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            oneOf:
-            - $ref: '#/components/schemas/ReportData'
-            - type: array
-              items:
-                $ref: '#/components/schemas/ReportData'
     ErrorResponse:
       type: object
       properties:
@@ -365,6 +341,30 @@ components:
         error_info:
           type: string
           description: Additional error details
+    ReportResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            oneOf:
+            - $ref: '#/components/schemas/ReportData'
+            - type: array
+              items:
+                $ref: '#/components/schemas/ReportData'
+  responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     ZohoOAuth:
       type: http

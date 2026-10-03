@@ -164,55 +164,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    UserResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/User'
-    User:
-      type: object
-      properties:
-        user_id:
-          type: string
-          description: Unique user identifier
-        display_name:
-          type: string
-          description: User's display name
-        email_address:
-          type: array
-          items:
-            type: string
-            format: email
-          description: List of email addresses for the user
-        mobile_sms:
-          type: array
-          items:
-            type: string
-          description: List of mobile numbers for SMS alerts
-        role:
-          type: integer
-          description: User role (0=Super Admin, 1=Admin, 2=Operator, 3=Read Only)
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-        notify_via:
-          type: array
-          items:
-            type: integer
-          description: Notification channels (1=Email, 2=SMS, 3=Voice, 4=IM)
-    UserListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
     UserCreate:
       type: object
       required:
@@ -263,6 +214,48 @@ components:
       required:
       - code
       - message
+    UserListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
+    User:
+      type: object
+      properties:
+        user_id:
+          type: string
+          description: Unique user identifier
+        display_name:
+          type: string
+          description: User's display name
+        email_address:
+          type: array
+          items:
+            type: string
+            format: email
+          description: List of email addresses for the user
+        mobile_sms:
+          type: array
+          items:
+            type: string
+          description: List of mobile numbers for SMS alerts
+        role:
+          type: integer
+          description: User role (0=Super Admin, 1=Admin, 2=Operator, 3=Read Only)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+        notify_via:
+          type: array
+          items:
+            type: integer
+          description: Notification channels (1=Email, 2=SMS, 3=Voice, 4=IM)
     ErrorResponse:
       type: object
       properties:
@@ -275,6 +268,13 @@ components:
         error_info:
           type: string
           description: Additional error details
+    UserResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/User'
   parameters:
     ApiVersionHeader:
       name: Accept
@@ -285,6 +285,12 @@ components:
         default: application/json; version=2.0
       description: API version header. Defaults to version 2.0.
   responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested resource was not found
       content:
@@ -293,12 +299,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:

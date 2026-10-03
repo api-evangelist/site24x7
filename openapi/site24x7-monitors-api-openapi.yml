@@ -325,54 +325,37 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
   schemas:
-    MonitorCreate:
+    ApiResponse:
       type: object
-      required:
-      - display_name
-      - type
       properties:
-        display_name:
-          type: string
-          description: Human-readable name for the monitor
-          example: My Website Monitor
-        type:
-          type: string
-          description: Monitor type identifier
-          example: URL
-        website:
-          type: string
-          format: uri
-          description: URL to monitor (for website/API monitors)
-          example: https://example.com
-        check_frequency:
+        code:
           type: integer
-          description: Polling interval in minutes
-          default: 5
-          example: 5
-        location_profile_id:
+          description: Response code (0 = success)
+          example: 0
+        message:
           type: string
-          description: ID of the location profile for check locations
-        notification_profile_id:
-          type: string
-          description: ID of the notification profile for alerts
-        threshold_profile_id:
-          type: string
-          description: ID of the threshold profile for alerting criteria
-        monitor_groups:
-          type: array
-          items:
-            type: string
-          description: Monitor group IDs to assign this monitor to
-        tag_ids:
-          type: array
-          items:
-            type: string
-          description: Tag IDs to associate with this monitor
-        timeout:
-          type: integer
-          description: Request timeout in seconds
-          default: 10
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
     Monitor:
       type: object
       properties:
@@ -438,20 +421,6 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/Monitor'
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
-          type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
     MonitorListResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -473,23 +442,60 @@ components:
         error_info:
           type: string
           description: Additional error details
-  parameters:
-    MonitorId:
-      name: monitor_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor identifier
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
+    MonitorCreate:
+      type: object
+      required:
+      - display_name
+      - type
+      properties:
+        display_name:
+          type: string
+          description: Human-readable name for the monitor
+          example: My Website Monitor
+        type:
+          type: string
+          description: Monitor type identifier
+          example: URL
+        website:
+          type: string
+          format: uri
+          description: URL to monitor (for website/API monitors)
+          example: https://example.com
+        check_frequency:
+          type: integer
+          description: Polling interval in minutes
+          default: 5
+          example: 5
+        location_profile_id:
+          type: string
+          description: ID of the location profile for check locations
+        notification_profile_id:
+          type: string
+          description: ID of the notification profile for alerts
+        threshold_profile_id:
+          type: string
+          description: ID of the threshold profile for alerting criteria
+        monitor_groups:
+          type: array
+          items:
+            type: string
+          description: Monitor group IDs to assign this monitor to
+        tag_ids:
+          type: array
+          items:
+            type: string
+          description: Tag IDs to associate with this monitor
+        timeout:
+          type: integer
+          description: Request timeout in seconds
+          default: 10
   responses:
+    Unauthorized:
+      description: Authentication failed or token is missing
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested resource was not found
       content:
@@ -498,12 +504,6 @@ components:
             $ref: '#/components/schemas/ErrorResponse'
     BadRequest:
       description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:
