@@ -192,6 +192,9 @@ apis:
   - type: Documentation
     url: https://www.site24x7.com/help/api/
 common:
+  - type: CapabilityMap
+    url: capabilities/site24x7-capability-edges.yml
+    name: Site24x7 Business Capability Map
   - type: AgenticAccess
     url: agentic-access/site24x7-agentic-access.yml
   - type: TrustCenter
