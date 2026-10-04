@@ -202,14 +202,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   parameters:
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
     GroupId:
       name: group_id
       in: path
@@ -224,7 +216,43 @@ components:
       schema:
         type: string
       description: Unique monitor identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
   schemas:
+    MonitorGroupListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/MonitorGroup'
+    MonitorGroupResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/MonitorGroup'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
     ApiResponse:
       type: object
       properties:
@@ -239,13 +267,6 @@ components:
       required:
       - code
       - message
-    MonitorGroupResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/MonitorGroup'
     MonitorGroupCreate:
       type: object
       required:
@@ -286,36 +307,15 @@ components:
         health_threshold_count:
           type: integer
           description: Number of monitors that must be down to mark group as down
-    MonitorGroupListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/MonitorGroup'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
   responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
+    NotFound:
+      description: The requested resource was not found
       content:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:

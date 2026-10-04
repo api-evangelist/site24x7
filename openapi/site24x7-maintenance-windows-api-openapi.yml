@@ -163,30 +163,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
   schemas:
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
-          type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
     MaintenanceWindow:
       type: object
       properties:
@@ -227,6 +204,27 @@ components:
         perform_actions:
           type: boolean
           description: Whether automated actions should run during maintenance
+    MaintenanceWindowListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/MaintenanceWindow'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
     MaintenanceWindowCreate:
       type: object
       required:
@@ -278,27 +276,6 @@ components:
           type: boolean
           description: Allow automated actions during maintenance
           default: false
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
-    MaintenanceWindowListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/MaintenanceWindow'
     MaintenanceWindowResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -306,6 +283,20 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/MaintenanceWindow'
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
   responses:
     Unauthorized:
       description: Authentication failed or token is missing
@@ -325,6 +316,15 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
   securitySchemes:
     ZohoOAuth:
       type: http

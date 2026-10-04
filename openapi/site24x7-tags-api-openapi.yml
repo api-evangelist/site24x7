@@ -163,30 +163,33 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
   schemas:
-    ApiResponse:
+    TagCreate:
+      type: object
+      required:
+      - tag_name
+      properties:
+        tag_name:
+          type: string
+          description: Name for the tag
+          example: production
+        tag_color:
+          type: string
+          description: Color for the tag (hex)
+          example: '#4CAF50'
+    Tag:
       type: object
       properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
+        tag_id:
           type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
+          description: Unique tag identifier
+        tag_name:
+          type: string
+          description: Tag name
+        tag_color:
+          type: string
+          description: Tag color in hex format
+          example: '#FF0000'
     TagListResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -203,19 +206,6 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/Tag'
-    TagCreate:
-      type: object
-      required:
-      - tag_name
-      properties:
-        tag_name:
-          type: string
-          description: Name for the tag
-          example: production
-        tag_color:
-          type: string
-          description: Color for the tag (hex)
-          example: '#4CAF50'
     ErrorResponse:
       type: object
       properties:
@@ -228,19 +218,20 @@ components:
         error_info:
           type: string
           description: Additional error details
-    Tag:
+    ApiResponse:
       type: object
       properties:
-        tag_id:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
           type: string
-          description: Unique tag identifier
-        tag_name:
-          type: string
-          description: Tag name
-        tag_color:
-          type: string
-          description: Tag color in hex format
-          example: '#FF0000'
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
   responses:
     Unauthorized:
       description: Authentication failed or token is missing
@@ -260,6 +251,15 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
   securitySchemes:
     ZohoOAuth:
       type: http

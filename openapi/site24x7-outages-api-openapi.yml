@@ -330,6 +330,20 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    CommentResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Comment'
+    OutageResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Outage'
     CommentCreate:
       type: object
       required:
@@ -339,20 +353,18 @@ components:
           type: string
           description: Comment text
           example: Investigating the root cause of this outage
-    ApiResponse:
+    ErrorResponse:
       type: object
       properties:
         code:
           type: integer
-          description: Response code (0 = success)
-          example: 0
+          description: Error code
         message:
           type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
     Outage:
       type: object
       properties:
@@ -382,6 +394,15 @@ components:
         reason:
           type: string
           description: Reason for the outage
+    CommentListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Comment'
     Comment:
       type: object
       properties:
@@ -401,29 +422,6 @@ components:
           type: string
           format: date-time
           description: Comment creation timestamp
-    CommentListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Comment'
-    OutageResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/Outage'
-    CommentResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/Comment'
     OutageCreate:
       type: object
       required:
@@ -455,27 +453,21 @@ components:
             type: array
             items:
               $ref: '#/components/schemas/Outage'
-    ErrorResponse:
+    ApiResponse:
       type: object
       properties:
         code:
           type: integer
-          description: Error code
+          description: Response code (0 = success)
+          example: 0
         message:
           type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
   parameters:
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
     GroupId:
       name: group_id
       in: path
@@ -483,14 +475,6 @@ components:
       schema:
         type: string
       description: Unique monitor group identifier
-    EndDate:
-      name: end_date
-      in: query
-      required: false
-      schema:
-        type: string
-        format: date-time
-      description: End of the time range (ISO 8601)
     MonitorId:
       name: monitor_id
       in: path
@@ -506,6 +490,22 @@ components:
         type: string
         format: date-time
       description: Start of the time range (ISO 8601)
+    EndDate:
+      name: end_date
+      in: query
+      required: false
+      schema:
+        type: string
+        format: date-time
+      description: End of the time range (ISO 8601)
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
   responses:
     NotFound:
       description: The requested resource was not found

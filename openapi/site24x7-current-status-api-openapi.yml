@@ -160,6 +160,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   parameters:
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
     ApiVersionHeader:
       name: Accept
       in: header
@@ -168,13 +175,6 @@ components:
         type: string
         default: application/json; version=2.0
       description: API version header. Defaults to version 2.0.
-    GroupId:
-      name: group_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor group identifier
     MonitorId:
       name: monitor_id
       in: path
@@ -183,20 +183,6 @@ components:
         type: string
       description: Unique monitor identifier
   schemas:
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
-          type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
     ErrorResponse:
       type: object
       properties:
@@ -209,6 +195,38 @@ components:
         error_info:
           type: string
           description: Additional error details
+    StatusInfo:
+      type: object
+      properties:
+        monitor_id:
+          type: string
+          description: Monitor identifier
+        display_name:
+          type: string
+          description: Monitor display name
+        type:
+          type: string
+          description: Monitor type
+        status:
+          type: integer
+          description: Current status code (0=Down, 1=Up, 2=Trouble, 3=Critical, 5=Suspended, 7=Maintenance)
+          enum:
+          - 0
+          - 1
+          - 2
+          - 3
+          - 5
+          - 7
+        last_polled_time:
+          type: string
+          format: date-time
+          description: Time of the last polling check
+        unit:
+          type: string
+          description: Performance metric unit
+        response_time:
+          type: number
+          description: Latest response time in milliseconds
     StatusResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -242,38 +260,20 @@ components:
               maintenance:
                 type: integer
                 description: Number of monitors in maintenance
-    StatusInfo:
+    ApiResponse:
       type: object
       properties:
-        monitor_id:
-          type: string
-          description: Monitor identifier
-        display_name:
-          type: string
-          description: Monitor display name
-        type:
-          type: string
-          description: Monitor type
-        status:
+        code:
           type: integer
-          description: Current status code (0=Down, 1=Up, 2=Trouble, 3=Critical, 5=Suspended, 7=Maintenance)
-          enum:
-          - 0
-          - 1
-          - 2
-          - 3
-          - 5
-          - 7
-        last_polled_time:
+          description: Response code (0 = success)
+          example: 0
+        message:
           type: string
-          format: date-time
-          description: Time of the last polling check
-        unit:
-          type: string
-          description: Performance metric unit
-        response_time:
-          type: number
-          description: Latest response time in milliseconds
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
   responses:
     Unauthorized:
       description: Authentication failed or token is missing
