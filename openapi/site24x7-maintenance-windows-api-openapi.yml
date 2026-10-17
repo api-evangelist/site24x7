@@ -164,55 +164,6 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    MaintenanceWindow:
-      type: object
-      properties:
-        maintenance_id:
-          type: string
-          description: Unique maintenance window identifier
-        display_name:
-          type: string
-          description: Name of the maintenance window
-        description:
-          type: string
-          description: Description of the maintenance activity
-        maintenance_type:
-          type: integer
-          description: Schedule type (1=Once, 2=Daily, 3=Weekly, 4=Monthly)
-          enum:
-          - 1
-          - 2
-          - 3
-          - 4
-        start_date:
-          type: string
-          description: Start date of the maintenance window
-        end_date:
-          type: string
-          description: End date of the maintenance window
-        start_time:
-          type: string
-          description: Start time in HH:MM format
-        end_time:
-          type: string
-          description: End time in HH:MM format
-        monitors:
-          type: array
-          items:
-            type: string
-          description: Monitor IDs in the maintenance window
-        perform_actions:
-          type: boolean
-          description: Whether automated actions should run during maintenance
-    MaintenanceWindowListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/MaintenanceWindow'
     ErrorResponse:
       type: object
       properties:
@@ -276,6 +227,46 @@ components:
           type: boolean
           description: Allow automated actions during maintenance
           default: false
+    MaintenanceWindow:
+      type: object
+      properties:
+        maintenance_id:
+          type: string
+          description: Unique maintenance window identifier
+        display_name:
+          type: string
+          description: Name of the maintenance window
+        description:
+          type: string
+          description: Description of the maintenance activity
+        maintenance_type:
+          type: integer
+          description: Schedule type (1=Once, 2=Daily, 3=Weekly, 4=Monthly)
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        start_date:
+          type: string
+          description: Start date of the maintenance window
+        end_date:
+          type: string
+          description: End date of the maintenance window
+        start_time:
+          type: string
+          description: Start time in HH:MM format
+        end_time:
+          type: string
+          description: End time in HH:MM format
+        monitors:
+          type: array
+          items:
+            type: string
+          description: Monitor IDs in the maintenance window
+        perform_actions:
+          type: boolean
+          description: Whether automated actions should run during maintenance
     MaintenanceWindowResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -283,6 +274,15 @@ components:
         properties:
           data:
             $ref: '#/components/schemas/MaintenanceWindow'
+    MaintenanceWindowListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/MaintenanceWindow'
     ApiResponse:
       type: object
       properties:
@@ -298,8 +298,8 @@ components:
       - code
       - message
   responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
+    BadRequest:
+      description: Invalid request parameters or body
       content:
         application/json;version=2.0:
           schema:
@@ -310,8 +310,8 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
+    Unauthorized:
+      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:

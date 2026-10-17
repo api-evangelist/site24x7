@@ -148,23 +148,73 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
-    ProfileId:
-      name: profile_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique profile identifier
   schemas:
+    ThresholdProfileResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/ThresholdProfile'
+    ThresholdProfile:
+      type: object
+      properties:
+        profile_id:
+          type: string
+          description: Unique threshold profile identifier
+        profile_name:
+          type: string
+          description: Name of the threshold profile
+        type:
+          type: string
+          description: Monitor type this profile applies to
+        is_default:
+          type: boolean
+          description: Whether this is the default threshold profile
+        trouble_threshold:
+          type: integer
+          description: Response time threshold for TROUBLE status (milliseconds)
+        critical_threshold:
+          type: integer
+          description: Response time threshold for CRITICAL status (milliseconds)
+        down_threshold:
+          type: integer
+          description: Consecutive failures before marking as DOWN
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    ThresholdProfileListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/ThresholdProfile'
+    ApiResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Response code (0 = success)
+          example: 0
+        message:
+          type: string
+          description: Response message
+          example: success
+      required:
+      - code
+      - message
     ThresholdProfileCreate:
       type: object
       required:
@@ -191,75 +241,9 @@ components:
           type: integer
           description: Consecutive failures before DOWN alert
           example: 1
-    ThresholdProfileResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/ThresholdProfile'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
-    ThresholdProfileListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/ThresholdProfile'
-    ThresholdProfile:
-      type: object
-      properties:
-        profile_id:
-          type: string
-          description: Unique threshold profile identifier
-        profile_name:
-          type: string
-          description: Name of the threshold profile
-        type:
-          type: string
-          description: Monitor type this profile applies to
-        is_default:
-          type: boolean
-          description: Whether this is the default threshold profile
-        trouble_threshold:
-          type: integer
-          description: Response time threshold for TROUBLE status (milliseconds)
-        critical_threshold:
-          type: integer
-          description: Response time threshold for CRITICAL status (milliseconds)
-        down_threshold:
-          type: integer
-          description: Consecutive failures before marking as DOWN
-    ApiResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Response code (0 = success)
-          example: 0
-        message:
-          type: string
-          description: Response message
-          example: success
-      required:
-      - code
-      - message
   responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
+    BadRequest:
+      description: Invalid request parameters or body
       content:
         application/json;version=2.0:
           schema:
@@ -270,12 +254,28 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
+    Unauthorized:
+      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    ProfileId:
+      name: profile_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique profile identifier
   securitySchemes:
     ZohoOAuth:
       type: http

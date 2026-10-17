@@ -159,30 +159,14 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    GroupId:
-      name: group_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor group identifier
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
-    MonitorId:
-      name: monitor_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor identifier
   schemas:
+    StatusResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/StatusInfo'
     ErrorResponse:
       type: object
       properties:
@@ -227,13 +211,6 @@ components:
         response_time:
           type: number
           description: Latest response time in milliseconds
-    StatusResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/StatusInfo'
     StatusCountResponse:
       allOf:
       - $ref: '#/components/schemas/ApiResponse'
@@ -274,15 +251,38 @@ components:
       required:
       - code
       - message
+  parameters:
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
   responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
+    NotFound:
+      description: The requested resource was not found
       content:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: The requested resource was not found
+    Unauthorized:
+      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:

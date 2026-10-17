@@ -201,46 +201,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    GroupId:
-      name: group_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor group identifier
-    MonitorId:
-      name: monitor_id
-      in: path
-      required: true
-      schema:
-        type: string
-      description: Unique monitor identifier
-    ApiVersionHeader:
-      name: Accept
-      in: header
-      required: false
-      schema:
-        type: string
-        default: application/json; version=2.0
-      description: API version header. Defaults to version 2.0.
   schemas:
-    MonitorGroupListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/MonitorGroup'
-    MonitorGroupResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/MonitorGroup'
     ErrorResponse:
       type: object
       properties:
@@ -267,26 +228,6 @@ components:
       required:
       - code
       - message
-    MonitorGroupCreate:
-      type: object
-      required:
-      - display_name
-      properties:
-        display_name:
-          type: string
-          description: Name for the monitor group
-          example: Production Servers
-        description:
-          type: string
-          description: Description of the monitor group
-        monitors:
-          type: array
-          items:
-            type: string
-          description: Monitor IDs to include in this group
-        health_threshold_count:
-          type: integer
-          description: Number of monitors that must be down to alert
     MonitorGroup:
       type: object
       properties:
@@ -307,7 +248,49 @@ components:
         health_threshold_count:
           type: integer
           description: Number of monitors that must be down to mark group as down
+    MonitorGroupResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/MonitorGroup'
+    MonitorGroupListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/MonitorGroup'
+    MonitorGroupCreate:
+      type: object
+      required:
+      - display_name
+      properties:
+        display_name:
+          type: string
+          description: Name for the monitor group
+          example: Production Servers
+        description:
+          type: string
+          description: Description of the monitor group
+        monitors:
+          type: array
+          items:
+            type: string
+          description: Monitor IDs to include in this group
+        health_threshold_count:
+          type: integer
+          description: Number of monitors that must be down to alert
   responses:
+    BadRequest:
+      description: Invalid request parameters or body
+      content:
+        application/json;version=2.0:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
     NotFound:
       description: The requested resource was not found
       content:
@@ -320,12 +303,29 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
-      content:
-        application/json;version=2.0:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    MonitorId:
+      name: monitor_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor identifier
+    GroupId:
+      name: group_id
+      in: path
+      required: true
+      schema:
+        type: string
+      description: Unique monitor group identifier
+    ApiVersionHeader:
+      name: Accept
+      in: header
+      required: false
+      schema:
+        type: string
+        default: application/json; version=2.0
+      description: API version header. Defaults to version 2.0.
   securitySchemes:
     ZohoOAuth:
       type: http

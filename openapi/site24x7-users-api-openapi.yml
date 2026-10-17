@@ -164,6 +164,34 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    UserResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/User'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    UserListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/User'
     User:
       type: object
       properties:
@@ -197,15 +225,6 @@ components:
           items:
             type: integer
           description: Notification channels (1=Email, 2=SMS, 3=Voice, 4=IM)
-    UserListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/User'
     UserCreate:
       type: object
       required:
@@ -242,25 +261,6 @@ components:
           items:
             type: integer
           description: Notification method codes
-    UserResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/User'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
     ApiResponse:
       type: object
       properties:
@@ -276,8 +276,8 @@ components:
       - code
       - message
   responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
+    BadRequest:
+      description: Invalid request parameters or body
       content:
         application/json;version=2.0:
           schema:
@@ -288,8 +288,8 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
+    Unauthorized:
+      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:

@@ -164,6 +164,34 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
+    TagResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            $ref: '#/components/schemas/Tag'
+    ErrorResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          description: Error code
+        message:
+          type: string
+          description: Error description
+        error_info:
+          type: string
+          description: Additional error details
+    TagListResponse:
+      allOf:
+      - $ref: '#/components/schemas/ApiResponse'
+      - type: object
+        properties:
+          data:
+            type: array
+            items:
+              $ref: '#/components/schemas/Tag'
     TagCreate:
       type: object
       required:
@@ -190,34 +218,6 @@ components:
           type: string
           description: Tag color in hex format
           example: '#FF0000'
-    TagListResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            type: array
-            items:
-              $ref: '#/components/schemas/Tag'
-    TagResponse:
-      allOf:
-      - $ref: '#/components/schemas/ApiResponse'
-      - type: object
-        properties:
-          data:
-            $ref: '#/components/schemas/Tag'
-    ErrorResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          description: Error code
-        message:
-          type: string
-          description: Error description
-        error_info:
-          type: string
-          description: Additional error details
     ApiResponse:
       type: object
       properties:
@@ -233,8 +233,8 @@ components:
       - code
       - message
   responses:
-    Unauthorized:
-      description: Authentication failed or token is missing
+    BadRequest:
+      description: Invalid request parameters or body
       content:
         application/json;version=2.0:
           schema:
@@ -245,8 +245,8 @@ components:
         application/json;version=2.0:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters or body
+    Unauthorized:
+      description: Authentication failed or token is missing
       content:
         application/json;version=2.0:
           schema:
