@@ -1,1132 +1,1030 @@
 {
+  "info": {
+    "_postman_id": "0b87bff9-b720-4aa3-8fe6-e29628becec1",
+    "name": "Site24x7 REST Tags API",
+    "description": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.\n\nContact Support:\n Name: Site24x7 Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:13:23.000Z",
+    "updatedAt": "2026-10-21T20:13:24.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-0b87bff9-b720-4aa3-8fe6-e29628becec1"
+  },
   "item": [
     {
-      "id": "f7570cc9-a994-4b0c-b8a8-ef859d4fc6de",
-      "name": "Tags",
-      "description": {
-        "content": "Tag-based monitor organization",
-        "type": "text/plain"
-      },
+      "name": "tags",
       "item": [
         {
-          "id": "19950aa7-d331-4bb7-bbee-c091c529c5d6",
+          "name": "{tag_id}",
+          "item": [
+            {
+              "name": "Get a tag",
+              "id": "05164ed2-41b3-4f14-9821-ef0307f0c1ad",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tags/:tag_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags",
+                    ":tag_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "d43d4ea8-6397-4d6e-b815-eb1ed1f373c0",
+                      "key": "tag_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique tag identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific tag."
+              },
+              "response": [
+                {
+                  "id": "b83da6f6-811b-4727-aa9a-b2a06e71c6af",
+                  "name": "Tag returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"tag_id\": \"<string>\",\n    \"tag_name\": \"<string>\",\n    \"tag_color\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-b83da6f6-811b-4727-aa9a-b2a06e71c6af"
+                },
+                {
+                  "id": "eba51deb-77b8-40f4-af58-48b89bdb17ee",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-eba51deb-77b8-40f4-af58-48b89bdb17ee"
+                },
+                {
+                  "id": "f6f62d49-a568-4dd3-81e6-196116a6b81d",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-f6f62d49-a568-4dd3-81e6-196116a6b81d"
+                }
+              ],
+              "createdAt": "2026-10-21T20:13:24.000Z",
+              "updatedAt": "2026-10-21T20:13:24.000Z",
+              "uid": "35240-05164ed2-41b3-4f14-9821-ef0307f0c1ad"
+            },
+            {
+              "name": "Update a tag",
+              "id": "97393ac7-f6c5-4cee-87eb-bc01aef61a70",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tags/:tag_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags",
+                    ":tag_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "828e6fcf-ded4-409e-acf2-44c8af917e73",
+                      "key": "tag_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique tag identifier"
+                    }
+                  ]
+                },
+                "description": "Modify an existing tag."
+              },
+              "response": [
+                {
+                  "id": "0bb41090-e852-4c2a-baf8-8cc545df93f7",
+                  "name": "Tag updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"tag_id\": \"<string>\",\n    \"tag_name\": \"<string>\",\n    \"tag_color\": \"<string>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-0bb41090-e852-4c2a-baf8-8cc545df93f7"
+                },
+                {
+                  "id": "bdf12a95-7be6-4359-ab03-e9e4d360ed66",
+                  "name": "Invalid request parameters or body",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-bdf12a95-7be6-4359-ab03-e9e4d360ed66"
+                },
+                {
+                  "id": "be968971-c3a0-4e91-90de-60a0f1aaa336",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-be968971-c3a0-4e91-90de-60a0f1aaa336"
+                },
+                {
+                  "id": "bfe7834b-f2de-4e0f-96e8-a07c240c1f8d",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-bfe7834b-f2de-4e0f-96e8-a07c240c1f8d"
+                }
+              ],
+              "createdAt": "2026-10-21T20:13:24.000Z",
+              "updatedAt": "2026-10-21T20:13:24.000Z",
+              "uid": "35240-97393ac7-f6c5-4cee-87eb-bc01aef61a70"
+            },
+            {
+              "name": "Delete a tag",
+              "id": "09797dba-a22e-48ac-b3f5-3e8876eca7ee",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/tags/:tag_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags",
+                    ":tag_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "307e572f-4a0c-461f-b3aa-4ba05d97f811",
+                      "key": "tag_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique tag identifier"
+                    }
+                  ]
+                },
+                "description": "Remove a tag from the account."
+              },
+              "response": [
+                {
+                  "id": "39369e1f-a7cc-495d-826d-38b4491086da",
+                  "name": "Tag deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-39369e1f-a7cc-495d-826d-38b4491086da"
+                },
+                {
+                  "id": "4be38c04-2a4b-4362-9d0a-2dcce80b76a6",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-4be38c04-2a4b-4362-9d0a-2dcce80b76a6"
+                },
+                {
+                  "id": "13222733-b20f-4db9-ba12-172cf2cbf746",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/tags/:tag_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "tags",
+                        ":tag_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "tag_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:24.000Z",
+                  "updatedAt": "2026-10-21T20:13:24.000Z",
+                  "uid": "35240-13222733-b20f-4db9-ba12-172cf2cbf746"
+                }
+              ],
+              "createdAt": "2026-10-21T20:13:24.000Z",
+              "updatedAt": "2026-10-21T20:13:24.000Z",
+              "uid": "35240-09797dba-a22e-48ac-b3f5-3e8876eca7ee"
+            }
+          ],
+          "id": "d3c68fb7-2827-4080-97c0-f8bb63789875",
+          "createdAt": "2026-10-21T20:13:24.000Z",
+          "updatedAt": "2026-10-21T20:13:24.000Z",
+          "uid": "35240-d3c68fb7-2827-4080-97c0-f8bb63789875"
+        },
+        {
           "name": "List all tags",
+          "id": "189f87e8-81b9-4787-bcb4-6a3aee62af0c",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List all tags",
-            "description": {
-              "content": "Retrieve all tags configured in the account.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json;version=2.0"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/tags",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "tags"
+              ]
+            },
+            "description": "Retrieve all tags configured in the account."
           },
           "response": [
             {
-              "id": "633bbbcb-f008-44c7-bd99-91d965fb8745",
+              "id": "c473cace-a733-4a79-afe2-0870a57d9bbd",
               "name": "Tags returned successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/tags",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"tag_id\": \"string\",\n      \"tag_name\": \"string\",\n      \"tag_color\": \"#FF0000\"\n    },\n    {\n      \"tag_id\": \"string\",\n      \"tag_name\": \"string\",\n      \"tag_color\": \"#FF0000\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"tag_id\": \"<string>\",\n      \"tag_name\": \"<string>\",\n      \"tag_color\": \"<string>\"\n    },\n    {\n      \"tag_id\": \"<string>\",\n      \"tag_name\": \"<string>\",\n      \"tag_color\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:13:24.000Z",
+              "updatedAt": "2026-10-21T20:13:24.000Z",
+              "uid": "35240-c473cace-a733-4a79-afe2-0870a57d9bbd"
             },
             {
-              "id": "9f763e23-9e28-489f-9a89-f4a92e852ac6",
+              "id": "10261e92-6886-46a9-aff3-70ca74834e8e",
               "name": "Authentication failed or token is missing",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/tags",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:13:24.000Z",
+              "updatedAt": "2026-10-21T20:13:24.000Z",
+              "uid": "35240-10261e92-6886-46a9-aff3-70ca74834e8e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:13:24.000Z",
+          "updatedAt": "2026-10-21T20:13:24.000Z",
+          "uid": "35240-189f87e8-81b9-4787-bcb4-6a3aee62af0c"
         },
         {
-          "id": "bb30090a-f752-487c-b971-6aae562f159b",
           "name": "Create a tag",
+          "id": "b793019c-198e-4d96-b640-0e48bd448521",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create a tag",
-            "description": {
-              "content": "Create a new tag for organizing monitors.",
-              "type": "text/plain"
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;version=2.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
             },
             "url": {
+              "raw": "{{baseUrl}}/tags",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "tags"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json;version=2.0"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
+            "description": "Create a new tag for organizing monitors."
           },
           "response": [
             {
-              "id": "eae615c3-3e10-4040-b045-4826455d51a8",
+              "id": "9113daa2-b399-4342-b114-f67c1dc02a02",
               "name": "Tag created successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"tag_name\": \"production\",\n  \"tag_color\": \"#4CAF50\"\n}",
+                  "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tags",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"tag_id\": \"string\",\n    \"tag_name\": \"string\",\n    \"tag_color\": \"#FF0000\"\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"tag_id\": \"<string>\",\n    \"tag_name\": \"<string>\",\n    \"tag_color\": \"<string>\"\n  }\n}",
+              "createdAt": "2026-10-21T20:13:24.000Z",
+              "updatedAt": "2026-10-21T20:13:24.000Z",
+              "uid": "35240-9113daa2-b399-4342-b114-f67c1dc02a02"
             },
             {
-              "id": "c76b6ef6-47ff-4ee2-9500-c9182d1429bc",
+              "id": "23d4d2a8-1d5f-4349-9fa2-a6d4ef80ace2",
               "name": "Invalid request parameters or body",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"tag_name\": \"production\",\n  \"tag_color\": \"#4CAF50\"\n}",
+                  "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/tags",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "tags"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:13:24.000Z",
+              "updatedAt": "2026-10-21T20:13:24.000Z",
+              "uid": "35240-23d4d2a8-1d5f-4349-9fa2-a6d4ef80ace2"
             },
             {
-              "id": "3e370b7b-5c82-4c27-b658-8477077b3b77",
+              "id": "806a71dc-581e-4829-96f6-b84539c12e2c",
               "name": "Authentication failed or token is missing",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/tags",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "tags"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"tag_name\": \"production\",\n  \"tag_color\": \"#4CAF50\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:13:24.000Z",
+              "updatedAt": "2026-10-21T20:13:24.000Z",
+              "uid": "35240-806a71dc-581e-4829-96f6-b84539c12e2c"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "d4bc2ef6-1bf2-4073-8535-bb3978c8c0a2",
-          "name": "Get a tag",
-          "request": {
-            "name": "Get a tag",
-            "description": {
-              "content": "Retrieve details of a specific tag.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "tag_id",
-                  "description": "(Required) Unique tag identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "bbbc81b9-a430-477a-b8d8-fabf741131c8",
-              "name": "Tag returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"tag_id\": \"string\",\n    \"tag_name\": \"string\",\n    \"tag_color\": \"#FF0000\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4406cbc3-88aa-43f7-98ea-1e9442f7b57b",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2277c7f7-3bd2-4964-835b-0f5e78812a4c",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "4a0ca716-9dbb-4d0b-a4a4-e259c09e3589",
-          "name": "Update a tag",
-          "request": {
-            "name": "Update a tag",
-            "description": {
-              "content": "Modify an existing tag.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "tag_id",
-                  "description": "(Required) Unique tag identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json;version=2.0"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"tag_name\": \"<string>\",\n  \"tag_color\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "04901c9b-1185-4ad3-a4d0-47981f7aa03a",
-              "name": "Tag updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"tag_name\": \"production\",\n  \"tag_color\": \"#4CAF50\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"tag_id\": \"string\",\n    \"tag_name\": \"string\",\n    \"tag_color\": \"#FF0000\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "40e915ca-d7f2-4845-808e-c05f5e437649",
-              "name": "Invalid request parameters or body",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"tag_name\": \"production\",\n  \"tag_color\": \"#4CAF50\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "dea19b98-eb64-48ff-aab0-09842cf366a3",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"tag_name\": \"production\",\n  \"tag_color\": \"#4CAF50\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e1d94524-15e8-45bd-baa1-630da1944537",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"tag_name\": \"production\",\n  \"tag_color\": \"#4CAF50\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "7adf79c1-d842-4e47-a66e-a113abcd8220",
-          "name": "Delete a tag",
-          "request": {
-            "name": "Delete a tag",
-            "description": {
-              "content": "Remove a tag from the account.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "tags",
-                ":tag_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "tag_id",
-                  "description": "(Required) Unique tag identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "a05c419d-49aa-4f64-b991-ec9980249075",
-              "name": "Tag deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "69bb573e-dae0-4ca6-ad56-60e4a192c42a",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "d4b17287-dc8b-4419-afab-f0933e548de4",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "tags",
-                    ":tag_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "tag_id",
-                      "description": "(Required) Unique tag identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2693,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:13:24.000Z",
+          "updatedAt": "2026-10-21T20:13:24.000Z",
+          "uid": "35240-b793019c-198e-4d96-b640-0e48bd448521"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://www.site24x7.com/api",
-      "key": "baseUrl"
+      "id": "2825c21b-ed08-4441-908c-8be47681f86a",
+      "createdAt": "2026-10-21T20:13:24.000Z",
+      "updatedAt": "2026-10-21T20:13:24.000Z",
+      "uid": "35240-2825c21b-ed08-4441-908c-8be47681f86a"
     }
   ],
   "auth": {
@@ -1134,17 +1032,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "47bf9a75-4c3d-428f-87c3-069821278ef4",
-    "name": "Site24x7 REST Alarms Tags API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.\n\nContact Support:\n Name: Site24x7 Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.site24x7.com/api"
     }
-  }
+  ]
 }

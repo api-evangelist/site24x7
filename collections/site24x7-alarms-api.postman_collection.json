@@ -1,711 +1,682 @@
 {
+  "info": {
+    "_postman_id": "ad48df98-ecba-4243-9885-8c5ad90c234f",
+    "name": "Site24x7 REST Alarms API",
+    "description": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.\n\nContact Support:\n Name: Site24x7 Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:12:37.000Z",
+    "updatedAt": "2026-10-21T20:12:37.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-ad48df98-ecba-4243-9885-8c5ad90c234f"
+  },
   "item": [
     {
-      "id": "611a24de-7718-46bb-85a7-3dcfd06cb0a3",
-      "name": "Alarms",
-      "description": {
-        "content": "Alert and alarm management",
-        "type": "text/plain"
-      },
+      "name": "alarms",
       "item": [
         {
-          "id": "74abd088-8e91-4c5d-aae2-a5b84fca4c52",
+          "name": "monitor",
+          "item": [
+            {
+              "name": "{monitor_id}",
+              "item": [
+                {
+                  "name": "Get alarms for a monitor",
+                  "id": "2762a028-74b4-4302-b7aa-78661988233f",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/alarms/monitor/:monitor_id?start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alarms",
+                        "monitor",
+                        ":monitor_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "f84556dd-36e8-4540-a3ea-8cb5be2feaee",
+                          "key": "monitor_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique monitor identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve alarms for a specific monitor."
+                  },
+                  "response": [
+                    {
+                      "id": "00e67c29-850e-414e-93ba-045d79c26f7c",
+                      "name": "Monitor alarms returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/alarms/monitor/:monitor_id?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alarms",
+                            "monitor",
+                            ":monitor_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"alarm_id\": \"<string>\",\n      \"monitor_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"alarm_time\": \"<dateTime>\",\n      \"alarm_type\": \"<string>\",\n      \"status\": \"<integer>\",\n      \"reason\": \"<string>\"\n    },\n    {\n      \"alarm_id\": \"<string>\",\n      \"monitor_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"alarm_time\": \"<dateTime>\",\n      \"alarm_type\": \"<string>\",\n      \"status\": \"<integer>\",\n      \"reason\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:12:37.000Z",
+                      "updatedAt": "2026-10-21T20:12:37.000Z",
+                      "uid": "35240-00e67c29-850e-414e-93ba-045d79c26f7c"
+                    },
+                    {
+                      "id": "4737f039-bec7-4a70-af1f-aa30374f3983",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/alarms/monitor/:monitor_id?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alarms",
+                            "monitor",
+                            ":monitor_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:37.000Z",
+                      "updatedAt": "2026-10-21T20:12:37.000Z",
+                      "uid": "35240-4737f039-bec7-4a70-af1f-aa30374f3983"
+                    },
+                    {
+                      "id": "f5b4e09f-6ae7-4a8e-b1de-70665de248ee",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/alarms/monitor/:monitor_id?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alarms",
+                            "monitor",
+                            ":monitor_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:37.000Z",
+                      "updatedAt": "2026-10-21T20:12:37.000Z",
+                      "uid": "35240-f5b4e09f-6ae7-4a8e-b1de-70665de248ee"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:12:37.000Z",
+                  "updatedAt": "2026-10-21T20:12:37.000Z",
+                  "uid": "35240-2762a028-74b4-4302-b7aa-78661988233f"
+                }
+              ],
+              "id": "fae7ce81-e754-49d4-8191-e1505d6f76f9",
+              "createdAt": "2026-10-21T20:12:37.000Z",
+              "updatedAt": "2026-10-21T20:12:37.000Z",
+              "uid": "35240-fae7ce81-e754-49d4-8191-e1505d6f76f9"
+            }
+          ],
+          "id": "dd496d2d-9f92-4335-a333-c365a3037494",
+          "createdAt": "2026-10-21T20:12:37.000Z",
+          "updatedAt": "2026-10-21T20:12:37.000Z",
+          "uid": "35240-dd496d2d-9f92-4335-a333-c365a3037494"
+        },
+        {
+          "name": "monitor_group",
+          "item": [
+            {
+              "name": "{group_id}",
+              "item": [
+                {
+                  "name": "Get alarms for a monitor group",
+                  "id": "e7a6e840-b5e5-45e7-873d-a77d1da53f8e",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/alarms/monitor_group/:group_id?start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "alarms",
+                        "monitor_group",
+                        ":group_id"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ],
+                      "variable": [
+                        {
+                          "id": "d5dc67f4-a055-48ab-8de3-bf30f82b18aa",
+                          "key": "group_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique monitor group identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve alarms organized by monitor group."
+                  },
+                  "response": [
+                    {
+                      "id": "49b96e51-1020-4772-b64e-d95caf31078e",
+                      "name": "Monitor group alarms returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/alarms/monitor_group/:group_id?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alarms",
+                            "monitor_group",
+                            ":group_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"alarm_id\": \"<string>\",\n      \"monitor_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"alarm_time\": \"<dateTime>\",\n      \"alarm_type\": \"<string>\",\n      \"status\": \"<integer>\",\n      \"reason\": \"<string>\"\n    },\n    {\n      \"alarm_id\": \"<string>\",\n      \"monitor_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"alarm_time\": \"<dateTime>\",\n      \"alarm_type\": \"<string>\",\n      \"status\": \"<integer>\",\n      \"reason\": \"<string>\"\n    }\n  ]\n}",
+                      "createdAt": "2026-10-21T20:12:37.000Z",
+                      "updatedAt": "2026-10-21T20:12:37.000Z",
+                      "uid": "35240-49b96e51-1020-4772-b64e-d95caf31078e"
+                    },
+                    {
+                      "id": "332113a6-98f6-4488-a5d7-15f0b554f3c4",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/alarms/monitor_group/:group_id?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alarms",
+                            "monitor_group",
+                            ":group_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:37.000Z",
+                      "updatedAt": "2026-10-21T20:12:37.000Z",
+                      "uid": "35240-332113a6-98f6-4488-a5d7-15f0b554f3c4"
+                    },
+                    {
+                      "id": "d244b04b-eb37-4ba6-a89e-0a28bb6b8808",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/alarms/monitor_group/:group_id?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "alarms",
+                            "monitor_group",
+                            ":group_id"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:37.000Z",
+                      "updatedAt": "2026-10-21T20:12:37.000Z",
+                      "uid": "35240-d244b04b-eb37-4ba6-a89e-0a28bb6b8808"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:12:37.000Z",
+                  "updatedAt": "2026-10-21T20:12:37.000Z",
+                  "uid": "35240-e7a6e840-b5e5-45e7-873d-a77d1da53f8e"
+                }
+              ],
+              "id": "395b89bd-149b-4330-9658-e4201767cc58",
+              "createdAt": "2026-10-21T20:12:37.000Z",
+              "updatedAt": "2026-10-21T20:12:37.000Z",
+              "uid": "35240-395b89bd-149b-4330-9658-e4201767cc58"
+            }
+          ],
+          "id": "7d3c1bf7-593e-4dca-8188-f2892ef56d7c",
+          "createdAt": "2026-10-21T20:12:37.000Z",
+          "updatedAt": "2026-10-21T20:12:37.000Z",
+          "uid": "35240-7d3c1bf7-593e-4dca-8188-f2892ef56d7c"
+        },
+        {
           "name": "List all alarms",
+          "id": "c7ee11d6-d888-4437-876e-c66556e18f7a",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List all alarms",
-            "description": {
-              "content": "Retrieve alarms across all monitors.",
-              "type": "text/plain"
-            },
+            "method": "GET",
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
             "url": {
+              "raw": "{{baseUrl}}/alarms?start_date=<dateTime>&end_date=<dateTime>",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "alarms"
               ],
-              "host": [
-                "{{baseUrl}}"
-              ],
               "query": [
                 {
-                  "disabled": false,
+                  "description": "Start of the time range (ISO 8601)",
                   "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
+                  "value": "<dateTime>"
                 },
                 {
-                  "disabled": false,
+                  "description": "End of the time range (ISO 8601)",
                   "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
+                  "value": "<dateTime>"
                 }
-              ],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
+            "description": "Retrieve alarms across all monitors."
           },
           "response": [
             {
-              "id": "46e2b07d-a1c1-438a-8b57-ea13c418cf0b",
+              "id": "32928f94-5333-42e8-9b59-12c56b50edf2",
               "name": "Alarms returned successfully",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/alarms?start_date=<dateTime>&end_date=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "alarms"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Start of the time range (ISO 8601)",
                       "key": "start_date",
                       "value": "<dateTime>"
                     },
                     {
+                      "description": "End of the time range (ISO 8601)",
                       "key": "end_date",
                       "value": "<dateTime>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"alarm_id\": \"string\",\n      \"monitor_id\": \"string\",\n      \"display_name\": \"string\",\n      \"alarm_time\": \"1967-12-20T12:26:09.642Z\",\n      \"alarm_type\": \"string\",\n      \"status\": 492,\n      \"reason\": \"string\"\n    },\n    {\n      \"alarm_id\": \"string\",\n      \"monitor_id\": \"string\",\n      \"display_name\": \"string\",\n      \"alarm_time\": \"1946-08-24T06:13:16.582Z\",\n      \"alarm_type\": \"string\",\n      \"status\": 7084,\n      \"reason\": \"string\"\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"alarm_id\": \"<string>\",\n      \"monitor_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"alarm_time\": \"<dateTime>\",\n      \"alarm_type\": \"<string>\",\n      \"status\": \"<integer>\",\n      \"reason\": \"<string>\"\n    },\n    {\n      \"alarm_id\": \"<string>\",\n      \"monitor_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"alarm_time\": \"<dateTime>\",\n      \"alarm_type\": \"<string>\",\n      \"status\": \"<integer>\",\n      \"reason\": \"<string>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:12:37.000Z",
+              "updatedAt": "2026-10-21T20:12:37.000Z",
+              "uid": "35240-32928f94-5333-42e8-9b59-12c56b50edf2"
             },
             {
-              "id": "62098769-e7d1-451b-b155-6f73f5018c9f",
+              "id": "9d322102-fad9-4b9c-9438-0a117e98a9b3",
               "name": "Authentication failed or token is missing",
               "originalRequest": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/alarms?start_date=<dateTime>&end_date=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "alarms"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Start of the time range (ISO 8601)",
                       "key": "start_date",
                       "value": "<dateTime>"
                     },
                     {
+                      "description": "End of the time range (ISO 8601)",
                       "key": "end_date",
                       "value": "<dateTime>"
                     }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 6459,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:37.000Z",
+              "updatedAt": "2026-10-21T20:12:37.000Z",
+              "uid": "35240-9d322102-fad9-4b9c-9438-0a117e98a9b3"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "0f317433-bc06-42ea-a794-227b22b70c9e",
-          "name": "Get alarms for a monitor",
-          "request": {
-            "name": "Get alarms for a monitor",
-            "description": {
-              "content": "Retrieve alarms for a specific monitor.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "alarms",
-                "monitor",
-                ":monitor_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "monitor_id",
-                  "description": "(Required) Unique monitor identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "330eb6ca-76e3-408b-8392-60d798fb260a",
-              "name": "Monitor alarms returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alarms",
-                    "monitor",
-                    ":monitor_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "monitor_id",
-                      "description": "(Required) Unique monitor identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"alarm_id\": \"string\",\n      \"monitor_id\": \"string\",\n      \"display_name\": \"string\",\n      \"alarm_time\": \"1994-07-01T18:04:45.611Z\",\n      \"alarm_type\": \"string\",\n      \"status\": 3253,\n      \"reason\": \"string\"\n    },\n    {\n      \"alarm_id\": \"string\",\n      \"monitor_id\": \"string\",\n      \"display_name\": \"string\",\n      \"alarm_time\": \"1947-12-01T22:53:04.955Z\",\n      \"alarm_type\": \"string\",\n      \"status\": 5655,\n      \"reason\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f80d5d2e-bd6a-4965-a66c-5861f2ab034f",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alarms",
-                    "monitor",
-                    ":monitor_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "monitor_id",
-                      "description": "(Required) Unique monitor identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6459,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "085cdda9-b2ed-4162-91f8-6e815cbf6cd6",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alarms",
-                    "monitor",
-                    ":monitor_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "monitor_id",
-                      "description": "(Required) Unique monitor identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6459,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "088ffab3-4ec7-46ba-b014-c7396400588f",
-          "name": "Get alarms for a monitor group",
-          "request": {
-            "name": "Get alarms for a monitor group",
-            "description": {
-              "content": "Retrieve alarms organized by monitor group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "alarms",
-                "monitor_group",
-                ":group_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "group_id",
-                  "description": "(Required) Unique monitor group identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "2ddc6349-38f5-403d-b07b-e9f223b29cdb",
-              "name": "Monitor group alarms returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alarms",
-                    "monitor_group",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"alarm_id\": \"string\",\n      \"monitor_id\": \"string\",\n      \"display_name\": \"string\",\n      \"alarm_time\": \"1994-07-01T18:04:45.611Z\",\n      \"alarm_type\": \"string\",\n      \"status\": 3253,\n      \"reason\": \"string\"\n    },\n    {\n      \"alarm_id\": \"string\",\n      \"monitor_id\": \"string\",\n      \"display_name\": \"string\",\n      \"alarm_time\": \"1947-12-01T22:53:04.955Z\",\n      \"alarm_type\": \"string\",\n      \"status\": 5655,\n      \"reason\": \"string\"\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1c19c7be-05f0-4005-8353-b497d5e9f37f",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alarms",
-                    "monitor_group",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6459,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "428b7723-cd73-40cd-8332-93a722642e5f",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "alarms",
-                    "monitor_group",
-                    ":group_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6459,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:12:37.000Z",
+          "updatedAt": "2026-10-21T20:12:37.000Z",
+          "uid": "35240-c7ee11d6-d888-4437-876e-c66556e18f7a"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://www.site24x7.com/api",
-      "key": "baseUrl"
+      "id": "71f46be9-480f-4ead-a4c6-94fc051c6853",
+      "createdAt": "2026-10-21T20:12:37.000Z",
+      "updatedAt": "2026-10-21T20:12:37.000Z",
+      "uid": "35240-71f46be9-480f-4ead-a4c6-94fc051c6853"
     }
   ],
   "auth": {
@@ -713,17 +684,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "70af30b5-c265-4b0f-bb60-cfc430ce93c6",
-    "name": "Site24x7 REST Alarms API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.\n\nContact Support:\n Name: Site24x7 Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.site24x7.com/api"
     }
-  }
+  ]
 }

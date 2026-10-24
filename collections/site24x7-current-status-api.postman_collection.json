@@ -1,1131 +1,1068 @@
 {
+  "info": {
+    "_postman_id": "64da456d-afe4-42dd-a0a1-2e8834b7734c",
+    "name": "Site24x7 REST Current Status API",
+    "description": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.\n\nContact Support:\n Name: Site24x7 Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:12:41.000Z",
+    "updatedAt": "2026-10-21T20:12:41.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-64da456d-afe4-42dd-a0a1-2e8834b7734c"
+  },
   "item": [
     {
-      "id": "9d8948ac-82fe-4bdf-bd1e-26611d3e5618",
-      "name": "Current Status",
-      "description": {
-        "content": "Real-time status and health information",
-        "type": "text/plain"
-      },
+      "name": "monitor_groups",
       "item": [
         {
-          "id": "7fba086d-3e76-44e7-8a50-42c55b2fa309",
-          "name": "Get monitor group status",
-          "request": {
-            "name": "Get monitor group status",
-            "description": {
-              "content": "Retrieve the aggregated real-time status of all monitors in a group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "monitor_groups",
-                ":group_id",
-                "status"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "group_id",
-                  "description": "(Required) Unique monitor group identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{group_id}",
+          "item": [
             {
-              "id": "7b8b8f3d-0b57-440b-a42e-5c16537c34b0",
-              "name": "Group status returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitor_groups",
-                    ":group_id",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "status",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
+                  "name": "count",
+                  "item": [
+                    {
+                      "name": "Get monitor status count in a group",
+                      "id": "e1853c5d-a327-4562-bb2f-b5f8ec1e19c3",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor_groups/:group_id/status/count",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor_groups",
+                            ":group_id",
+                            "status",
+                            "count"
+                          ],
+                          "variable": [
+                            {
+                              "id": "40035b1a-893b-4f2f-802c-9674d1cc957b",
+                              "key": "group_id",
+                              "value": "<string>",
+                              "description": "(Required) Unique monitor group identifier"
+                            }
+                          ]
+                        },
+                        "description": "Count monitors by status (Up, Down, Trouble, Critical) within a specific group."
+                      },
+                      "response": [
+                        {
+                          "id": "daa6f3cf-629e-40a0-94cc-8195de058810",
+                          "name": "Status counts returned successfully",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json;version=2.0"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor_groups/:group_id/status/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor_groups",
+                                ":group_id",
+                                "status",
+                                "count"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json;version=2.0"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"up\": \"<integer>\",\n    \"down\": \"<integer>\",\n    \"trouble\": \"<integer>\",\n    \"critical\": \"<integer>\",\n    \"suspended\": \"<integer>\",\n    \"maintenance\": \"<integer>\"\n  }\n}",
+                          "createdAt": "2026-10-21T20:12:42.000Z",
+                          "updatedAt": "2026-10-21T20:12:42.000Z",
+                          "uid": "35240-daa6f3cf-629e-40a0-94cc-8195de058810"
+                        },
+                        {
+                          "id": "218afc5a-a62c-4c40-b011-bbac9584b925",
+                          "name": "Authentication failed or token is missing",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json;version=2.0"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor_groups/:group_id/status/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor_groups",
+                                ":group_id",
+                                "status",
+                                "count"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json;version=2.0"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:12:42.000Z",
+                          "updatedAt": "2026-10-21T20:12:42.000Z",
+                          "uid": "35240-218afc5a-a62c-4c40-b011-bbac9584b925"
+                        },
+                        {
+                          "id": "9dfbb791-7cd8-4138-a2ff-814af8b1d439",
+                          "name": "The requested resource was not found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json;version=2.0"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: bearer",
+                                "key": "Authorization",
+                                "value": "Bearer <token>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/monitor_groups/:group_id/status/count",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "monitor_groups",
+                                ":group_id",
+                                "status",
+                                "count"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "group_id"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json;version=2.0"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                          "createdAt": "2026-10-21T20:12:42.000Z",
+                          "updatedAt": "2026-10-21T20:12:42.000Z",
+                          "uid": "35240-9dfbb791-7cd8-4138-a2ff-814af8b1d439"
+                        }
+                      ],
+                      "createdAt": "2026-10-21T20:12:41.000Z",
+                      "updatedAt": "2026-10-21T20:12:41.000Z",
+                      "uid": "35240-e1853c5d-a327-4562-bb2f-b5f8ec1e19c3"
+                    }
+                  ],
+                  "id": "4e68da38-14d0-43a2-b842-8b16a92edbdb",
+                  "createdAt": "2026-10-21T20:12:41.000Z",
+                  "updatedAt": "2026-10-21T20:12:41.000Z",
+                  "uid": "35240-4e68da38-14d0-43a2-b842-8b16a92edbdb"
+                },
+                {
+                  "name": "Get monitor group status",
+                  "id": "174b93eb-6678-4894-86de-5669913a74e1",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitor_groups/:group_id/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitor_groups",
+                        ":group_id",
+                        "status"
+                      ],
+                      "variable": [
+                        {
+                          "id": "16bc125f-cacb-46bd-9054-aec83776a85b",
+                          "key": "group_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique monitor group identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the aggregated real-time status of all monitors in a group."
+                  },
+                  "response": [
+                    {
+                      "id": "48a349a8-7326-4071-b069-9e516106762f",
+                      "name": "Group status returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor_groups/:group_id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor_groups",
+                            ":group_id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": 5,\n    \"last_polled_time\": \"<dateTime>\",\n    \"unit\": \"<string>\",\n    \"response_time\": \"<number>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-48a349a8-7326-4071-b069-9e516106762f"
+                    },
+                    {
+                      "id": "f8537b8c-fc9b-47c1-b5b6-f74b48c171fe",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor_groups/:group_id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor_groups",
+                            ":group_id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-f8537b8c-fc9b-47c1-b5b6-f74b48c171fe"
+                    },
+                    {
+                      "id": "cec11f55-5331-4161-b07b-4171aa7d3690",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitor_groups/:group_id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitor_groups",
+                            ":group_id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "group_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-cec11f55-5331-4161-b07b-4171aa7d3690"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:12:41.000Z",
+                  "updatedAt": "2026-10-21T20:12:41.000Z",
+                  "uid": "35240-174b93eb-6678-4894-86de-5669913a74e1"
                 }
               ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"type\": \"string\",\n    \"status\": 0,\n    \"last_polled_time\": \"2011-02-05T02:41:39.717Z\",\n    \"unit\": \"string\",\n    \"response_time\": 738.6410769876694\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "77cb2fea-718e-4e37-859d-332a803f1b93",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitor_groups",
-                    ":group_id",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "1ee3caa7-1a79-46ed-81ea-99fd19e3289d",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitor_groups",
-                    ":group_id",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "10ccffb6-e209-46ea-bbe3-6bdeaf68c102",
+              "createdAt": "2026-10-21T20:12:41.000Z",
+              "updatedAt": "2026-10-21T20:12:41.000Z",
+              "uid": "35240-10ccffb6-e209-46ea-bbe3-6bdeaf68c102"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8fe1fd64-8cff-419f-9e3c-b8b9077be805",
-          "name": "Get monitor status count in a group",
-          "request": {
-            "name": "Get monitor status count in a group",
-            "description": {
-              "content": "Count monitors by status (Up, Down, Trouble, Critical) within a specific group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "monitor_groups",
-                ":group_id",
-                "status",
-                "count"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "group_id",
-                  "description": "(Required) Unique monitor group identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e1908334-2794-4619-82f6-8d10c8e1637a",
-              "name": "Status counts returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitor_groups",
-                    ":group_id",
-                    "status",
-                    "count"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"up\": 6988,\n    \"down\": 6972,\n    \"trouble\": 6622,\n    \"critical\": 1416,\n    \"suspended\": 7814,\n    \"maintenance\": 9915\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "af8270aa-4761-46a6-ad90-443010353fd6",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitor_groups",
-                    ":group_id",
-                    "status",
-                    "count"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "87747cef-3dda-44d2-90b0-2b18eac642dc",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitor_groups",
-                    ":group_id",
-                    "status",
-                    "count"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "group_id",
-                      "description": "(Required) Unique monitor group identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "74b707a7-9904-452f-a824-de76a82b18af",
-          "name": "Get current monitor status",
-          "request": {
-            "name": "Get current monitor status",
-            "description": {
-              "content": "Retrieve the real-time status of a specific monitor.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "monitors",
-                ":monitor_id",
-                "status"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "monitor_id",
-                  "description": "(Required) Unique monitor identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9bd7d32f-e38c-47bc-9137-e51d518cf3ac",
-              "name": "Monitor status returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitors",
-                    ":monitor_id",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "monitor_id",
-                      "description": "(Required) Unique monitor identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"type\": \"string\",\n    \"status\": 0,\n    \"last_polled_time\": \"2011-02-05T02:41:39.717Z\",\n    \"unit\": \"string\",\n    \"response_time\": 738.6410769876694\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e93b1f38-bcac-4f0b-a4e3-7c3dcf386f21",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitors",
-                    ":monitor_id",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "monitor_id",
-                      "description": "(Required) Unique monitor identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "6fb44ac7-5ab5-4ad4-ba0f-12af55c6cfde",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "monitors",
-                    ":monitor_id",
-                    "status"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "monitor_id",
-                      "description": "(Required) Unique monitor identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "282b9e12-6dde-4a2e-b388-dfc5004e0204",
-          "name": "Get status by monitor type",
-          "request": {
-            "name": "Get status by monitor type",
-            "description": {
-              "content": "Retrieve status information filtered by a specific monitor type.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "status",
-                "monitor_type",
-                ":type"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "type",
-                  "description": "(Required) Monitor type identifier (e.g., URL, SERVER, SSL_CERT)"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "e6069d50-e9f6-44e4-bd77-a06324443e50",
-              "name": "Status by monitor type returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "status",
-                    "monitor_type",
-                    ":type"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "type",
-                      "description": "(Required) Monitor type identifier (e.g., URL, SERVER, SSL_CERT)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"type\": \"string\",\n    \"status\": 0,\n    \"last_polled_time\": \"2011-02-05T02:41:39.717Z\",\n    \"unit\": \"string\",\n    \"response_time\": 738.6410769876694\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "006d3b98-1bc6-4b99-ae7d-6c8f7d6807b4",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "status",
-                    "monitor_type",
-                    ":type"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "type",
-                      "description": "(Required) Monitor type identifier (e.g., URL, SERVER, SSL_CERT)"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "bc1768fb-533f-4a52-8d0e-651b921a3db8",
-          "name": "Get monitor status counts",
-          "request": {
-            "name": "Get monitor status counts",
-            "description": {
-              "content": "Get counts of monitors grouped by status (Up, Down, Trouble, Critical, Suspended, Maintenance).",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "status",
-                "count"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "17795927-35d7-43eb-8c13-8bf7d77e94e0",
-              "name": "Status counts returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "status",
-                    "count"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"up\": 6988,\n    \"down\": 6972,\n    \"trouble\": 6622,\n    \"critical\": 1416,\n    \"suspended\": 7814,\n    \"maintenance\": 9915\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "19067194-3d07-4909-8e6f-224bb5e75073",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "status",
-                    "count"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "34c41fd1-553c-4477-83d7-c7b5f545a4a6",
-          "name": "Get status counts by monitor type",
-          "request": {
-            "name": "Get status counts by monitor type",
-            "description": {
-              "content": "Retrieve status counts grouped by monitor type.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "status",
-                "monitor_type",
-                "count"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "bf8035ad-4cdf-4606-bf9d-511fbf65504a",
-              "name": "Status counts by type returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "status",
-                    "monitor_type",
-                    "count"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"up\": 6988,\n    \"down\": 6972,\n    \"trouble\": 6622,\n    \"critical\": 1416,\n    \"suspended\": 7814,\n    \"maintenance\": 9915\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "245f69cb-82dd-4a2d-8cca-35bb97a322f7",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "status",
-                    "monitor_type",
-                    "count"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 6870,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "a7e40a44-7079-4f3f-a8f6-5cb90ec473a0",
+          "createdAt": "2026-10-21T20:12:41.000Z",
+          "updatedAt": "2026-10-21T20:12:41.000Z",
+          "uid": "35240-a7e40a44-7079-4f3f-a8f6-5cb90ec473a0"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
+      "id": "451ac73d-b75d-4420-baf3-d8c8bdd6c5f4",
+      "createdAt": "2026-10-21T20:12:41.000Z",
+      "updatedAt": "2026-10-21T20:12:41.000Z",
+      "uid": "35240-451ac73d-b75d-4420-baf3-d8c8bdd6c5f4"
+    },
     {
-      "type": "string",
-      "value": "https://www.site24x7.com/api",
-      "key": "baseUrl"
+      "name": "monitors",
+      "item": [
+        {
+          "name": "{monitor_id}",
+          "item": [
+            {
+              "name": "status",
+              "item": [
+                {
+                  "name": "Get current monitor status",
+                  "id": "1f22035c-247f-4b22-8885-832717047011",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/monitors/:monitor_id/status",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "monitors",
+                        ":monitor_id",
+                        "status"
+                      ],
+                      "variable": [
+                        {
+                          "id": "52339c30-3924-42c8-8f04-7350f92d0554",
+                          "key": "monitor_id",
+                          "value": "<string>",
+                          "description": "(Required) Unique monitor identifier"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve the real-time status of a specific monitor."
+                  },
+                  "response": [
+                    {
+                      "id": "53555caa-5351-4f95-9e6f-8602ba35aa19",
+                      "name": "Monitor status returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitors/:monitor_id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitors",
+                            ":monitor_id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": 5,\n    \"last_polled_time\": \"<dateTime>\",\n    \"unit\": \"<string>\",\n    \"response_time\": \"<number>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-53555caa-5351-4f95-9e6f-8602ba35aa19"
+                    },
+                    {
+                      "id": "d3ff8637-3faa-4524-81e0-53cd57e5b2e6",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitors/:monitor_id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitors",
+                            ":monitor_id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-d3ff8637-3faa-4524-81e0-53cd57e5b2e6"
+                    },
+                    {
+                      "id": "2fa275b1-1732-4cf4-bbc7-503e20260d1d",
+                      "name": "The requested resource was not found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/monitors/:monitor_id/status",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "monitors",
+                            ":monitor_id",
+                            "status"
+                          ],
+                          "variable": [
+                            {
+                              "key": "monitor_id"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-2fa275b1-1732-4cf4-bbc7-503e20260d1d"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:12:41.000Z",
+                  "updatedAt": "2026-10-21T20:12:41.000Z",
+                  "uid": "35240-1f22035c-247f-4b22-8885-832717047011"
+                }
+              ],
+              "id": "aa3a484d-72f1-4602-bb03-bbf23c899130",
+              "createdAt": "2026-10-21T20:12:41.000Z",
+              "updatedAt": "2026-10-21T20:12:41.000Z",
+              "uid": "35240-aa3a484d-72f1-4602-bb03-bbf23c899130"
+            }
+          ],
+          "id": "b7899eea-b7de-46d2-91e4-ce99091b0950",
+          "createdAt": "2026-10-21T20:12:41.000Z",
+          "updatedAt": "2026-10-21T20:12:41.000Z",
+          "uid": "35240-b7899eea-b7de-46d2-91e4-ce99091b0950"
+        }
+      ],
+      "id": "5e075db1-3709-4da1-b1a9-45baa7554411",
+      "createdAt": "2026-10-21T20:12:41.000Z",
+      "updatedAt": "2026-10-21T20:12:41.000Z",
+      "uid": "35240-5e075db1-3709-4da1-b1a9-45baa7554411"
+    },
+    {
+      "name": "status",
+      "item": [
+        {
+          "name": "monitor_type",
+          "item": [
+            {
+              "name": "{type}",
+              "item": [
+                {
+                  "name": "Get status by monitor type",
+                  "id": "4ea74a98-ebea-4c23-bc93-3d17c14cbd25",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/status/monitor_type/:type",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "status",
+                        "monitor_type",
+                        ":type"
+                      ],
+                      "variable": [
+                        {
+                          "id": "18d7844b-57fd-40c1-9012-13a75036adec",
+                          "key": "type",
+                          "value": "<string>",
+                          "description": "(Required) Monitor type identifier (e.g., URL, SERVER, SSL_CERT)"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve status information filtered by a specific monitor type."
+                  },
+                  "response": [
+                    {
+                      "id": "e363247b-b444-4f39-8c25-a69717dc3e22",
+                      "name": "Status by monitor type returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/status/monitor_type/:type",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "status",
+                            "monitor_type",
+                            ":type"
+                          ],
+                          "variable": [
+                            {
+                              "key": "type"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"type\": \"<string>\",\n    \"status\": 5,\n    \"last_polled_time\": \"<dateTime>\",\n    \"unit\": \"<string>\",\n    \"response_time\": \"<number>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-e363247b-b444-4f39-8c25-a69717dc3e22"
+                    },
+                    {
+                      "id": "dc225d18-d19e-4f72-9725-41ee6a4f8ff1",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/status/monitor_type/:type",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "status",
+                            "monitor_type",
+                            ":type"
+                          ],
+                          "variable": [
+                            {
+                              "key": "type"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-dc225d18-d19e-4f72-9725-41ee6a4f8ff1"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:12:41.000Z",
+                  "updatedAt": "2026-10-21T20:12:41.000Z",
+                  "uid": "35240-4ea74a98-ebea-4c23-bc93-3d17c14cbd25"
+                }
+              ],
+              "id": "9e485076-fa08-4cb9-9fdf-1935cbede734",
+              "createdAt": "2026-10-21T20:12:41.000Z",
+              "updatedAt": "2026-10-21T20:12:41.000Z",
+              "uid": "35240-9e485076-fa08-4cb9-9fdf-1935cbede734"
+            },
+            {
+              "name": "count",
+              "item": [
+                {
+                  "name": "Get status counts by monitor type",
+                  "id": "9c21386e-3705-4b19-a688-8bd711103db6",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/status/monitor_type/count",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "status",
+                        "monitor_type",
+                        "count"
+                      ]
+                    },
+                    "description": "Retrieve status counts grouped by monitor type."
+                  },
+                  "response": [
+                    {
+                      "id": "f3572332-6e10-4629-980f-902845459629",
+                      "name": "Status counts by type returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/status/monitor_type/count",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "status",
+                            "monitor_type",
+                            "count"
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"up\": \"<integer>\",\n    \"down\": \"<integer>\",\n    \"trouble\": \"<integer>\",\n    \"critical\": \"<integer>\",\n    \"suspended\": \"<integer>\",\n    \"maintenance\": \"<integer>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-f3572332-6e10-4629-980f-902845459629"
+                    },
+                    {
+                      "id": "0fe2d64c-93c8-48b6-993f-a94cb6a5e3f9",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/status/monitor_type/count",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "status",
+                            "monitor_type",
+                            "count"
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:12:42.000Z",
+                      "updatedAt": "2026-10-21T20:12:42.000Z",
+                      "uid": "35240-0fe2d64c-93c8-48b6-993f-a94cb6a5e3f9"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:12:41.000Z",
+                  "updatedAt": "2026-10-21T20:12:41.000Z",
+                  "uid": "35240-9c21386e-3705-4b19-a688-8bd711103db6"
+                }
+              ],
+              "id": "1e15fd71-41c9-49a9-b2eb-030e3f593920",
+              "createdAt": "2026-10-21T20:12:41.000Z",
+              "updatedAt": "2026-10-21T20:12:41.000Z",
+              "uid": "35240-1e15fd71-41c9-49a9-b2eb-030e3f593920"
+            }
+          ],
+          "id": "04cd5562-0714-4525-a23d-dbbf01289186",
+          "createdAt": "2026-10-21T20:12:41.000Z",
+          "updatedAt": "2026-10-21T20:12:41.000Z",
+          "uid": "35240-04cd5562-0714-4525-a23d-dbbf01289186"
+        },
+        {
+          "name": "count",
+          "item": [
+            {
+              "name": "Get monitor status counts",
+              "id": "61fd3344-9ed3-4653-ad51-cab50c1a7abd",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/status/count",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "status",
+                    "count"
+                  ]
+                },
+                "description": "Get counts of monitors grouped by status (Up, Down, Trouble, Critical, Suspended, Maintenance)."
+              },
+              "response": [
+                {
+                  "id": "fd90c22c-83ce-4580-b685-b0dfca526bb4",
+                  "name": "Status counts returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/status/count",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "status",
+                        "count"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"up\": \"<integer>\",\n    \"down\": \"<integer>\",\n    \"trouble\": \"<integer>\",\n    \"critical\": \"<integer>\",\n    \"suspended\": \"<integer>\",\n    \"maintenance\": \"<integer>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:12:42.000Z",
+                  "updatedAt": "2026-10-21T20:12:42.000Z",
+                  "uid": "35240-fd90c22c-83ce-4580-b685-b0dfca526bb4"
+                },
+                {
+                  "id": "9610b836-64b4-4f60-84c2-8af7195ed897",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/status/count",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "status",
+                        "count"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:42.000Z",
+                  "updatedAt": "2026-10-21T20:12:42.000Z",
+                  "uid": "35240-9610b836-64b4-4f60-84c2-8af7195ed897"
+                }
+              ],
+              "createdAt": "2026-10-21T20:12:41.000Z",
+              "updatedAt": "2026-10-21T20:12:41.000Z",
+              "uid": "35240-61fd3344-9ed3-4653-ad51-cab50c1a7abd"
+            }
+          ],
+          "id": "b326780f-c28b-4876-bc56-afaacf46744d",
+          "createdAt": "2026-10-21T20:12:41.000Z",
+          "updatedAt": "2026-10-21T20:12:41.000Z",
+          "uid": "35240-b326780f-c28b-4876-bc56-afaacf46744d"
+        }
+      ],
+      "id": "fe84f22f-9e36-46b9-ad2b-7c85251d9d39",
+      "createdAt": "2026-10-21T20:12:41.000Z",
+      "updatedAt": "2026-10-21T20:12:41.000Z",
+      "uid": "35240-fe84f22f-9e36-46b9-ad2b-7c85251d9d39"
     }
   ],
   "auth": {
@@ -1133,17 +1070,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "82b5f3e7-04c6-4e6b-ad02-8b7882c33c54",
-    "name": "Site24x7 REST Alarms Current Status API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.\n\nContact Support:\n Name: Site24x7 Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.site24x7.com/api"
     }
-  }
+  ]
 }

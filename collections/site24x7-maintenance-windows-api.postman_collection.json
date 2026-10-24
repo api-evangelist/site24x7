@@ -1,1132 +1,1030 @@
 {
+  "info": {
+    "_postman_id": "5b4b619d-74e9-4128-ad6a-59c88d8dbe6d",
+    "name": "Site24x7 REST Maintenance Windows API",
+    "description": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.\n\nContact Support:\n Name: Site24x7 Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:12:47.000Z",
+    "updatedAt": "2026-10-21T20:12:47.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-5b4b619d-74e9-4128-ad6a-59c88d8dbe6d"
+  },
   "item": [
     {
-      "id": "481d87e3-5d36-4de9-9487-656e89829f7f",
-      "name": "Maintenance Windows",
-      "description": {
-        "content": "Scheduled maintenance management",
-        "type": "text/plain"
-      },
+      "name": "maintenance_windows",
       "item": [
         {
-          "id": "ec828dd5-9a5c-4bf6-ad0d-44c0387d267b",
+          "name": "{maintenance_id}",
+          "item": [
+            {
+              "name": "Get a maintenance window",
+              "id": "eb3e909f-f652-48e1-b330-4251e7987682",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "maintenance_windows",
+                    ":maintenance_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "ca6f8d2c-6b35-4f33-9c79-c496e888a58e",
+                      "key": "maintenance_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique maintenance window identifier"
+                    }
+                  ]
+                },
+                "description": "Retrieve details of a specific maintenance window."
+              },
+              "response": [
+                {
+                  "id": "5962c546-4a07-4ceb-84b1-8ba1ba0a4f82",
+                  "name": "Maintenance window returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"maintenance_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"maintenance_type\": 2,\n    \"start_date\": \"<string>\",\n    \"end_date\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"monitors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"perform_actions\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-5962c546-4a07-4ceb-84b1-8ba1ba0a4f82"
+                },
+                {
+                  "id": "4b9befb5-9603-4c8b-a21c-d385f2804ff0",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-4b9befb5-9603-4c8b-a21c-d385f2804ff0"
+                },
+                {
+                  "id": "59050773-1d34-4a28-a105-92bd21f8362e",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-59050773-1d34-4a28-a105-92bd21f8362e"
+                }
+              ],
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-eb3e909f-f652-48e1-b330-4251e7987682"
+            },
+            {
+              "name": "Update a maintenance window",
+              "id": "3e003ce2-8c96-46a0-b10b-b35678104091",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "PUT",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "maintenance_windows",
+                    ":maintenance_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "74de743a-6341-476c-88fd-81452beb0c62",
+                      "key": "maintenance_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique maintenance window identifier"
+                    }
+                  ]
+                },
+                "description": "Modify an existing maintenance window."
+              },
+              "response": [
+                {
+                  "id": "63409431-02b7-4fe2-af3f-b3ca43d6ab97",
+                  "name": "Maintenance window updated successfully",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"maintenance_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"maintenance_type\": 2,\n    \"start_date\": \"<string>\",\n    \"end_date\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"monitors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"perform_actions\": \"<boolean>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-63409431-02b7-4fe2-af3f-b3ca43d6ab97"
+                },
+                {
+                  "id": "810a9d3d-0185-4622-8754-2c0e99bcce8b",
+                  "name": "Invalid request parameters or body",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-810a9d3d-0185-4622-8754-2c0e99bcce8b"
+                },
+                {
+                  "id": "113aa3ef-b8e1-41a4-9cd3-012176423d2a",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-113aa3ef-b8e1-41a4-9cd3-012176423d2a"
+                },
+                {
+                  "id": "419b91ec-0381-49ac-999d-98dc70b2fc38",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "PUT",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-419b91ec-0381-49ac-999d-98dc70b2fc38"
+                }
+              ],
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-3e003ce2-8c96-46a0-b10b-b35678104091"
+            },
+            {
+              "name": "Delete a maintenance window",
+              "id": "714bf721-7f57-4fdb-a747-8ca1a66312c4",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "DELETE",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
+                "url": {
+                  "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "maintenance_windows",
+                    ":maintenance_id"
+                  ],
+                  "variable": [
+                    {
+                      "id": "e2a34c3c-fd7c-4291-b7b9-42346a7d6af4",
+                      "key": "maintenance_id",
+                      "value": "<string>",
+                      "description": "(Required) Unique maintenance window identifier"
+                    }
+                  ]
+                },
+                "description": "Remove a scheduled maintenance window."
+              },
+              "response": [
+                {
+                  "id": "f7c43ea1-884a-4c8a-824d-3eea714fd2ec",
+                  "name": "Maintenance window deleted successfully",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-f7c43ea1-884a-4c8a-824d-3eea714fd2ec"
+                },
+                {
+                  "id": "242562db-9543-4d62-9c7e-688324409c83",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-242562db-9543-4d62-9c7e-688324409c83"
+                },
+                {
+                  "id": "a3e02462-7326-45ff-b5ff-24cc439c7cab",
+                  "name": "The requested resource was not found",
+                  "originalRequest": {
+                    "method": "DELETE",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/maintenance_windows/:maintenance_id",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "maintenance_windows",
+                        ":maintenance_id"
+                      ],
+                      "variable": [
+                        {
+                          "key": "maintenance_id"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Not Found",
+                  "code": 404,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:12:47.000Z",
+                  "updatedAt": "2026-10-21T20:12:47.000Z",
+                  "uid": "35240-a3e02462-7326-45ff-b5ff-24cc439c7cab"
+                }
+              ],
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-714bf721-7f57-4fdb-a747-8ca1a66312c4"
+            }
+          ],
+          "id": "c81d9d18-9577-46ab-9bb9-51a0d55ce899",
+          "createdAt": "2026-10-21T20:12:47.000Z",
+          "updatedAt": "2026-10-21T20:12:47.000Z",
+          "uid": "35240-c81d9d18-9577-46ab-9bb9-51a0d55ce899"
+        },
+        {
           "name": "List maintenance windows",
+          "id": "dd9bed9a-b023-4b7e-8112-c1172d2f545f",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "List maintenance windows",
-            "description": {
-              "content": "Retrieve all scheduled maintenance windows.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "maintenance_windows"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
+            "method": "GET",
             "header": [
               {
                 "key": "Accept",
                 "value": "application/json;version=2.0"
               }
             ],
-            "method": "GET",
-            "auth": null
+            "url": {
+              "raw": "{{baseUrl}}/maintenance_windows",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "maintenance_windows"
+              ]
+            },
+            "description": "Retrieve all scheduled maintenance windows."
           },
           "response": [
             {
-              "id": "5aad9f04-b935-42a4-b64a-d3bde06cb0f3",
+              "id": "46a71ec6-24c1-4f86-8d33-0033a24541b9",
               "name": "Maintenance windows returned successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/maintenance_windows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "maintenance_windows"
+                  ]
+                }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": [\n    {\n      \"maintenance_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\",\n      \"maintenance_type\": 3,\n      \"start_date\": \"string\",\n      \"end_date\": \"string\",\n      \"start_time\": \"string\",\n      \"end_time\": \"string\",\n      \"monitors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"perform_actions\": false\n    },\n    {\n      \"maintenance_id\": \"string\",\n      \"display_name\": \"string\",\n      \"description\": \"string\",\n      \"maintenance_type\": 1,\n      \"start_date\": \"string\",\n      \"end_date\": \"string\",\n      \"start_time\": \"string\",\n      \"end_time\": \"string\",\n      \"monitors\": [\n        \"string\",\n        \"string\"\n      ],\n      \"perform_actions\": true\n    }\n  ]\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": [\n    {\n      \"maintenance_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"maintenance_type\": 1,\n      \"start_date\": \"<string>\",\n      \"end_date\": \"<string>\",\n      \"start_time\": \"<string>\",\n      \"end_time\": \"<string>\",\n      \"monitors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"perform_actions\": \"<boolean>\"\n    },\n    {\n      \"maintenance_id\": \"<string>\",\n      \"display_name\": \"<string>\",\n      \"description\": \"<string>\",\n      \"maintenance_type\": 2,\n      \"start_date\": \"<string>\",\n      \"end_date\": \"<string>\",\n      \"start_time\": \"<string>\",\n      \"end_time\": \"<string>\",\n      \"monitors\": [\n        \"<string>\",\n        \"<string>\"\n      ],\n      \"perform_actions\": \"<boolean>\"\n    }\n  ]\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-46a71ec6-24c1-4f86-8d33-0033a24541b9"
             },
             {
-              "id": "61468c29-b8e3-4810-ac7c-aa319f01daa7",
+              "id": "9a3179c7-431d-4e13-8d9e-1e45ee1039bf",
               "name": "Authentication failed or token is missing",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "GET",
-                "body": {}
+                "url": {
+                  "raw": "{{baseUrl}}/maintenance_windows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "maintenance_windows"
+                  ]
+                }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-9a3179c7-431d-4e13-8d9e-1e45ee1039bf"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:12:47.000Z",
+          "updatedAt": "2026-10-21T20:12:47.000Z",
+          "uid": "35240-dd9bed9a-b023-4b7e-8112-c1172d2f545f"
         },
         {
-          "id": "4c3e5324-89bc-4bc2-85dd-4a555e9a4ab8",
           "name": "Create a maintenance window",
+          "id": "db5f208c-8ed2-435d-9dab-90d1b935fbce",
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          },
           "request": {
-            "name": "Create a maintenance window",
-            "description": {
-              "content": "Schedule a new maintenance window during which alerts are suppressed.",
-              "type": "text/plain"
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json;version=2.0"
+              },
+              {
+                "key": "Accept",
+                "value": "application/json;version=2.0"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+              "options": {
+                "raw": {
+                  "headerFamily": "json",
+                  "language": "json"
+                }
+              }
             },
             "url": {
+              "raw": "{{baseUrl}}/maintenance_windows",
+              "host": [
+                "{{baseUrl}}"
+              ],
               "path": [
                 "maintenance_windows"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
+              ]
             },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json;version=2.0"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": \"<integer>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
+            "description": "Schedule a new maintenance window during which alerts are suppressed."
           },
           "response": [
             {
-              "id": "1528f243-96bb-4aa5-a656-412334ec0102",
+              "id": "a968c510-124e-4af4-a460-cc3124cdf653",
               "name": "Maintenance window created successfully",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"display_name\": \"Monthly Patching\",\n  \"maintenance_type\": 1,\n  \"start_date\": \"2026-07-01\",\n  \"end_date\": \"2026-07-01\",\n  \"start_time\": \"02:00\",\n  \"end_time\": \"04:00\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+                  "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/maintenance_windows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "maintenance_windows"
+                  ]
                 }
               },
               "status": "OK",
               "code": 200,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"maintenance_id\": \"string\",\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"maintenance_type\": 3,\n    \"start_date\": \"string\",\n    \"end_date\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"monitors\": [\n      \"string\",\n      \"string\"\n    ],\n    \"perform_actions\": true\n  }\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"maintenance_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"description\": \"<string>\",\n    \"maintenance_type\": 2,\n    \"start_date\": \"<string>\",\n    \"end_date\": \"<string>\",\n    \"start_time\": \"<string>\",\n    \"end_time\": \"<string>\",\n    \"monitors\": [\n      \"<string>\",\n      \"<string>\"\n    ],\n    \"perform_actions\": \"<boolean>\"\n  }\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-a968c510-124e-4af4-a460-cc3124cdf653"
             },
             {
-              "id": "6f4d1bd2-88c8-474b-a992-98e9e2828c14",
+              "id": "821a4b06-7723-4cb2-9b9a-92d3616b1c8d",
               "name": "Invalid request parameters or body",
               "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
-                  "raw": "{\n  \"display_name\": \"Monthly Patching\",\n  \"maintenance_type\": 1,\n  \"start_date\": \"2026-07-01\",\n  \"end_date\": \"2026-07-01\",\n  \"start_time\": \"02:00\",\n  \"end_time\": \"04:00\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+                  "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
+                },
+                "url": {
+                  "raw": "{{baseUrl}}/maintenance_windows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "path": [
+                    "maintenance_windows"
+                  ]
                 }
               },
               "status": "Bad Request",
               "code": 400,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-821a4b06-7723-4cb2-9b9a-92d3616b1c8d"
             },
             {
-              "id": "6d067727-b66b-46ba-80ef-45d73333b192",
+              "id": "461d52c5-6fba-4bf9-aa7a-b1262961dafe",
               "name": "Authentication failed or token is missing",
               "originalRequest": {
+                "method": "POST",
+                "header": [
+                  {
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  },
+                  {
+                    "description": "Added as a part of security scheme: bearer",
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  }
+                ],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": 3,\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
+                  "options": {
+                    "raw": {
+                      "headerFamily": "json",
+                      "language": "json"
+                    }
+                  }
+                },
                 "url": {
+                  "raw": "{{baseUrl}}/maintenance_windows",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "maintenance_windows"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"display_name\": \"Monthly Patching\",\n  \"maintenance_type\": 1,\n  \"start_date\": \"2026-07-01\",\n  \"end_date\": \"2026-07-01\",\n  \"start_time\": \"02:00\",\n  \"end_time\": \"04:00\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
+                  ]
                 }
               },
               "status": "Unauthorized",
               "code": 401,
+              "_postman_previewlanguage": "json",
               "header": [
                 {
                   "key": "Content-Type",
                   "value": "application/json;version=2.0"
                 }
               ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
               "cookie": [],
-              "_postman_previewlanguage": "json"
+              "responseTime": null,
+              "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+              "createdAt": "2026-10-21T20:12:47.000Z",
+              "updatedAt": "2026-10-21T20:12:47.000Z",
+              "uid": "35240-461d52c5-6fba-4bf9-aa7a-b1262961dafe"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "b7ed28c1-b4f0-4dbf-ba17-35309c7aee7a",
-          "name": "Get a maintenance window",
-          "request": {
-            "name": "Get a maintenance window",
-            "description": {
-              "content": "Retrieve details of a specific maintenance window.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "maintenance_windows",
-                ":maintenance_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "maintenance_id",
-                  "description": "(Required) Unique maintenance window identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "59910b0d-8893-43ea-a31e-4a61a7f711a5",
-              "name": "Maintenance window returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"maintenance_id\": \"string\",\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"maintenance_type\": 3,\n    \"start_date\": \"string\",\n    \"end_date\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"monitors\": [\n      \"string\",\n      \"string\"\n    ],\n    \"perform_actions\": true\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "259f79ca-386b-4aa1-a6ad-af21ad9bfbd4",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "fddc14c8-c376-4781-8e30-aaa62fec98ce",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "ee3b45f5-64aa-480a-9c9d-aa3a3142d678",
-          "name": "Update a maintenance window",
-          "request": {
-            "name": "Update a maintenance window",
-            "description": {
-              "content": "Modify an existing maintenance window.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "maintenance_windows",
-                ":maintenance_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "maintenance_id",
-                  "description": "(Required) Unique maintenance window identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json;version=2.0"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"display_name\": \"<string>\",\n  \"maintenance_type\": \"<integer>\",\n  \"start_date\": \"<string>\",\n  \"end_date\": \"<string>\",\n  \"start_time\": \"<string>\",\n  \"end_time\": \"<string>\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "1c4a7aa5-81b0-45eb-a635-b78a80bc29cd",
-              "name": "Maintenance window updated successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"display_name\": \"Monthly Patching\",\n  \"maintenance_type\": 1,\n  \"start_date\": \"2026-07-01\",\n  \"end_date\": \"2026-07-01\",\n  \"start_time\": \"02:00\",\n  \"end_time\": \"04:00\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"maintenance_id\": \"string\",\n    \"display_name\": \"string\",\n    \"description\": \"string\",\n    \"maintenance_type\": 3,\n    \"start_date\": \"string\",\n    \"end_date\": \"string\",\n    \"start_time\": \"string\",\n    \"end_time\": \"string\",\n    \"monitors\": [\n      \"string\",\n      \"string\"\n    ],\n    \"perform_actions\": true\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cc2e1e85-6733-4b39-8b24-9cf9e76f7d5e",
-              "name": "Invalid request parameters or body",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"display_name\": \"Monthly Patching\",\n  \"maintenance_type\": 1,\n  \"start_date\": \"2026-07-01\",\n  \"end_date\": \"2026-07-01\",\n  \"start_time\": \"02:00\",\n  \"end_time\": \"04:00\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "aae706a7-25b3-4c20-bf17-46f6e9d9a4ce",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"display_name\": \"Monthly Patching\",\n  \"maintenance_type\": 1,\n  \"start_date\": \"2026-07-01\",\n  \"end_date\": \"2026-07-01\",\n  \"start_time\": \"02:00\",\n  \"end_time\": \"04:00\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "515f7327-688d-4303-9206-afb08caa9695",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"display_name\": \"Monthly Patching\",\n  \"maintenance_type\": 1,\n  \"start_date\": \"2026-07-01\",\n  \"end_date\": \"2026-07-01\",\n  \"start_time\": \"02:00\",\n  \"end_time\": \"04:00\",\n  \"description\": \"<string>\",\n  \"monitors\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"perform_actions\": false\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "8dd19b2a-4af3-4922-a162-9bba536d7a03",
-          "name": "Delete a maintenance window",
-          "request": {
-            "name": "Delete a maintenance window",
-            "description": {
-              "content": "Remove a scheduled maintenance window.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "maintenance_windows",
-                ":maintenance_id"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "maintenance_id",
-                  "description": "(Required) Unique maintenance window identifier"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "DELETE",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5017f76d-e3f6-41ba-9d65-c15861bb54c8",
-              "name": "Maintenance window deleted successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cc7b9870-4204-41a7-bf84-ede0097f6edf",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "719417ca-7b86-4ab0-841c-d39124a8c739",
-              "name": "The requested resource was not found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "maintenance_windows",
-                    ":maintenance_id"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "maintenance_id",
-                      "description": "(Required) Unique maintenance window identifier"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "DELETE",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 5815,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "createdAt": "2026-10-21T20:12:47.000Z",
+          "updatedAt": "2026-10-21T20:12:47.000Z",
+          "uid": "35240-db5f208c-8ed2-435d-9dab-90d1b935fbce"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://www.site24x7.com/api",
-      "key": "baseUrl"
+      "id": "0dff166b-df49-494d-b19b-1794a2714edd",
+      "createdAt": "2026-10-21T20:12:47.000Z",
+      "updatedAt": "2026-10-21T20:12:47.000Z",
+      "uid": "35240-0dff166b-df49-494d-b19b-1794a2714edd"
     }
   ],
   "auth": {
@@ -1134,17 +1032,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "34d4393f-f2cd-4a20-9142-f47a00dc08a9",
-    "name": "Site24x7 REST Alarms Maintenance Windows API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.\n\nContact Support:\n Name: Site24x7 Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.site24x7.com/api"
     }
-  }
+  ]
 }

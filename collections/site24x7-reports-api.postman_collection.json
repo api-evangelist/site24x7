@@ -1,1675 +1,1652 @@
 {
+  "info": {
+    "_postman_id": "97601551-9e23-44b8-b5ad-d0b55b21da59",
+    "name": "Site24x7 REST Reports API",
+    "description": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations.\n\nContact Support:\n Name: Site24x7 Support",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-21T20:13:18.000Z",
+    "updatedAt": "2026-10-21T20:13:18.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-97601551-9e23-44b8-b5ad-d0b55b21da59"
+  },
   "item": [
     {
-      "id": "9c71acba-a9ca-4f2a-8f35-8ad7d2e67813",
-      "name": "Reports",
-      "description": {
-        "content": "Availability, performance, SLA, and custom reports",
-        "type": "text/plain"
-      },
+      "name": "reports",
       "item": [
         {
-          "id": "5704676d-5f1b-40c2-af38-5ab5506dc1f2",
-          "name": "Get summary report by monitor",
-          "request": {
-            "name": "Get summary report by monitor",
-            "description": {
-              "content": "Retrieve a summary report for a specific monitor.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "summary"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
+          "name": "summary",
+          "item": [
+            {
+              "name": "group",
+              "item": [
                 {
-                  "disabled": false,
-                  "key": "monitor_id",
-                  "value": "<string>",
-                  "description": "Filter by monitor ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
+                  "name": "Get summary report by monitor group",
+                  "id": "b2ef7052-d05e-4997-ad18-65aa112723dd",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/summary/group?group_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "summary",
+                        "group"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor group ID",
+                          "key": "group_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a summary report aggregated by monitor group."
+                  },
+                  "response": [
+                    {
+                      "id": "3c9b39ef-5a0d-4d48-9820-64981060e7d1",
+                      "name": "Summary report by group returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/summary/group?group_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            "summary",
+                            "group"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by monitor group ID",
+                              "key": "group_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:13:19.000Z",
+                      "updatedAt": "2026-10-21T20:13:19.000Z",
+                      "uid": "35240-3c9b39ef-5a0d-4d48-9820-64981060e7d1"
+                    },
+                    {
+                      "id": "58fc8e35-46fb-4c3c-917d-dd6d8123a975",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/summary/group?group_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            "summary",
+                            "group"
+                          ],
+                          "query": [
+                            {
+                              "description": "Filter by monitor group ID",
+                              "key": "group_id",
+                              "value": "<string>"
+                            },
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:13:19.000Z",
+                      "updatedAt": "2026-10-21T20:13:19.000Z",
+                      "uid": "35240-58fc8e35-46fb-4c3c-917d-dd6d8123a975"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-b2ef7052-d05e-4997-ad18-65aa112723dd"
                 }
               ],
-              "variable": []
+              "id": "9b83e08d-97fe-4da5-bb23-7ebcd1f87d98",
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-9b83e08d-97fe-4da5-bb23-7ebcd1f87d98"
             },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
             {
-              "id": "4e50a02f-f17d-4542-abcb-7b0de7c5aa84",
-              "name": "Summary report returned successfully",
-              "originalRequest": {
+              "name": "all",
+              "item": [
+                {
+                  "name": "Get summary report for all monitors",
+                  "id": "e17a3292-a3f7-4c85-a683-9c9490bf6dcc",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/summary/all?start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "summary",
+                        "all"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve a summary report covering all monitors."
+                  },
+                  "response": [
+                    {
+                      "id": "21dee56f-48f7-4b6e-abd2-2af894544397",
+                      "name": "Summary report for all monitors returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/summary/all?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            "summary",
+                            "all"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:13:19.000Z",
+                      "updatedAt": "2026-10-21T20:13:19.000Z",
+                      "uid": "35240-21dee56f-48f7-4b6e-abd2-2af894544397"
+                    },
+                    {
+                      "id": "605389ce-6f59-4c64-a426-bac76e8995d2",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/summary/all?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            "summary",
+                            "all"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:13:19.000Z",
+                      "updatedAt": "2026-10-21T20:13:19.000Z",
+                      "uid": "35240-605389ce-6f59-4c64-a426-bac76e8995d2"
+                    }
+                  ],
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-e17a3292-a3f7-4c85-a683-9c9490bf6dcc"
+                }
+              ],
+              "id": "386d50b3-9f45-41d8-868c-6622ab8f5773",
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-386d50b3-9f45-41d8-868c-6622ab8f5773"
+            },
+            {
+              "name": "Get summary report by monitor",
+              "id": "bce18a94-dd9c-4dfd-af75-78f6bae9269a",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/reports/summary?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "reports",
                     "summary"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Filter by monitor ID",
                       "key": "monitor_id",
                       "value": "<string>"
                     },
                     {
+                      "description": "Start of the time range (ISO 8601)",
                       "key": "start_date",
                       "value": "<dateTime>"
                     },
                     {
+                      "description": "End of the time range (ISO 8601)",
                       "key": "end_date",
                       "value": "<dateTime>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve a summary report for a specific monitor."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "4c21e423-23e2-4571-88ed-c41d28a0848d",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "summary"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "198cb2ec-84e0-433a-83ff-8ed1245b08c0",
+                  "name": "Summary report returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/summary?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "summary"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "monitor_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-198cb2ec-84e0-433a-83ff-8ed1245b08c0"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
+                  "id": "f6763695-ab1c-4ad9-8403-49895232b7fb",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/summary?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "summary"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-f6763695-ab1c-4ad9-8403-49895232b7fb"
                 }
               ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-bce18a94-dd9c-4dfd-af75-78f6bae9269a"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "79854cc8-1266-4182-aca0-aac129f33bde",
+          "createdAt": "2026-10-21T20:13:19.000Z",
+          "updatedAt": "2026-10-21T20:13:19.000Z",
+          "uid": "35240-79854cc8-1266-4182-aca0-aac129f33bde"
         },
         {
-          "id": "7bc42032-4075-42ea-a742-e231237f186b",
-          "name": "Get summary report by monitor group",
-          "request": {
-            "name": "Get summary report by monitor group",
-            "description": {
-              "content": "Retrieve a summary report aggregated by monitor group.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "summary",
-                "group"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "group_id",
-                  "value": "<string>",
-                  "description": "Filter by monitor group ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "availability",
+          "item": [
             {
-              "id": "1de53ff8-c378-4b2a-9bb2-0890712e0141",
-              "name": "Summary report by group returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "summary",
-                    "group"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+              "name": "all",
+              "item": [
+                {
+                  "name": "Get availability report for all monitors",
+                  "id": "414b8c3a-10db-4915-8a6a-6dcad3ad4015",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/availability/all?start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "availability",
+                        "all"
+                      ],
+                      "query": [
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    },
+                    "description": "Retrieve availability data covering all monitors."
+                  },
+                  "response": [
                     {
-                      "key": "group_id",
-                      "value": "<string>"
+                      "id": "8fbaa33b-c599-488d-874a-f628e8f2a4b1",
+                      "name": "Availability report for all monitors returned successfully",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/availability/all?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            "availability",
+                            "all"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                      "createdAt": "2026-10-21T20:13:19.000Z",
+                      "updatedAt": "2026-10-21T20:13:19.000Z",
+                      "uid": "35240-8fbaa33b-c599-488d-874a-f628e8f2a4b1"
                     },
                     {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
+                      "id": "be8517e7-5f4e-4440-a8b6-e1ed16879dba",
+                      "name": "Authentication failed or token is missing",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json;version=2.0"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: bearer",
+                            "key": "Authorization",
+                            "value": "Bearer <token>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/reports/availability/all?start_date=<dateTime>&end_date=<dateTime>",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "reports",
+                            "availability",
+                            "all"
+                          ],
+                          "query": [
+                            {
+                              "description": "Start of the time range (ISO 8601)",
+                              "key": "start_date",
+                              "value": "<dateTime>"
+                            },
+                            {
+                              "description": "End of the time range (ISO 8601)",
+                              "key": "end_date",
+                              "value": "<dateTime>"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json;version=2.0"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                      "createdAt": "2026-10-21T20:13:19.000Z",
+                      "updatedAt": "2026-10-21T20:13:19.000Z",
+                      "uid": "35240-be8517e7-5f4e-4440-a8b6-e1ed16879dba"
                     }
                   ],
-                  "variable": []
-                },
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-414b8c3a-10db-4915-8a6a-6dcad3ad4015"
+                }
+              ],
+              "id": "245b011c-d8da-45bc-8509-46ca5f4881e4",
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-245b011c-d8da-45bc-8509-46ca5f4881e4"
+            },
+            {
+              "name": "Get availability report",
+              "id": "6578e85a-5358-41d6-96b8-e0198b2b4a8e",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "964f3fc3-297d-42de-9037-b658fa997064",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "reports",
-                    "summary",
-                    "group"
-                  ],
+                  "raw": "{{baseUrl}}/reports/availability?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "group_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "e618f7f3-0323-4d18-bd0b-dbe92f5e2532",
-          "name": "Get summary report for all monitors",
-          "request": {
-            "name": "Get summary report for all monitors",
-            "description": {
-              "content": "Retrieve a summary report covering all monitors.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "summary",
-                "all"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "fb570b9b-7a6a-4b79-9a1d-750d1954e79a",
-              "name": "Summary report for all monitors returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "summary",
-                    "all"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ead518ab-3329-496f-aef5-fe727f84dfea",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "summary",
-                    "all"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "a822b8d0-d2c5-42c6-830c-6b344091d660",
-          "name": "Get availability report",
-          "request": {
-            "name": "Get availability report",
-            "description": {
-              "content": "Retrieve an availability report for a specific monitor.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "availability"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "monitor_id",
-                  "value": "<string>",
-                  "description": "Filter by monitor ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "0e222971-1a08-4d77-ab2d-55bf803324da",
-              "name": "Availability report returned successfully",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "reports",
                     "availability"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Filter by monitor ID",
                       "key": "monitor_id",
                       "value": "<string>"
                     },
                     {
+                      "description": "Start of the time range (ISO 8601)",
                       "key": "start_date",
                       "value": "<dateTime>"
                     },
                     {
+                      "description": "End of the time range (ISO 8601)",
                       "key": "end_date",
                       "value": "<dateTime>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve an availability report for a specific monitor."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "f96d4981-10f2-45b2-9c34-9d882752a0e1",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "availability"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "03df40ca-f574-4b04-a058-7305a52971ab",
+                  "name": "Availability report returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/availability?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "availability"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "monitor_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-03df40ca-f574-4b04-a058-7305a52971ab"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
+                  "id": "547327ed-b388-46bc-b1ff-efe13e0e441f",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/availability?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "availability"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-547327ed-b388-46bc-b1ff-efe13e0e441f"
                 }
               ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-6578e85a-5358-41d6-96b8-e0198b2b4a8e"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "788ac012-fc47-4876-82a8-4a0cfeffb36a",
+          "createdAt": "2026-10-21T20:13:19.000Z",
+          "updatedAt": "2026-10-21T20:13:19.000Z",
+          "uid": "35240-788ac012-fc47-4876-82a8-4a0cfeffb36a"
         },
         {
-          "id": "c76d9c4f-5f33-4cf4-9080-6541f50967da",
-          "name": "Get availability report for all monitors",
-          "request": {
-            "name": "Get availability report for all monitors",
-            "description": {
-              "content": "Retrieve availability data covering all monitors.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "availability",
-                "all"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "performance",
+          "item": [
             {
-              "id": "ee200f5c-b53b-409e-bd6e-18cbd863206a",
-              "name": "Availability report for all monitors returned successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "availability",
-                    "all"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": []
-                },
+              "name": "Get performance report",
+              "id": "e838d0e0-9a75-498d-a069-d98b9a650716",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
                 "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
                   }
                 ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "836b4281-14a4-4f41-8c37-d413d96c095d",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
                 "url": {
-                  "path": [
-                    "reports",
-                    "availability",
-                    "all"
-                  ],
+                  "raw": "{{baseUrl}}/reports/performance?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
-                    }
-                  ],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "32b53d7e-4a75-4c3d-836d-06d20bbcd010",
-          "name": "Get performance report",
-          "request": {
-            "name": "Get performance report",
-            "description": {
-              "content": "Retrieve a performance report for a specific monitor.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "performance"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "monitor_id",
-                  "value": "<string>",
-                  "description": "Filter by monitor ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "9019bf37-5bf5-468c-bc62-7abe65f6d56f",
-              "name": "Performance report returned successfully",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "reports",
                     "performance"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Filter by monitor ID",
                       "key": "monitor_id",
                       "value": "<string>"
                     },
                     {
+                      "description": "Start of the time range (ISO 8601)",
                       "key": "start_date",
                       "value": "<dateTime>"
                     },
                     {
+                      "description": "End of the time range (ISO 8601)",
                       "key": "end_date",
                       "value": "<dateTime>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve a performance report for a specific monitor."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "51594c51-1283-4a5a-900f-8e990919c5e3",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "performance"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "318cf878-aea9-479c-bc65-ec0f231ea623",
+                  "name": "Performance report returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/performance?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "performance"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "monitor_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-318cf878-aea9-479c-bc65-ec0f231ea623"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
+                  "id": "a45b505e-3a80-44ac-bd03-b1aea9a9e5d5",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/performance?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "performance"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-a45b505e-3a80-44ac-bd03-b1aea9a9e5d5"
                 }
               ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-e838d0e0-9a75-498d-a069-d98b9a650716"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "da92ffa0-81d1-43fd-ab92-012bcc23deaa",
+          "createdAt": "2026-10-21T20:13:19.000Z",
+          "updatedAt": "2026-10-21T20:13:19.000Z",
+          "uid": "35240-da92ffa0-81d1-43fd-ab92-012bcc23deaa"
         },
         {
-          "id": "46467749-16c6-4405-b17a-018b7556f471",
-          "name": "Get SLA report",
-          "request": {
-            "name": "Get SLA report",
-            "description": {
-              "content": "Retrieve SLA compliance reports.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "sla"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "monitor_id",
-                  "value": "<string>",
-                  "description": "Filter by monitor ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "sla",
+          "item": [
             {
-              "id": "2f224f29-d1ae-4503-bb51-7c26cfaf283a",
-              "name": "SLA report returned successfully",
-              "originalRequest": {
+              "name": "Get SLA report",
+              "id": "e38a7c1a-f762-44ab-a126-3ec7ccda6d1f",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/reports/sla?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "reports",
                     "sla"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Filter by monitor ID",
                       "key": "monitor_id",
                       "value": "<string>"
                     },
                     {
+                      "description": "Start of the time range (ISO 8601)",
                       "key": "start_date",
                       "value": "<dateTime>"
                     },
                     {
+                      "description": "End of the time range (ISO 8601)",
                       "key": "end_date",
                       "value": "<dateTime>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve SLA compliance reports."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e640ac32-4dc2-4ae9-83be-cd8cc12ef000",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "sla"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "34328745-a5fb-4662-9942-92fc5983e913",
+                  "name": "SLA report returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/sla?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "sla"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "monitor_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-34328745-a5fb-4662-9942-92fc5983e913"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
+                  "id": "c5b440e4-764f-4f20-a8c9-3fffa77d4003",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/sla?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "sla"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-c5b440e4-764f-4f20-a8c9-3fffa77d4003"
                 }
               ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-e38a7c1a-f762-44ab-a126-3ec7ccda6d1f"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "78fb45fc-0a7a-48d8-be75-7dba0d386960",
+          "createdAt": "2026-10-21T20:13:19.000Z",
+          "updatedAt": "2026-10-21T20:13:19.000Z",
+          "uid": "35240-78fb45fc-0a7a-48d8-be75-7dba0d386960"
         },
         {
-          "id": "ecf38e58-e2f1-449b-bc2c-1bbb5bd1262e",
-          "name": "Create a custom report",
-          "request": {
-            "name": "Create a custom report",
-            "description": {
-              "content": "Generate a custom report with specified parameters.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "custom"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json;version=2.0"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "POST",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"monitor_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"report_type\": \"<string>\"\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
+          "name": "custom",
+          "item": [
             {
-              "id": "4b6f8151-a16d-4536-9390-5afd40463d51",
-              "name": "Custom report created successfully",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "custom"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
+              "name": "Create a custom report",
+              "id": "80067fbb-76c4-4447-8d5e-f4613b242445",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "POST",
                 "header": [
                   {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
+                    "key": "Content-Type",
+                    "value": "application/json;version=2.0"
                   },
                   {
                     "key": "Accept",
                     "value": "application/json;version=2.0"
                   }
                 ],
-                "method": "POST",
                 "body": {
                   "mode": "raw",
                   "raw": "{\n  \"monitor_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"report_type\": \"<string>\"\n}",
                   "options": {
                     "raw": {
+                      "headerFamily": "json",
                       "language": "json"
                     }
                   }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "0660b875-d477-4650-9fd3-86aebf5e7bb9",
-              "name": "Invalid request parameters or body",
-              "originalRequest": {
+                },
                 "url": {
-                  "path": [
-                    "reports",
-                    "custom"
-                  ],
+                  "raw": "{{baseUrl}}/reports/custom",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"monitor_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"report_type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Bad Request",
-              "code": 400,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "426fb3ef-a1d5-45ef-911b-e5226ffeead0",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "reports",
                     "custom"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "POST",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"monitor_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"report_type\": \"<string>\"\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
+                "description": "Generate a custom report with specified parameters."
               },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
+                  "id": "cfbbbb34-6187-4cb1-be4e-aa5158622fba",
+                  "name": "Custom report created successfully",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"monitor_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"report_type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/custom",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "custom"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-cfbbbb34-6187-4cb1-be4e-aa5158622fba"
+                },
+                {
+                  "id": "0a5ea357-5995-4506-aa38-083e17107b0c",
+                  "name": "Invalid request parameters or body",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"monitor_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"report_type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/custom",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "custom"
+                      ]
+                    }
+                  },
+                  "status": "Bad Request",
+                  "code": 400,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-0a5ea357-5995-4506-aa38-083e17107b0c"
+                },
+                {
+                  "id": "dbb60a77-b117-45ac-b301-96c875e862f6",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "POST",
+                    "header": [
+                      {
+                        "key": "Content-Type",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "body": {
+                      "mode": "raw",
+                      "raw": "{\n  \"monitor_ids\": [\n    \"<string>\",\n    \"<string>\"\n  ],\n  \"start_date\": \"<dateTime>\",\n  \"end_date\": \"<dateTime>\",\n  \"report_type\": \"<string>\"\n}",
+                      "options": {
+                        "raw": {
+                          "headerFamily": "json",
+                          "language": "json"
+                        }
+                      }
+                    },
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/custom",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "custom"
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-dbb60a77-b117-45ac-b301-96c875e862f6"
                 }
               ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-80067fbb-76c4-4447-8d5e-f4613b242445"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "ec5aacb8-2d85-4f3d-8e11-126c26fc8a4e",
+          "createdAt": "2026-10-21T20:13:19.000Z",
+          "updatedAt": "2026-10-21T20:13:19.000Z",
+          "uid": "35240-ec5aacb8-2d85-4f3d-8e11-126c26fc8a4e"
         },
         {
-          "id": "d47771f8-295e-4aa3-b4ef-c336d98ed09f",
-          "name": "Get health trend report",
-          "request": {
-            "name": "Get health trend report",
-            "description": {
-              "content": "Retrieve health trend data for a monitor.",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "reports",
-                "health_trend"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [
-                {
-                  "disabled": false,
-                  "key": "monitor_id",
-                  "value": "<string>",
-                  "description": "Filter by monitor ID"
-                },
-                {
-                  "disabled": false,
-                  "key": "start_date",
-                  "value": "<dateTime>",
-                  "description": "Start of the time range (ISO 8601)"
-                },
-                {
-                  "disabled": false,
-                  "key": "end_date",
-                  "value": "<dateTime>",
-                  "description": "End of the time range (ISO 8601)"
-                }
-              ],
-              "variable": []
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json;version=2.0"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "health_trend",
+          "item": [
             {
-              "id": "f7bd39f2-9265-4c37-8c9e-fdad30d45e8a",
-              "name": "Health trend report returned successfully",
-              "originalRequest": {
+              "name": "Get health trend report",
+              "id": "c241355e-45d4-4cc7-a258-b2f270a82178",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json;version=2.0"
+                  }
+                ],
                 "url": {
+                  "raw": "{{baseUrl}}/reports/health_trend?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "reports",
                     "health_trend"
                   ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
                   "query": [
                     {
+                      "description": "Filter by monitor ID",
                       "key": "monitor_id",
                       "value": "<string>"
                     },
                     {
+                      "description": "Start of the time range (ISO 8601)",
                       "key": "start_date",
                       "value": "<dateTime>"
                     },
                     {
+                      "description": "End of the time range (ISO 8601)",
                       "key": "end_date",
                       "value": "<dateTime>"
                     }
-                  ],
-                  "variable": []
+                  ]
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                "description": "Retrieve health trend data for a monitor."
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
-                }
-              ],
-              "body": "{\n  \"code\": 0,\n  \"message\": \"success\",\n  \"data\": {\n    \"monitor_id\": \"string\",\n    \"display_name\": \"string\",\n    \"availability\": 99.95,\n    \"downtime\": 920.3118911252117,\n    \"response_time\": 3074.8593270077317,\n    \"start_date\": \"1989-07-08T08:32:41.691Z\",\n    \"end_date\": \"2021-07-18T03:20:50.012Z\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "2d8b24a9-ae2f-484f-b068-6e470aa71d42",
-              "name": "Authentication failed or token is missing",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "reports",
-                    "health_trend"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [
+                  "id": "2ccecece-8f6f-4d1f-b72b-62cebd5e8ff6",
+                  "name": "Health trend report returned successfully",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/health_trend?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "health_trend"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "json",
+                  "header": [
                     {
-                      "key": "monitor_id",
-                      "value": "<string>"
-                    },
-                    {
-                      "key": "start_date",
-                      "value": "<dateTime>"
-                    },
-                    {
-                      "key": "end_date",
-                      "value": "<dateTime>"
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
                     }
                   ],
-                  "variable": []
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"data\": {\n    \"monitor_id\": \"<string>\",\n    \"display_name\": \"<string>\",\n    \"availability\": \"<float>\",\n    \"downtime\": \"<float>\",\n    \"response_time\": \"<float>\",\n    \"start_date\": \"<dateTime>\",\n    \"end_date\": \"<dateTime>\"\n  }\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-2ccecece-8f6f-4d1f-b72b-62cebd5e8ff6"
                 },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: bearer",
-                      "type": "text/plain"
-                    },
-                    "key": "Authorization",
-                    "value": "Bearer <token>"
-                  },
-                  {
-                    "disabled": false,
-                    "description": "API version header. Defaults to version 2.0.",
-                    "key": "Accept",
-                    "value": "application/json; version=2.0"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json;version=2.0"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json;version=2.0"
+                  "id": "66b0e62f-d9ff-4472-91db-18f7a634d151",
+                  "name": "Authentication failed or token is missing",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json;version=2.0"
+                      },
+                      {
+                        "description": "Added as a part of security scheme: bearer",
+                        "key": "Authorization",
+                        "value": "Bearer <token>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/reports/health_trend?monitor_id=<string>&start_date=<dateTime>&end_date=<dateTime>",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "reports",
+                        "health_trend"
+                      ],
+                      "query": [
+                        {
+                          "description": "Filter by monitor ID",
+                          "key": "monitor_id",
+                          "value": "<string>"
+                        },
+                        {
+                          "description": "Start of the time range (ISO 8601)",
+                          "key": "start_date",
+                          "value": "<dateTime>"
+                        },
+                        {
+                          "description": "End of the time range (ISO 8601)",
+                          "key": "end_date",
+                          "value": "<dateTime>"
+                        }
+                      ]
+                    }
+                  },
+                  "status": "Unauthorized",
+                  "code": 401,
+                  "_postman_previewlanguage": "json",
+                  "header": [
+                    {
+                      "key": "Content-Type",
+                      "value": "application/json;version=2.0"
+                    }
+                  ],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": "{\n  \"code\": \"<integer>\",\n  \"message\": \"<string>\",\n  \"error_info\": \"<string>\"\n}",
+                  "createdAt": "2026-10-21T20:13:19.000Z",
+                  "updatedAt": "2026-10-21T20:13:19.000Z",
+                  "uid": "35240-66b0e62f-d9ff-4472-91db-18f7a634d151"
                 }
               ],
-              "body": "{\n  \"code\": 2890,\n  \"message\": \"string\",\n  \"error_info\": \"string\"\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "createdAt": "2026-10-21T20:13:19.000Z",
+              "updatedAt": "2026-10-21T20:13:19.000Z",
+              "uid": "35240-c241355e-45d4-4cc7-a258-b2f270a82178"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "29bc412f-3a95-41bd-a126-4925fdbcfc06",
+          "createdAt": "2026-10-21T20:13:19.000Z",
+          "updatedAt": "2026-10-21T20:13:19.000Z",
+          "uid": "35240-29bc412f-3a95-41bd-a126-4925fdbcfc06"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "https://www.site24x7.com/api",
-      "key": "baseUrl"
+      "id": "bb86ba87-0870-4b6c-9c28-9cba05ffb97c",
+      "createdAt": "2026-10-21T20:13:19.000Z",
+      "updatedAt": "2026-10-21T20:13:19.000Z",
+      "uid": "35240-bb86ba87-0870-4b6c-9c28-9cba05ffb97c"
     }
   ],
   "auth": {
@@ -1677,17 +1654,15 @@
     "bearer": [
       {
         "key": "token",
-        "value": "{{bearerToken}}"
+        "value": "{{bearerToken}}",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "bbe884b5-48cc-46c0-8d9c-e822fac48f73",
-    "name": "Site24x7 REST Alarms Reports API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "The Site24x7 REST API (v2.0) enables programmatic access to all monitoring operations including creating and managing monitors for websites, servers, cloud resources, APIs, and databases; configuring alert thresholds, notification profiles, and on-call schedules; scheduling maintenance windows; retrieving availability, performance, and SLA reports; managing IT automation actions; and administering users, groups, and third-party integrations. Authentication uses OAuth 2.0 via the Zoho Developer Console.\n\nContact Support:\n Name: Site24x7 Support",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.site24x7.com/api"
     }
-  }
+  ]
 }
