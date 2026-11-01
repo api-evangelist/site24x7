@@ -64,51 +64,174 @@
 > Full detail: **[Where this data comes from](https://apievangelist.com/about/where-our-data-comes-from)**
 <!-- API-EVANGELIST-PROVENANCE:END -->
 
-Site24x7 is a full-stack cloud monitoring platform with a REST API for managing monitors, on-call schedules, alerts, SLAs, and accessing availability and performance metrics. The platform covers website uptime, server infrastructure, cloud services (AWS, Azure, GCP), application performance (APM), real user monitoring (RUM), network devices, databases, and synthetic transactions.
+Site24x7 is a full-stack cloud monitoring platform with a REST API for managing monitors, on-call schedules, alerts, SLAs, and accessing availability and performance metrics. The platform covers website uptime, server infrastructure, cloud services (AWS, Azure, GCP), application performance (APM), real user monitoring (RUM), network devices, databases, and synthetic transactions. The API uses OAuth 2.0 via the Zoho Developer Console and supports multiple regional data centers across the US, EU, India, Australia, Japan, Canada, UK, UAE, and Saudi Arabia.
 
-## Links
+**Areas:** Monitoring · Observability · Uptime · Infrastructure · Cloud · APM · SLA · Alerts · Synthetic Monitoring · Real User Monitoring · Network Monitoring · Server Monitoring
 
-- **Website:** https://www.site24x7.com/
-- **API Documentation:** https://www.site24x7.com/help/api/
-- **GitHub:** https://github.com/site24x7
-- **LinkedIn:** https://www.linkedin.com/company/site24x7
-- **Blog:** https://www.site24x7.com/blog/
-- **Pricing:** https://www.site24x7.com/site24x7-pricing.html
-- **Status Page:** https://status.site24x7.com/
-- **X / Twitter:** https://x.com/Site24x7
+## Site24x7 on APIs.io
 
-## APIs
+Everything profiled for Site24x7 is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/site24x7/](https://apis.io/providers/site24x7/)** — or go straight to one of the APIs or properties below.
 
-Site24x7 provides a single REST API (v2.0) authenticated via OAuth 2.0 through the Zoho Developer Console. Major capability areas include:
+### APIs (11)
 
-- **Monitors** — Create, update, delete, and manage website, API, server, database, cloud, and synthetic transaction monitors
-- **Monitor Groups & Subgroups** — Hierarchical organization of monitors
-- **Current Status & Alerts** — Real-time health data and alert management
-- **Availability & Performance Reports** — Historical metrics across custom time ranges
-- **SLA Reports** — Availability, response time, and composite SLA tracking
-- **On-Call Schedules** — Rotation-based alert escalation management
-- **Notification Profiles** — Alert channel configuration (email, SMS, webhooks, Slack, PagerDuty, ServiceNow)
-- **Threshold Profiles** — Performance baseline and anomaly configuration
-- **IT Automation** — Triggered scripts and remediation actions
-- **Maintenance Windows** — Scheduled downtime management
-- **Users & Groups** — Role-based access control
-- **Integrations** — Third-party webhook and SaaS tool connections
-- **APM Insight** — Application performance tracing
-- **RUM Applications** — Real user monitoring analytics
-- **Cloud Services** — AWS (EC2, RDS, S3, Lambda, CloudFront, etc.), Azure, VMware resource monitoring
-- **MSP & Business Units** — Multi-tenant account management
-- **Audit Logs** — Activity tracking for compliance
+- [Site24x7 Alarms API](https://apis.io/apis/site24x7/site24x7-alarms-api/) — Alert and alarm management
+- [Site24x7 Current Status API](https://apis.io/apis/site24x7/site24x7-current-status-api/) — Real-time status and health information
+- [Site24x7 Maintenance Windows API](https://apis.io/apis/site24x7/site24x7-maintenance-windows-api/) — Scheduled maintenance management
+- [Site24x7 Monitor Groups API](https://apis.io/apis/site24x7/site24x7-monitor-groups-api/) — Organize monitors into logical groups
+- [Site24x7 Monitors API](https://apis.io/apis/site24x7/site24x7-monitors-api/) — Create, retrieve, update, and delete monitors of all types
+- [Site24x7 Notification Profiles API](https://apis.io/apis/site24x7/site24x7-notification-profiles-api/) — Alert notification configuration
+- [Site24x7 Outages API](https://apis.io/apis/site24x7/site24x7-outages-api/) — Outage records and incident management
+- [Site24x7 Reports API](https://apis.io/apis/site24x7/site24x7-reports-api/) — Availability, performance, SLA, and custom reports
+- [Site24x7 Tags API](https://apis.io/apis/site24x7/site24x7-tags-api/) — Tag-based monitor organization
+- [Site24x7 Threshold Profiles API](https://apis.io/apis/site24x7/site24x7-threshold-profiles-api/) — Performance threshold configuration
+- [Site24x7 Users API](https://apis.io/apis/site24x7/site24x7-users-api/) — User account administration
 
-## Authentication
+### Published properties
 
-OAuth 2.0 via the Zoho Developer Console. Access tokens expire after 3,600 seconds; use the permanent refresh token to regenerate them without user re-authentication.
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-Authorization header: `Authorization: Zoho-oauthtoken {access_token}`
+#### Agentic access (1)
 
-## Regional Endpoints
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Site24x7 operates dedicated API endpoints for: United States, Europe, India, Australia, Japan, Canada, United Kingdom, UAE, and Saudi Arabia.
+- [Site24X7 Agentic Access](https://apis.io/agentic-access/site24x7/site24x7-agentic-access/)
 
-## Maintainers
+#### JSON Schema (3)
 
-- Kin Lane (kin@apievangelist.com)
+The data models the API reads and writes.
+
+- [Monitor](https://apis.io/schemas/site24x7/monitor/)
+- [Outage](https://apis.io/schemas/site24x7/outage/)
+- [User](https://apis.io/schemas/site24x7/user/)
+
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Site24X7 Context](https://apis.io/jsonld/site24x7/site24x7-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [Site24X7 Vocabulary](https://apis.io/vocabularies/site24x7/site24x7-vocabulary/)
+
+#### Examples (3)
+
+Example requests and responses.
+
+- [Create Monitor](https://apis.io/examples/site24x7/create-monitor/)
+- [Monitor Response](https://apis.io/examples/site24x7/monitor-response/)
+- [Status Count Response](https://apis.io/examples/site24x7/status-count-response/)
+
+#### Collections (11)
+
+Postman and Open Collection request collections.
+
+- [Site24x7 REST Alarms API](https://apis.io/collections/site24x7/open-site24x7-alarms-api/)
+- [Site24x7 REST Alarms Current Status API](https://apis.io/collections/site24x7/open-site24x7-current-status-api/)
+- [Site24x7 REST Alarms Maintenance Windows API](https://apis.io/collections/site24x7/open-site24x7-maintenance-windows-api/)
+- [Site24x7 REST Alarms Monitor Groups API](https://apis.io/collections/site24x7/open-site24x7-monitor-groups-api/)
+- [Site24x7 REST Alarms Monitors API](https://apis.io/collections/site24x7/open-site24x7-monitors-api/)
+- [Site24x7 REST Alarms Notification Profiles API](https://apis.io/collections/site24x7/open-site24x7-notification-profiles-api/)
+- [Site24x7 REST Alarms Outages API](https://apis.io/collections/site24x7/open-site24x7-outages-api/)
+- [Site24x7 REST Alarms Reports API](https://apis.io/collections/site24x7/open-site24x7-reports-api/)
+- [Site24x7 REST Alarms Tags API](https://apis.io/collections/site24x7/open-site24x7-tags-api/)
+- [Site24x7 REST Alarms Threshold Profiles API](https://apis.io/collections/site24x7/open-site24x7-threshold-profiles-api/)
+- [Site24x7 REST Alarms Users API](https://apis.io/collections/site24x7/open-site24x7-users-api/)
+
+#### Governance rules (1)
+
+Spectral rulesets for the provider's contracts.
+
+- [Site24x7 — jsonschema rules](https://apis.io/rules/site24x7/site24x7-jsonschema-spectral-rules/)
+
+#### Security (4)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Site24X7 Authentication](https://apis.io/security/site24x7/site24x7-authentication/)
+- [Site24X7 Domain Security](https://apis.io/security/site24x7/site24x7-domain-security/)
+- [Site24X7 Trust Center](https://apis.io/security/site24x7/site24x7-trust-center/)
+- [Site24X7 Vulnerability Disclosure](https://apis.io/security/site24x7/site24x7-vulnerability-disclosure/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Site24X7 Plans Pricing](https://apis.io/plans/site24x7/site24x7-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Site24X7 Rate Limits](https://apis.io/rate-limits/site24x7/site24x7-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Site24X7 Finops](https://apis.io/finops/site24x7/site24x7-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
+- [Website](https://www.site24x7.com/)
+- [Documentation](https://www.site24x7.com/help/api/)
+- [Pricing](https://www.site24x7.com/site24x7-pricing.html)
+- [Blog](https://www.site24x7.com/blog/)
+- [Status](https://status.site24x7.com/)
+
+## API Evangelist rating
+
+**Kin Score 38.4** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 62.6 |
+| Contract governance | 9.8 |
+| Operational transparency | 28.9 |
+| Developer ergonomics | 23.8 |
+| Access clarity | 26.3 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 27.5** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/site24x7/](https://apis.io/providers/site24x7/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for Site24x7: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/site24x7/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
